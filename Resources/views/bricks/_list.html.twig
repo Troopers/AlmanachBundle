@@ -1,0 +1,15 @@
+{##
+ # ALLOWED PARAMETERS
+ # classes : []
+ #}
+
+{% set orders = ['orderedTag', 'unorderedTag'] %}
+{% set decorations = ['inlineClass', 'unstyledClass', 'discClass', 'squareClass', 'circleClass', 'nothingClass'] %}
+{% set list = [{content: '#1', label: 'Content 1'}, {content: '#2', label: 'Content 2'}, {content: '#3', label: 'Content 3'}] %}
+
+{% for _order in orders %}
+    {% for _decoration in decorations %}
+            {% embed "AlmanachBundle:bricks:#{framework}/_list.html.twig" with {framework: framework, order: _order, decoration: _decoration, list: list} only %}
+            {% endembed %}
+    {% endfor %}
+{% endfor %}

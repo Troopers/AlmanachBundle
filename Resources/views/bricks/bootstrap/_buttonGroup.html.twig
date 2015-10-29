@@ -1,0 +1,39 @@
+{##
+ # ALLOWED PARAMETERS
+ # groups : [default, round, radius, stack, stackForSmall, vertical, active, disabled]
+ # type   : [default, primary, secondary, success, information, warning, error, link]
+ # size   : [extraSmall, small, medium, default, large, expanded]
+ #}
+
+{#Class par défault pour cette feature : #}
+{% set almanach = attribute(almanach, framework) %}
+{% set classes = ["btn-group", attribute(almanach.buttonGroup.theme, theme), attribute(almanach.buttonGroup.size, size), attribute(almanach.buttonGroup.state, state), attribute(almanach.buttonGroup.border, border), attribute(almanach.buttonGroup.group, group)] %}
+
+{#Fonction permettant de merge des class créées aux classes de base de la features : #}
+{% if class is defined %}
+    {% set classes = classes|merge(class) %}
+{% endif %}
+
+{#Attributs par défault pour cette feature : #}
+{% set defaultAttributes = {"role": "button", "aria-label": "...", 'class': classes|join(' ')} %}
+
+{#Fonction permettant de fusionner des attributs crées aux attributs de base de la features : #}
+{% if attributes is defined %}
+    {% set defaultAttributes = defaultAttributes|merge(attributes) %}
+{% endif %}
+
+{#Markup de base de cette feature pour BOOTSTRAP : #}
+<div
+    {% for attr, value in defaultAttributes %}
+        {{ attr }}="{{ value|e("html_attr") }}"
+        {% if not loop.last %}{% endif %}
+    {% endfor %}
+>
+    {% for i in 1..3 %}
+        {#{% embed "AlmanachBundle:bricks:#{framework}/_button.html.twig" with {framework: framework, theme: theme, size: size, state: state, border: border, group: group} only %}#}
+            {#{% block content %}{{ group }} {{ theme }} {{ size }}{% endblock content %}#}
+        {#{% endembed %}#}
+        {{ almanach_button(theme ~ ' ' ~ size, framework, theme, size, state, border, group) }}
+    {% endfor %}
+</div>
+

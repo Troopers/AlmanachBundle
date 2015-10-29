@@ -1,0 +1,24 @@
+{# ALLOWED PARAMETERS
+ # type : [default, animatedRipple, colored, coloredAndAnimated]
+ # size : [mini, fullWidth]
+ #}
+
+{% set buttonFabMdl = {
+'type' : {
+    'default' : '',
+    'animRipple' : 'mdl-js-ripple-effect',
+    'colored' : 'mdl-button--colored',
+    'colorAnim' : 'mdl-js-ripple-effect mdl-button--colored',
+    'iconFab' : 'fa fa-plus'
+},
+'size' : {
+    'mini' : 'mdl-button--mini-fab',
+},
+} %}
+
+{% set tag = tag|default('button') %}
+
+{#========== FAB Button ==========#}
+<{{ tag }} {% if tag == 'a' %} href="{{ link|default('#') }}"{% endif %} class="mdl-button mdl-js-button mdl-button--fab {{ attribute(buttonFabMdl.type, type) }} {{ attribute(buttonFabMdl.size, size) }}">
+<i class="{{ iconFab }}"></i>
+</{{ tag }}>

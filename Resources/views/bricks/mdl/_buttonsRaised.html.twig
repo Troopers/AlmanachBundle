@@ -1,0 +1,21 @@
+{# ALLOWED PARAMETERS
+ # type : [default, animatedRipple, primaryColor, accentColor, coloredAndAnimated]
+ #}
+
+{% set buttonRaisedMdl = {
+'type' : {
+    'default' : '',
+    'animRipple' : 'mdl-js-ripple-effect',
+    'primaryColor' : 'mdl-button--colored',
+    'accentColor' : 'mdl-button--accent',
+    'colorAnimPrim' : 'mdl-js-ripple-effect mdl-button--colored',
+    'colorAnimAccent' : 'mdl-js-ripple-effect mdl-button--accent'
+},
+} %}
+
+{% set tag = tag|default('button') %}
+
+{#========== Raised Button ==========#}
+<{{ tag }} {% if tag == 'a' %} href="{{ link|default('#') }}"{% endif %} class="mdl-button mdl-js-button mdl-button--raised {{ attribute(buttonRaisedMdl.type, type) }}">
+    {{ block('content') }}
+</{{ tag }}>

@@ -1,0 +1,19 @@
+{# ALLOWED PARAMETERS
+ # type : [default, animatedRipple, primaryColor, accentColor]
+ #}
+
+{% set buttonFlatMdl = {
+'type' : {
+'default' : '',
+'animRipple' : 'mdl-js-ripple-effect',
+'primaryColor' : 'mdl-button--colored',
+'accentColor' : 'mdl-button--accent'
+},
+} %}
+
+{% set tag = tag|default('button') %}
+
+{#========== Flat Button ==========#}
+<{{ tag }} {% if tag == 'a' %} href="{{ link|default('#') }}"{% endif %} class="mdl-button mdl-js-button {{ attribute(buttonFlatMdl.type, type) }}">
+    {{ block('content') }}
+</{{ tag }}>

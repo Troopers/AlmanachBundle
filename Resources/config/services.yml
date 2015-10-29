@@ -1,0 +1,16 @@
+services:
+    appventus_almanach_kernelrequest_listener:
+        class: AppVentus\AlmanachBundle\Listener\KernelRequestListener
+        arguments:
+            - @twig
+            - %almanach%
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    appventus_almanach_display:
+        class: AppVentus\AlmanachBundle\Twig\AlmanachDisplayExtension
+        public: false
+        arguments:
+            - %almanach%
+            - @twig
+        tags:
+            - { name: twig.extension }

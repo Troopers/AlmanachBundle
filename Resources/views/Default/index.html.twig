@@ -1,0 +1,62 @@
+{% extends "::#{framework}.html.twig" %}
+
+{% block content %}
+    {#CONTENT#}
+    {% embed "AlmanachBundle:bricks:#{framework}/_container.html.twig" %}
+        {% block content %}
+            {% embed "AlmanachBundle:bricks:#{framework}/_title.html.twig" with {'importance': 1} %}
+                {% block content %}
+                    The Almanach
+                {% endblock content %}
+            {% endembed %}
+            {#<h2>Icons :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:bricks:_icon.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>Title :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:bricks:_title.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>Secondary title :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:bricks:_subTitle.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>Inline text :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:bricks:_inlineText.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>Transform text :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:bricks:_transformText.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>Alignment text :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:bricks:_alignmentText.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>List :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:bricks:_list.html.twig" %}#}
+            {#<hr>#}
+            <h2>Buttons :</h2>
+            <br>
+            {% include "AlmanachBundle:bricks:_button.html.twig" %}
+            <hr>
+            <h2>Button groups :</h2>
+            <br>
+            {% include "AlmanachBundle:bricks:_buttonGroup.html.twig" %}
+            <hr>
+            <h2>Dropdown Button :</h2>
+            <br>
+            {% include "AlmanachBundle:bricks:_dropdownButton.html.twig" %}
+            <hr>
+            <h2>Split Dropdown Button :</h2>
+            <br>
+            {% include "AlmanachBundle:bricks:_splitDropdownButton.html.twig" %}
+            <hr>
+        {% endblock content %}
+    {% endembed %}
+{% endblock content %}
+
+{% block javascript %}
+    {#JAVASCRIPT#}
+{% endblock javascript %}

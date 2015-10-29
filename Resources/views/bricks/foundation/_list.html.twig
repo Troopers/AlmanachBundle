@@ -1,0 +1,30 @@
+{##
+ # ALLOWED PARAMETERS
+ # classes : [Left, smallLeft, smallOnlyLeft, mediumLeft, mediumOnlyLeft, largeLeft, largeOnlyLeft, xLargeLeft, xLargeOnlyLeft, xxLargeLeft,
+ Right, smallRight, smallOnlyRight, mediumRight, mediumOnlyRight, largeRight, LargeOnlyRight, xLargeRight, xLargeOnlyRight, xxLargeRight,
+ Center, smallCenter, smallOnlyCenter, mediumCenter, mediumOnlyCenter, largeCenter, largeOnlyCenter, xLargeCenter, xLargeOnlyCenter, xxLargeCenter,
+ Justify, smallJustify, smallOnlyJustify, mediumJustify, mediumOnlyJustify, largeJustify, largeOnlyJustify, xLargeJustify, xLargeOnlyJustify, xxLargeJustify,]
+ #}
+
+{% set params = {
+    'order': {
+        'orderedTag'  : 'ol',
+        'unorderedTag': 'ul'
+    },
+    'decoration': {
+        'inlineClass'  : 'inline-list',
+        'unstyledClass': 'unstyled-list',
+        'discClass'   : 'disc',
+        'squareClass' : 'square',
+        'circleClass' : 'circle',
+        'nothingClass': 'no-bullet'
+    },
+} %}
+
+<{{ attribute(params.order, order) }} class="{{ attribute(params.decoration, decoration) }}">
+    {% for item in list %}
+        <li>
+            <a href="{ item.content }}">{{ item.label }}</a>
+        </li>
+    {% endfor %}
+</{{ attribute(params.order, order) }}>

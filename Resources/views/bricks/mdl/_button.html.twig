@@ -1,0 +1,114 @@
+{# ALLOWED PARAMETERS
+ # type : [default, animatedRipple, colored, coloredAndAnimated]
+ # size : [mini]
+ #}
+
+{% set tag = tag|default('button') %}
+
+{#========== FAB Button ==========#}
+{% set buttonFabMdl = {
+    'type' : {
+        'error'      : '',
+        'information': '',
+        'link'       : '',
+        'primary'    : '',
+        'secondary'  : '',
+        'success'    : '',
+        'warning'    : '',
+        'default'    : '',
+        'animRipple' : 'mdl-js-ripple-effect',
+        'colored'    : 'mdl-button--colored',
+        'colorAnim'  : 'mdl-js-ripple-effect mdl-button--colored'
+    },
+    'size' : {
+        'default'   : '',
+        'extraSmall': '',
+        'expanded'  : '',
+        'hidden'    : '',
+        'round'     : '',
+        'radius'    : '',
+        'medium'    : '',
+        'small'     : '',
+        'medium'    : '',
+        'mini'      : 'mdl-button--mini-fab',
+        'large'     : ''
+    },
+} %}
+
+
+{#========== Raised Button ==========#}
+{% set buttonRaisedMdl = {
+    'type' : {
+        'error'          : '',
+        'information'    : '',
+        'link'           : '',
+        'primary'        : '',
+        'secondary'      : '',
+        'success'        : '',
+        'warning'        : '',
+        'default'        : '',
+        'animRipple'     : 'mdl-js-ripple-effect',
+        'primaryColor'   : 'mdl-button--colored',
+        'accentColor'    : 'mdl-button--accent',
+        'colorAnimPrim'  : 'mdl-js-ripple-effect mdl-button--colored',
+        'colorAnimAccent': 'mdl-js-ripple-effect mdl-button--accent'
+    },
+    'size' : {
+        'default'   : '',
+        'extraSmall': '',
+        'expanded'  : '',
+        'hidden'    : '',
+        'round'     : '',
+        'radius'    : '',
+        'medium'    : '',
+        'small'     : '',
+        'medium'    : '',
+        'mini'      : '',
+        'large'     : ''
+    },
+} %}
+
+{#========== Flat Button ==========#}
+{% set buttonFlatMdl = {
+    'type' : {
+        'error'       : '',
+        'information' : '',
+        'link'        : '',
+        'primary'     : '',
+        'secondary'   : '',
+        'success'     : '',
+        'warning'     : '',
+        'default'     : '',
+        'animRipple'  : 'mdl-js-ripple-effect',
+        'primaryColor': 'mdl-button--colored',
+        'accentColor' : 'mdl-button--accent'
+    },
+    'size' : {
+        'default'   : '',
+        'extraSmall': '',
+        'expanded'  : '',
+        'hidden'    : '',
+        'round'     : '',
+        'radius'    : '',
+        'medium'    : '',
+        'small'     : '',
+        'medium'    : '',
+        'mini'      : '',
+        'large'     : ''
+    },
+} %}
+
+{#========== FAB Button ==========#}
+<{{ tag }}{% if tag == 'a' %} href="{{ link|default('#') }}"{% endif %} class="mdl-button mdl-js-button mdl-button--fab {{ attribute(buttonFabMdl.type, type) }} {{ attribute(buttonFabMdl.size, size) }}">
+<i class="fa fa-plus"></i>
+</{{ tag }}>
+
+{#========== Raised Button ==========#}
+<{{ tag }}{% if tag == 'a' %} href="{{ link|default('#') }}"{% endif %} class="mdl-button mdl-js-button mdl-button--raised {{ attribute(buttonRaisedMdl.type, type) }}">
+{{ block('content') }}
+</{{ tag }}>
+
+{#========== Flat Button ==========#}
+<{{ tag }}{% if tag == 'a' %} href="{{ link|default('#') }}"{% endif %} class="mdl-button mdl-js-button {{ attribute(buttonFlatMdl.type, type) }}">
+{{ block('content') }}
+</{{ tag }}>

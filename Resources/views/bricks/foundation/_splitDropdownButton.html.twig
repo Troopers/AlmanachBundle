@@ -1,0 +1,51 @@
+{##
+ # ALLOWED PARAMETERS
+ # type : [default, primary, success, information, warning, error, link]
+ # size : [default, expanded, extraSmall, hidden, large, medium, round, radius, small]
+ # active / disabled
+ #}
+
+{#Tag par défault pour cette feature : #}
+{% set tag = tag|default('a') %}
+
+{#Class par défault pour cette feature : #}
+{% set almanach = attribute(almanach, framework) %}
+{% set classes = ["button", "split", attribute(almanach.dropdownButton.theme, theme), attribute(almanach.dropdownButton.size, size), attribute(almanach.dropdownButton.state, state), attribute(almanach.dropdownButton.border, border), "dropdown"] %}
+
+{#Fonction permettant de merge des class créées aux classes de base de la features : #}
+{% if class is defined %}
+    {% set classes = classes|merge(class) %}
+{% endif %}
+
+{#Attributs par défault pour cette feature : #}
+{% set defaultAttributes = {'class': classes|join(' ')} %}
+{% set link = link|default('#') %}
+{% if tag == 'a' %}
+    {% set link = {href: link} %}
+    {% set defaultAttributes = defaultAttributes|merge(link) %}
+{% endif %}
+
+{#Fonction permettant de fusionner des attributs crées aux attributs de base de la features : #}
+{% if attributes is defined %}
+    {% set defaultAttributes = defaultAttributes|merge(attributes) %}
+{% endif %}
+
+{#Markup de base de cette feature pour FOUNDATION : #}
+<{{ tag }}
+    {% for attr, value in defaultAttributes %}
+        {{ attr }}="{{ value|e("html_attr") }}"
+        {% if not loop.last %}
+        {% endif %}
+    {% endfor %}
+>
+    {% block content %}{{ content|raw }}{% endblock %}
+    <span data-dropdown="drop"></span>
+</{{ tag }}>
+<ul id="drop" class="f-dropdown" data-dropdown-content>
+    {#{% for item in list %}#}
+        {#<li><a href="{{ item.link }}}">{{ item.label }}</a></li>#}
+    {#{% endfor %}#}
+    <li><a href="#">Link 1</a></li>
+    <li><a href="#">Link 2</a></li>
+    <li><a href="#">Link 3</a></li>
+</ul>

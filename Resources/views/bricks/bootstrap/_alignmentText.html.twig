@@ -1,0 +1,61 @@
+{##
+ # ALLOWED PARAMETERS
+ # classes : [Left, smallLeft, smallOnlyLeft, mediumLeft, mediumOnlyLeft, largeLeft, largeOnlyLeft, xLargeLeft, xLargeOnlyLeft, xxLargeLeft,
+ Right, smallRight, smallOnlyRight, mediumRight, mediumOnlyRight, largeRight, LargeOnlyRight, xLargeRight, xLargeOnlyRight, xxLargeRight,
+ Center, smallCenter, smallOnlyCenter, mediumCenter, mediumOnlyCenter, largeCenter, largeOnlyCenter, xLargeCenter, xLargeOnlyCenter, xxLargeCenter,
+ Justify, smallJustify, smallOnlyJustify, mediumJustify, mediumOnlyJustify, largeJustify, largeOnlyJustify, xLargeJustify, xLargeOnlyJustify, xxLargeJustify,]
+ #}
+
+{% set params = {
+    'alignment': {
+        'Left'          : 'text-left',
+        'smallLeft'     : 'text-left',
+        'smallOnlyLeft' : 'text-left',
+        'mediumLeft'    : 'text-left',
+        'mediumOnlyLeft': 'text-left',
+        'largeLeft'     : 'text-left',
+        'largeOnlyLeft' : 'text-left',
+        'xLargeLeft'    : 'text-left',
+        'xLargeOnlyLeft': 'text-left',
+        'xxLargeLeft'   : 'text-left',
+
+        'Right'         : 'text-right',
+        'smallRight'     : 'text-right',
+        'smallOnlyRight' : 'text-right',
+        'mediumRight'    : 'text-right',
+        'mediumOnlyRight': 'text-right',
+        'largeRight'     : 'text-right',
+        'LargeOnlyRight' : 'text-right',
+        'xLargeRight'    : 'text-right',
+        'xLargeOnlyRight': 'text-right',
+        'xxLargeRight'   : 'text-right',
+
+        'Center'         : 'text-center',
+        'smallCenter'     : 'text-center',
+        'smallOnlyCenter' : 'text-center',
+        'mediumCenter'    : 'text-center',
+        'mediumOnlyCenter': 'text-center',
+        'largeCenter'     : 'text-center',
+        'largeOnlyCenter' : 'text-center',
+        'xLargeCenter'    : 'text-center',
+        'xLargeOnlyCenter': 'text-center',
+        'xxLargeCenter'   : 'text-center',
+
+        'Justify'          : 'text-justify',
+        'smallJustify'     : 'text-justify',
+        'smallOnlyJustify' : 'text-justify',
+        'mediumJustify'    : 'text-justify',
+        'mediumOnlyJustify': 'text-justify',
+        'largeRight'       : 'text-justify',
+        'largeOnlyJustify' : 'text-justify',
+        'xLargeJustify'    : 'text-justify',
+        'xLargeOnlyJustify': 'text-justify',
+        'xxLargeJustify'   : 'text-justify'
+    },
+} %}
+
+{% set tag = tag|default('p') %}
+
+<{{ tag }} class="{{ attribute(params.alignment, alignment) }}">
+    {{ block('content') }}
+</{{ tag }}>

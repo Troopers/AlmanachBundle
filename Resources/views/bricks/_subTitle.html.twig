@@ -1,0 +1,12 @@
+{% set sizes = ['1', '2', '3', '4', '5', '6'] %}
+
+{% for _size in sizes %}
+    {% embed "AlmanachBundle:bricks:#{framework}/_subTitle.html.twig" with {framework: framework, importance: _size} only %}
+        {% block mainContent %}
+            H{{ importance }}. Main tilte
+        {% endblock %}
+        {% block subContent %}
+            Secondary title
+        {% endblock %}
+    {% endembed %}
+{% endfor %}

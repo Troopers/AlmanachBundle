@@ -1,0 +1,18 @@
+{##
+ # ALLOWED PARAMETERS
+ # transform : [Lower, Upper, Capital]
+ #}
+
+{% set params = {
+    'transform': {
+        'Lower'  : 'text-lowercase',
+        'Upper'  : 'text-uppercase',
+        'Capital': 'text-capitalize'
+    },
+} %}
+
+{% set tag = tag|default('p') %}
+
+<{{ tag }}{% if tag == 'a' %} href="{{ link|default('#') }}"{% endif %} class="{{ attribute(params.transform, transform) }}">
+    {{ block('content') }}
+</{{ tag }}>

@@ -1,0 +1,31 @@
+{##
+ # ALLOWED PARAMETERS
+ # type : [default, primary, secondary, success, information, warning, error, link, active, disabled]
+ # size : [small, medium, large, fullWidth]
+ #}
+
+{#Ici vous pouvez rajouter un ou plusieurs attributs dans le tableau suivant, exemple :#}
+{#"id": "test-id-button-group",#}
+{% set attributes = {
+} %}
+
+{#Ici vous pouvez rajouter une ou plusieurs classes dans le tableau suivant, exemple :#}
+{#"test-class",#}
+{% set class = {
+} %}
+
+{#Include du markup de la feature "Button group"#}
+{% for _size, value in config_buttonGroup.size %}
+    {% for _theme, value in config_buttonGroup.theme %}
+        {% for _state, value in config_buttonGroup.state %}
+            {% for _border, value in config_buttonGroup.border %}
+                {% for _group, value in config_buttonGroup.group %}
+                    {#{% embed "AlmanachBundle:bricks:#{framework}/_buttonGroup.html.twig" with {framework: framework, size: _size, theme: _theme, state: _state, border: _border, group: _group,} only %}#}
+                    {#{% endembed %}#}
+                    {{ almanach_buttonGroup(_theme ~ ' ' ~ _size, framework, _theme, _size, _state, _border, _group) }}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+    <br><br>
+{% endfor %}

@@ -1,0 +1,36 @@
+{##
+ # ALLOWED PARAMETERS
+ # theme : required - string in [default, error, information, link, primary, secondary, success, warning, active, disabled]
+ # size : required - string in [extraSmall, small, medium, default, large, round, radius, expanded]
+ # framework: required - string in [bootstrap, foundation]
+ # attributes: optional - object, example: {role: 'test', 'data-target': 'body'}
+ # class: optional - array contain classes, example: ['active', 'hidden']
+ # tag: optional - string, example "a"
+ # link: optional - if tag is "a", you can pass link
+ #}
+
+{#Ici vous pouvez rajouter un ou plusieurs attributs dans le tableau suivant, exemple :#}
+{#"id": "test-id-button",#}
+{% set attributes = {
+} %}
+
+{#Ici vous pouvez rajouter une ou plusieurs classes dans le tableau suivant, exemple :#}
+{#"test-class",#}
+{% set class = {
+} %}
+
+{#Include du markup de la feature "Button"#}
+{% for _size, value in config_button.size %}
+    {% for _theme, value in config_button.theme %}
+        {% for _state, value in config_button.state %}
+            {% for _border, value in config_button.border %}
+                {#Liste des paramètres à envoyer pour gérer la feature "Button" : #}
+                {#{% embed "AlmanachBundle:bricks:#{framework}/_button.html.twig" with {framework: framework, theme: _theme, size: _size, state: _state, border: _border} only %}#}
+                    {#{% block content %}{{ theme }} {{ size }} {{ state }} {{ border }}{% endblock %}#}
+                {#{% endembed %}#}
+                {{ almanach_button(_theme ~ ' ' ~ _size, framework, _theme, _size, _state, _border) }}
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+    <br><br>
+{% endfor %}

@@ -1,0 +1,33 @@
+{##
+ # ALLOWED PARAMETERS
+ # type : [default, primary, success, information, warning, error, link]
+ # size : [default, expanded, extraSmall, hidden, large, medium, round, radius, small]
+ # active / disabled
+ #}
+
+{#{% set list = [{link: '#1', label: 'link 1'}, {link: '#2', label: 'link 2'}, {link: '#3', label: 'link 3'}] %}#}
+
+{#Ici vous pouvez rajouter un ou plusieurs attributs dans le tableau suivant, exemple :#}
+{#"id": "test-id-button",#}
+{% set attributes = {
+} %}
+
+{#Ici vous pouvez rajouter une ou plusieurs classes dans le tableau suivant, exemple :#}
+{#"test-class",#}
+{% set class = {
+} %}
+
+{#Include du markup de la feature "SplitDropdown button"#}
+{% for _size, value in config_splitDropdownButton.size %}
+    {% for _theme, value in config_splitDropdownButton.theme %}
+        {% for _state, value in config_splitDropdownButton.state %}
+            {% for _border, value in config_splitDropdownButton.border %}
+        {#{% embed "AlmanachBundle:bricks:#{framework}/_splitDropdownButton.html.twig" with {framework: framework, theme: _theme, size: _size, state: _state, border: _border, list: list} only %}#}
+            {#{% block content %}{{ type }} {{ size }}{% endblock %}#}
+        {#{% endembed %}#}
+        {{ almanach_splitDropdownButton(_theme ~ ' ' ~ _size, framework, _theme, _size, _state, _border) }}
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+    <br><br>
+{% endfor %}

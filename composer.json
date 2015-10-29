@@ -1,0 +1,20 @@
+{
+    "name": "appventus/almanach-bundle",
+    "license": "Appventus",
+    "type": "Bundle",
+    "description": "Bundle permettant de zwitcher de Framework (Bootstrap/Foundation)",
+    "autoload": {
+    },
+    "require": {
+    },
+    "require-dev": {
+    },
+    "scripts": {
+    },
+    "repositories": [
+    ],
+    "config": {
+    },
+    "extra": {
+    }
+}	    
