@@ -1,18 +1,17 @@
 {##
  # ALLOWED PARAMETERS
- # type : [default, primary, secondary, success, information, warning, error, link, active, disabled]
- # size : [small, medium, large, fullWidth]
+ # theme : required - string in [default, error, information, link, primary, secondary, success, warning]
+ # size : required - string in [extraSmall, small, medium, default, large, expanded]
+ # state : required - string in [default, active, disabled]
+ # border : required - string in [default, round, radius]
+ # group : required - string in [default, stack, stackForSmall, vertical]
+ # framework: required - string in [bootstrap, foundation]
+ # list: required - string in [{link: '#1', label: 'link 1'}, {link: '#2', label: 'link 2'}, {link: '#3', label: 'link 3'}]
+ # attributes: optional - object, example: {role: 'test', 'data-target': 'body'}
+ # class: optional - array contain classes, example: ['hide']
+ # tag: optional - string, example "button"
+ # link: optional - if tag is "a", you can pass link
  #}
-
-{#Ici vous pouvez rajouter un ou plusieurs attributs dans le tableau suivant, exemple :#}
-{#"id": "test-id-button-group",#}
-{% set attributes = {
-} %}
-
-{#Ici vous pouvez rajouter une ou plusieurs classes dans le tableau suivant, exemple :#}
-{#"test-class",#}
-{% set class = {
-} %}
 
 {#Include du markup de la feature "Button group"#}
 {% for _size, value in config_buttonGroup.size %}
@@ -27,5 +26,6 @@
             {% endfor %}
         {% endfor %}
     {% endfor %}
-    <br><br>
 {% endfor %}
+<br><br>
+
