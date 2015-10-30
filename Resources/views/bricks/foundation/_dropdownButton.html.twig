@@ -1,15 +1,16 @@
-{##
- # ALLOWED PARAMETERS
- # type : [default, primary, success, information, warning, error, link, active, disabled]
- # size : [default, expanded, extraSmall, hidden, large, medium, round, radius, small]
- #}
-
 {#Tag par défault pour cette feature : #}
 {% set tag = tag|default('button') %}
 
 {#Class par défault pour cette feature : #}
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = ["button", attribute(almanach.dropdownButton.theme, theme), attribute(almanach.dropdownButton.size, size), attribute(almanach.dropdownButton.state, state), attribute(almanach.dropdownButton.border, border), "dropdown"] %}
+{% set classes = [
+    "button",
+    attribute(almanach.dropdownButton.theme, theme),
+    attribute(almanach.dropdownButton.size, size),
+    attribute(almanach.dropdownButton.state, state),
+    attribute(almanach.dropdownButton.border, border),
+    "dropdown"
+] %}
 
 {#Fonction permettant de merge des class créées aux classes de base de la features : #}
 {% if class is defined %}
@@ -17,7 +18,12 @@
 {% endif %}
 
 {#Attributs par défault pour cette feature : #}
-{% set defaultAttributes = {"data-dropdown": "drop", "aria-controls": "drop", "aria-expanded": "false", 'class': classes|join(' ')} %}
+{% set defaultAttributes = {
+    "data-dropdown": "drop",
+    "aria-controls": "drop",
+    "aria-expanded": "false",
+    'class': classes|join(' ')
+} %}
 {% set link = link|default('#') %}
 {% if tag == 'a' %}
     {% set link = {href: link} %}
@@ -33,8 +39,7 @@
 <{{ tag }}
     {% for attr, value in defaultAttributes %}
         {{ attr }}="{{ value|e("html_attr") }}"
-        {% if not loop.last %}
-        {% endif %}
+        {% if not loop.last %}{% endif %}
     {% endfor %}>
     {% block content %}{{ content|raw }}{% endblock %}
 </{{ tag }}>
