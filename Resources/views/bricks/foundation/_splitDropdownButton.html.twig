@@ -1,16 +1,17 @@
-{##
- # ALLOWED PARAMETERS
- # type : [default, primary, success, information, warning, error, link]
- # size : [default, expanded, extraSmall, hidden, large, medium, round, radius, small]
- # active / disabled
- #}
-
 {#Tag par défault pour cette feature : #}
 {% set tag = tag|default('a') %}
 
 {#Class par défault pour cette feature : #}
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = ["button", "split", attribute(almanach.dropdownButton.theme, theme), attribute(almanach.dropdownButton.size, size), attribute(almanach.dropdownButton.state, state), attribute(almanach.dropdownButton.border, border), "dropdown"] %}
+{% set classes = [
+    "button",
+    "split",
+    attribute(almanach.dropdownButton.theme, theme),
+    attribute(almanach.dropdownButton.size, size),
+    attribute(almanach.dropdownButton.state, state),
+    attribute(almanach.dropdownButton.border, border),
+    "dropdown"
+] %}
 
 {#Fonction permettant de merge des class créées aux classes de base de la features : #}
 {% if class is defined %}
@@ -18,7 +19,9 @@
 {% endif %}
 
 {#Attributs par défault pour cette feature : #}
-{% set defaultAttributes = {'class': classes|join(' ')} %}
+{% set defaultAttributes = {
+    'class': classes|join(' ')
+} %}
 {% set link = link|default('#') %}
 {% if tag == 'a' %}
     {% set link = {href: link} %}
@@ -34,8 +37,7 @@
 <{{ tag }}
     {% for attr, value in defaultAttributes %}
         {{ attr }}="{{ value|e("html_attr") }}"
-        {% if not loop.last %}
-        {% endif %}
+        {% if not loop.last %}{% endif %}
     {% endfor %}
 >
     {% block content %}{{ content|raw }}{% endblock %}
