@@ -7,13 +7,12 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * This is the class that validates and merges configuration from your app/config files
+ * This is the class that validates and merges configuration from your app/config files.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
  */
 class Configuration implements ConfigurationInterface
 {
-
     /**
      * {@inheritdoc}
      */
@@ -24,7 +23,6 @@ class Configuration implements ConfigurationInterface
         $frameworks = ['bootstrap', 'foundation'];
 
         foreach ($frameworks as $framework) {
-
             $frameworkNode =
                 $rootNode
                     ->children()
@@ -38,7 +36,6 @@ class Configuration implements ConfigurationInterface
             $frameworkNode
                 ->end()
                     ->end();
-
         }
 
         // Here you should define the parameters that are allowed to
@@ -48,7 +45,8 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function addButton(ArrayNodeDefinition $frameworkNode) {
+    private function addButton(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('button')
@@ -91,11 +89,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addDropdownButton(ArrayNodeDefinition $frameworkNode) {
+    private function addDropdownButton(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('dropdownButton')
@@ -140,11 +138,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addSplitDropdownButton(ArrayNodeDefinition $frameworkNode) {
+    private function addSplitDropdownButton(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('splitDropdownButton')
@@ -187,11 +185,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addButtonGroup(ArrayNodeDefinition $frameworkNode) {
+    private function addButtonGroup(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('buttonGroup')
@@ -242,7 +240,6 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 }
