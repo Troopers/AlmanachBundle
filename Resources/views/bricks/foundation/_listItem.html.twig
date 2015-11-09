@@ -1,0 +1,9 @@
+{% set almanach = attribute(almanach, framework) %}
+{#class="{{ attribute(almanach.listItem.decoration, decoration) }}"#}
+{#Markup de base de cette feature pour BOOTSTRAP : #}
+
+<li {% include 'AlmanachBundle:bricks/global:attributes.html.twig' only %}>
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
+</li>
