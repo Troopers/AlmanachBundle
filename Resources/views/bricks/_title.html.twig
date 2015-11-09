@@ -1,9 +1,0 @@
-{% set sizes = ['1', '2', '3', '4', '5', '6'] %}
-
-{% for _size in sizes %}
-    {% embed "AlmanachBundle:bricks:#{framework}/_title.html.twig" with {framework: framework, importance: _size} only %}
-        {% block content %}
-            H{{ importance }}. Title
-        {% endblock %}
-    {% endembed %}
-{% endfor %}
