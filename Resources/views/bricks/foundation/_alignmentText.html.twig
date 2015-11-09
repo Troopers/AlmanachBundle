@@ -6,56 +6,43 @@
  Justify, smallJustify, smallOnlyJustify, mediumJustify, mediumOnlyJustify, largeJustify, largeOnlyJustify, xLargeJustify, xLargeOnlyJustify, xxLargeJustify,]
  #}
 
-{% set params = {
-    'alignment': {
-        'Left'          : 'text-left',
-        'smallLeft'     : 'small-text-left',
-        'smallOnlyLeft' : 'small-only-text-left',
-        'mediumLeft'    : 'medium-text-left',
-        'mediumOnlyLeft': 'medium-only-text-left',
-        'largeLeft'     : 'large-text-left',
-        'largeOnlyLeft' : 'large-only-text-left',
-        'xLargeLeft'    : 'xlarge-text-left',
-        'xLargeOnlyLeft': 'xlarge-only-text-left',
-        'xxLargeLeft'   : 'xxlarge-text-left',
+{#Tag par défault pour cette feature : #}
+{% set tag = tag|default('div') %}
 
-        'Right'         : 'text-right',
-        'smallRight'     : 'small-text-right',
-        'smallOnlyRight' : 'small-only-text-right',
-        'mediumRight'    : 'medium-text-right',
-        'mediumOnlyRight': 'medium-only-text-right',
-        'largeRight'     : 'large-text-right',
-        'LargeOnlyRight' : 'large-only-text-right',
-        'xLargeRight'    : 'xlarge-text-right',
-        'xLargeOnlyRight': 'xlarge-only-text-right',
-        'xxLargeRight'   : 'xxlarge-text-right',
+{#Class par défault pour cette feature : #}
+{% set almanach = attribute(almanach, framework) %}
+{% set classes = [
+attribute(almanach.alignmentText.alignment, alignment)
+] %}
 
-        'Center'         : 'text-center',
-        'smallCenter'     : 'small-text-center',
-        'smallOnlyCenter' : 'small-only-text-center',
-        'mediumCenter'    : 'medium-text-center',
-        'mediumOnlyCenter': 'medium-only-text-center',
-        'largeCenter'     : 'large-text-center',
-        'largeOnlyCenter' : 'large-only-text-center',
-        'xLargeCenter'    : 'xlarge-text-center',
-        'xLargeOnlyCenter': 'xlarge-only-text-center',
-        'xxLargeCenter'   : 'xlarge-only-text-center',
+{#Fonction permettant de merge des class créées aux classes de base de la features : #}
+{% if class is defined %}
+    {% set classes = classes|merge(class) %}
+{% endif %}
 
-        'Justify'          : 'text-justify',
-        'smallJustify'     : 'small-text-justify',
-        'smallOnlyJustify' : 'small-text-justify',
-        'mediumJustify'    : 'medium-text-justify',
-        'mediumOnlyJustify': 'medium-only-text-justify',
-        'largeJustify'       : 'large-text-justify',
-        'largeOnlyJustify' : 'large-only-text-justify',
-        'xLargeJustify'    : 'large-only-text-justify',
-        'xLargeOnlyJustify': 'xlarge-only-text-justify',
-        'xxLargeJustify'   : 'xxlarge-text-justify'
-    },
+{#Attributs par défault pour cette feature : #}
+{% set defaultAttributes = {
+'class': classes|join(' ')
 } %}
+{% set link = link|default('#') %}
+{% if tag == 'a' %}
+    {% set link = {href: link} %}
+    {% set defaultAttributes = defaultAttributes|merge(link) %}
+{% endif %}
 
-{% set tag = tag|default('p') %}
+{#Fonction permettant de fusionner des attributs crées aux attributs de base de la features : #}
+{% if attributes is defined %}
+    {% set defaultAttributes = defaultAttributes|merge(attributes) %}
+{% endif %}
 
-<{{ tag }} class="{{ attribute(params.alignment, alignment) }}">
-    {{ block('content') }}
+{#Markup de base de cette feature pour FOUNDATION : #}
+<{{ tag }}
+    {% for attr, value in defaultAttributes %}
+        {{ attr }}="{{ value|e("html_attr") }}"
+        {% if not loop.last %}{% endif %}
+    {% endfor %}
+>
+{% block content %}
+    {{ content|raw }}
+{% endblock %}
 </{{ tag }}>
