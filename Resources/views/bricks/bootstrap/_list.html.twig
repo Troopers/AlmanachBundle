@@ -6,25 +6,13 @@
  Justify, smallJustify, smallOnlyJustify, mediumJustify, mediumOnlyJustify, largeJustify, largeOnlyJustify, xLargeJustify, xLargeOnlyJustify, xxLargeJustify,]
  #}
 
-{% set params = {
-    'order': {
-        'orderedTag'  : 'ol',
-        'unorderedTag': 'ul'
-    },
-    'decoration': {
-        'inlineClass'  : 'list-inline',
-        'unstyledClass': 'list-unstyled',
-        'discClass'   : '',
-        'squareClass' : '',
-        'circleClass' : '',
-        'nothingClass': ''
-    },
-} %}
+{% set almanach = attribute(almanach, framework) %}
 
-<{{ attribute(params.order, order) }} class="{{ attribute(params.decoration, decoration) }}">
-    {% for item in list %}
-        <li>
-            <a href="{{ item.content }}">{{ item.label }}</a>
-        </li>
-    {% endfor %}
-</{{ attribute(params.order, order) }}>
+{#Markup de base de cette feature pour BOOTSTRAP : #}
+<{{ attribute(almanach.list.order, order) }} class="{{ attribute(almanach.list.decoration, decoration) }}">
+    {% block content %}
+        {% for item in content %}
+            {{ item|raw }}
+        {% endfor %}
+    {% endblock %}
+</{{ attribute(almanach.list.order, order) }}>
