@@ -1,3 +1,5 @@
 <div class="row">
-    {{ block('content') }}
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
 </div>
