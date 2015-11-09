@@ -39,6 +39,8 @@
         {% if not loop.last %}{% endif %}
     {% endfor %}
 >
-    {% block content %}{{ content|raw }}{% endblock %}
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
 </{{ tag }}>
 
