@@ -1,0 +1,77 @@
+{% extends "::#{framework}.html.twig" %}
+
+{% block content %}
+    {#CONTENT#}
+    {% embed "AlmanachBundle:bricks:#{framework}/_container.html.twig" %}
+        {% block content %}
+            {{ almanach_title(
+                almanach_alignmentText(
+                    almanach_inlineText(
+                        almanach_inlineText(
+                        'Almanach documentation',
+                        framework,
+                        'italic'
+                        ),
+                    framework,
+                    'bold'
+                    ),
+                    framework,
+                    'center'
+                ),
+                framework,
+                'h1'
+            ) }}
+            {% include "AlmanachBundle:doc:_title.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_transformText.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_alignmentText.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_inlineText.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_label.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_alert.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_button.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_dropdownButton.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_splitDropdownButton.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_buttonGroup.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_list.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_listItem.html.twig" %}
+            <hr><br>
+            {#<h2>Icons :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:Showcase:_icon.html.twig" %}#}
+            {#<hr>#}
+            <h2>List :</h2>
+            {% include "AlmanachBundle:Showcase:_list.html.twig" %}
+            {% include "AlmanachBundle:Showcase:_listItem.html.twig" %}
+            {#<h2>Tabs :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:Showcase:_tab.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>Breadcrumbs :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:Showcase:_breadcrumb.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>Pagination :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:Showcase:_pagination.html.twig" %}#}
+            {#<hr>#}
+            {#<h2>Progress Bars :</h2>#}
+            {#<br>#}
+            {#{% include "AlmanachBundle:Showcase:_progressBar.html.twig" %}#}
+            {#<hr>#}
+        {% endblock content %}
+    {% endembed %}
+{% endblock content %}
+
+{% block javascript %}
+    {#JAVASCRIPT#}
+{% endblock javascript %}
