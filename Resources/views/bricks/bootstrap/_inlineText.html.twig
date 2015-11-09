@@ -1,23 +1,7 @@
-{##
- # ALLOWED PARAMETERS
- # tags : [Marked, Deleted, Strike, Inserted, Underlined, Small, Bold, Italic]
- #}
+{% set almanach = attribute(almanach, framework) %}
 
-{% set params = {
-    'inline': {
-        'Marked'    : 'mark',
-        'Deleted'   : 'del',
-        'Strike'    : 's',
-        'Inserted'  : 'ins',
-        'Underlined': 'u',
-        'Small'     : 'small',
-        'Bold'      : 'strong',
-        'Italic'    : 'em'
-    },
-} %}
-
-{% set tag = tag|default('p') %}
-
-<{{ attribute(params.inline, inline) }}>
-    {{ block('content') }}
-</{{ attribute(params.inline, inline) }}>
+<{{ attribute(almanach.inlineText.inline, inline) }}>
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
+</{{ attribute(almanach.inlineText.inline, inline) }}>
