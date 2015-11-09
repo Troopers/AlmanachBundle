@@ -1,0 +1,10 @@
+{% set almanach = attribute(almanach, framework) %}
+
+{#Markup de base de cette feature pour BOOTSTRAP : #}
+<li class="{{ attribute(almanach.list.decoration, decoration) }}">
+    {% block content %}
+        {% for item in content %}
+            {{ item|raw }}
+        {% endfor %}
+    {% endblock %}
+</li>
