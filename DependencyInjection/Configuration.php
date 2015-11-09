@@ -30,6 +30,15 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->arrayNode($framework);
 
+            $this->addContainer($frameworkNode);
+            $this->addLabel($frameworkNode);
+            $this->addAlert($frameworkNode);
+            $this->addTitle($frameworkNode);
+            $this->addInlineText($frameworkNode);
+            $this->addTransformText($frameworkNode);
+            $this->addAlignmentText($frameworkNode);
+            $this->addList($frameworkNode);
+            $this->addListItem($frameworkNode);
             $this->addButton($frameworkNode);
             $this->addDropdownButton($frameworkNode);
             $this->addSplitDropdownButton($frameworkNode);
@@ -46,6 +55,219 @@ class Configuration implements ConfigurationInterface
         // more information on that topic.
 
         return $treeBuilder;
+    }
+
+    private function addContainer(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('container')
+                    ->children()
+                        ->arrayNode('class')
+                            ->children()
+                                ->scalarNode('container')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addLabel(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('label')
+                    ->children()
+                        ->arrayNode('theme')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('primary')->end()
+                                ->scalarNode('secondary')->end()
+                                ->scalarNode('success')->end()
+                                ->scalarNode('information')->end()
+                                ->scalarNode('error')->end()
+                                ->scalarNode('warning')->end()
+                                ->scalarNode('link')->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('border')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('round')->end()
+                                ->scalarNode('radius')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addAlert(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('alert')
+                    ->children()
+                        ->arrayNode('theme')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('primary')->end()
+                                ->scalarNode('secondary')->end()
+                                ->scalarNode('success')->end()
+                                ->scalarNode('information')->end()
+                                ->scalarNode('error')->end()
+                                ->scalarNode('warning')->end()
+                                ->scalarNode('link')->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('border')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('round')->end()
+                                ->scalarNode('radius')->end()
+                                ->scalarNode('dismissible')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addTitle(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('title')
+                    ->children()
+                        ->arrayNode('size')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('h1')->end()
+                                ->scalarNode('h2')->end()
+                                ->scalarNode('h3')->end()
+                                ->scalarNode('h4')->end()
+                                ->scalarNode('h5')->end()
+                                ->scalarNode('h6')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addInlineText(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('inlineText')
+                    ->children()
+                        ->arrayNode('inline')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('marked')->end()
+                                ->scalarNode('deleted')->end()
+                                ->scalarNode('strike')->end()
+                                ->scalarNode('inserted')->end()
+                                ->scalarNode('underlined')->end()
+                                ->scalarNode('small')->end()
+                                ->scalarNode('bold')->end()
+                                ->scalarNode('italic')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addTransformText(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('transformText')
+                    ->children()
+                        ->arrayNode('transform')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('lower')->end()
+                                ->scalarNode('upper')->end()
+                                ->scalarNode('capital')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addAlignmentText(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('alignmentText')
+                    ->children()
+                        ->arrayNode('alignment')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('left')->end()
+                                ->scalarNode('right')->end()
+                                ->scalarNode('center')->end()
+                                ->scalarNode('justify')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addList(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('list')
+                    ->children()
+                        ->arrayNode('order')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('ordered')->end()
+                                ->scalarNode('unordered')->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('decoration')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('inline')->end()
+                                ->scalarNode('unstyled')->end()
+                                ->scalarNode('disc')->end()
+                                ->scalarNode('square')->end()
+                                ->scalarNode('circle')->end()
+                                ->scalarNode('nothing')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addListItem(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('listItem')
+                    ->children()
+                        ->arrayNode('decoration')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('inline')->end()
+                                ->scalarNode('unstyled')->end()
+                                ->scalarNode('disc')->end()
+                                ->scalarNode('square')->end()
+                                ->scalarNode('circle')->end()
+                                ->scalarNode('nothing')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
     }
 
     private function addButton(ArrayNodeDefinition $frameworkNode) {
@@ -246,3 +468,6 @@ class Configuration implements ConfigurationInterface
         ;
     }
 }
+
+
+
