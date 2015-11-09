@@ -1,0 +1,70 @@
+<h2>Alerts</h2>
+<h4>+ Use</h4>
+<ul>
+    <li>
+        <b>with twig extension:</b>
+            <pre>
+{{ "{{ alamanach_alert($content, $framework, $theme = 'default', $border = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e }}</pre>
+    </li>
+    <li>
+        <b>with twig embed:</b>
+            <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alert.html.twig' with {content: content, framework: framework, ... } only %}"|e }}
+{{ "    {% block content %}"|e }}
+{{ "        {# content #}"|e }}
+{{ "    {% endblock %}"|e }}
+{{ "{% endembed %}"|e }}</pre>
+    </li>
+</ul>
+<br><h4>+ parameters:</h4>
+<ul>
+    <li>
+        <b>content</b>: content of your alert.
+    </li>
+    <li>
+        <b>framework</b>: framework you are using.
+        <ul>
+            <li>bootstrap</li>
+            <li>foundation</li>
+        </ul>
+    </li>
+    <li>
+        <b>theme</b>: theme of your alert.
+        <ul>
+            <li>default</li>
+            <li>error</li>
+            <li>information</li>
+            <li>link</li>
+            <li>primary</li>
+            <li>secondary</li>
+            <li>success</li>
+            <li>warning</li>
+        </ul>
+    </li>
+    <li>
+        <b>border</b>: border of your alert.
+        <ul>
+            <li>default</li>
+            <li>round</li>
+            <li>radius</li>
+            <li>dismissible</li>
+        </ul>
+    </li>
+</ul>
+<h4>+ example</h4>
+<ul style="list-style-type: none">
+    <li>
+        {{ almanach_alert('Your "error" and "radius" alert !', framework, 'error', 'default', [], [], 'button') }}
+    </li>
+    <li>
+        {{ almanach_alert('Your "information" and "round" alert !', framework, 'success', 'radius', [], [], 'button') }}
+    </li>
+
+    <li>
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alert.html.twig' with {framework: framework, theme: 'warning', border: 'round', tag: 'button' } only %}
+            {% block content %}
+                Your "warning" and "round" alert !
+            {% endblock %}
+        {% endembed %}
+    </li>
+</ul>

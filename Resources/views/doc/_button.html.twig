@@ -1,0 +1,87 @@
+<h2>Buttons</h2>
+<h4>+ Use</h4>
+<ul>
+    <li>
+        <b>with twig extension:</b>
+            <pre>
+{{ "{{ alamanach_button($content, $framework, $theme = 'default', $size = 'default', $state = 'default', $border = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e }}</pre>
+    </li>
+    <li>
+        <b>with twig embed:</b>
+            <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_button.html.twig' with {content: content, framework: framework, ... } only %}"|e }}
+{{ "    {% block content %}"|e }}
+{{ "        {# content #}"|e }}
+{{ "    {% endblock %}"|e }}
+{{ "{% endembed %}"|e }}</pre>
+    </li>
+</ul>
+<br><h4>+ parameters:</h4>
+<ul>
+    <li>
+        <b>content</b>: content of your button.
+    </li>
+    <li>
+        <b>framework</b>: framework you are using.
+        <ul>
+            <li>bootstrap</li>
+            <li>foundation</li>
+        </ul>
+    </li>
+    <li>
+        <b>theme</b>: theme of your button.
+        <ul>
+            <li>default</li>
+            <li>error</li>
+            <li>information</li>
+            <li>link</li>
+            <li>primary</li>
+            <li>secondary</li>
+            <li>success</li>
+            <li>warning</li>
+        </ul>
+    </li>
+        <b>size</b>: size of your button.
+        <ul>
+            <li>default</li>
+            <li>extra_small</li>
+            <li>small</li>
+            <li>medium</li>
+            <li>large</li>
+            <li>expanded</li>
+        </ul>
+    </li>
+        <b>state</b>: state of your button.
+        <ul>
+            <li>default</li>
+            <li>active</li>
+            <li>disabled</li>
+        </ul>
+    </li>
+    <li>
+        <b>border</b>: border of your button.
+        <ul>
+            <li>default</li>
+            <li>round</li>
+            <li>radius</li>
+        </ul>
+    </li>
+</ul>
+<h4>+ example</h4>
+<ul style="list-style-type: none">
+    <li>
+        {{ almanach_button( 'Button', framework, 'default', 'default', 'default', 'default') }}
+        {{ almanach_button( 'Button', framework, 'error', 'small', 'default', 'radius') }}
+        {{ almanach_button( 'Button', framework, 'error', 'small', 'active', 'radius') }}
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_button.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'default', border: 'round'} only %}
+            {% block content %}
+                Button
+            {% endblock %}
+        {% endembed %}
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_button.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'disabled', border: 'round'} only %}
+            {% block content %}
+                Button
+            {% endblock %}
+        {% endembed %}
+    </li>
+</ul>
