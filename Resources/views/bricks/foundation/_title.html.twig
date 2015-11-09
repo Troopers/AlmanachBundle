@@ -1,3 +1,8 @@
-<h{{ importance }}>
-    {{ block('content') }}
-</h{{ importance }}>
+{% set almanach = attribute(almanach, framework) %}
+
+{#Markup de base de cette feature pour FOUNDATION : #}
+<{{ attribute(almanach.title.size, size) }}>
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
+</{{ attribute(almanach.title.size, size) }}>
