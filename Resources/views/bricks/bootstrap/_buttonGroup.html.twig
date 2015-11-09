@@ -33,11 +33,8 @@
         {% if not loop.last %}{% endif %}
     {% endfor %}
 >
-    {% for i in 1..3 %}
-        {#{% embed "AlmanachBundle:bricks:#{framework}/_button.html.twig" with {framework: framework, theme: theme, size: size, state: state, border: border} only %}#}
-            {#{% block content %}{{ group }} {{ theme }} {{ size }}{% endblock content %}#}
-        {#{% endembed %}#}
-        {{ almanach_button(theme ~ ' ' ~ size, framework, theme, size, state, border) }}
-    {% endfor %}
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
 </div>
 
