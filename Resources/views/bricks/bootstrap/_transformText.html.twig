@@ -1,18 +1,41 @@
-{##
- # ALLOWED PARAMETERS
- # transform : [Lower, Upper, Capital]
- #}
+{#Tag par défault pour cette feature : #}
+{% set tag = tag|default('span') %}
 
-{% set params = {
-    'transform': {
-        'Lower'  : 'text-lowercase',
-        'Upper'  : 'text-uppercase',
-        'Capital': 'text-capitalize'
-    },
+{#Class par défault pour cette feature : #}
+{% set almanach = attribute(almanach, framework) %}
+{% set classes = [
+    attribute(almanach.transformText.transform, transform)
+] %}
+
+{#Fonction permettant de merge des class créées aux classes de base de la features : #}
+{% if class is defined %}
+    {% set classes = classes|merge(class) %}
+{% endif %}
+
+{#Attributs par défault pour cette feature : #}
+{% set defaultAttributes = {
+    'class': classes|join(' ')
 } %}
+{% set link = link|default('#') %}
+{% if tag == 'a' %}
+    {% set link = {href: link} %}
+    {% set defaultAttributes = defaultAttributes|merge(link) %}
+{% endif %}
 
-{% set tag = tag|default('p') %}
+{#Fonction permettant de fusionner des attributs crées aux attributs de base de la features : #}
+{% if attributes is defined %}
+    {% set defaultAttributes = defaultAttributes|merge(attributes) %}
+{% endif %}
 
-<{{ tag }}{% if tag == 'a' %} href="{{ link|default('#') }}"{% endif %} class="{{ attribute(params.transform, transform) }}">
-    {{ block('content') }}
+{% spaceless %}
+<{{ tag }}
+    {% for attr, value in defaultAttributes %}
+        {{ attr }}="{{ value|e("html_attr") }}"
+        {% if not loop.last %}{% endif %}
+    {% endfor %}
+>
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
 </{{ tag }}>
+{% endspaceless %}
