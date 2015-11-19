@@ -7,8 +7,6 @@
 {% endif %}
 
 {#Attributs par défault pour cette feature : #}
-
-
 {% set attributes = classes|length ? attributes|merge({
     'class': classes|join(' ')
 }) : attributes %}
