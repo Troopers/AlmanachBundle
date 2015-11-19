@@ -1,17 +1,14 @@
 {% set classes = classes is defined ? classes : [] %}
 {% set attributes = attributes is defined ? attributes : {} %}
 
-{#Fonction permettant de merge des class créées aux classes de base de la features : #}
 {% if class is defined %}
     {% set classes = classes|merge(class) %}
 {% endif %}
 
-{#Attributs par défault pour cette feature : #}
 {% set attributes = classes|length ? attributes|merge({
     'class': classes|join(' ')
 }) : attributes %}
 
-{#Fonction permettant de fusionner des attributs crées aux attributs de base de la features : #}
 {% if attributes is defined %}
     {% set attributes = attributes|merge(attributes) %}
 {% endif %}
