@@ -1,0 +1,20 @@
+{% set almanach = attribute(almanach, framework) %}
+{% set classes = classes is defined ? classes : [] %}
+{% set link = link is defined ? link : '#' %}
+
+{% set classes = classes|merge([
+    attribute(almanach.tabTitle.state, state is defined ? state : 'default')
+]) %}
+
+{{ almanach_listItem(
+    almanach_button(content, framework, 'default', 'default', 'default', 'default', [], {
+        'aria-controls': 'test',
+        'role': 'tab',
+        'data-toggle': 'tab'
+    },
+    'a', link),
+    framework,
+    classes,
+    {
+        'role': 'presentation'
+}) }}
