@@ -1,5 +1,5 @@
 <h3><b>Alignment Text</b></h3>
-<h4>+ Use</h4>
+<h4>- Use</h4>
 <ul>
     <li>
         <b>with twig extension:</b>
@@ -16,7 +16,7 @@
 {{ "{% endembed %}"|e }}</pre>
     </li>
 </ul>
-<br><h4>+ parameters:</h4>
+<br><h4>- parameters:</h4>
 <ul>
     <li>
         <b>content</b>: content of your alignment text.
@@ -38,25 +38,28 @@
         </ul>
     </li>
 </ul>
-<h4>+ example</h4>
+<h4>- example</h4>
 <ul style="list-style-type: none">
+    <li>
+        <pre>
+{{ "{{ almanach_alignmentText('Your 'left' alignment text !', framework, 'left') }}"|e }}</pre>
+    </li>
     <li>
         {{ almanach_alignmentText('Your "left" alignment text !', framework, 'left') }}
     </li>
+    <hr>
     <li>
-        {{ almanach_alignmentText('Your "center" alignment text !', framework, 'center') }}
+        <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alignmentText.html.twig' with {framework: framework, alignment: 'right' } only %}
+    {% block content %}
+        Your 'right' alignment text !
+    {% endblock %}
+{% endembed %}"|e }}</pre>
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alignmentText.html.twig' with {framework: framework, alignment: 'right' } only %}
             {% block content %}
                 Your "right" alignment text !
-            {% endblock %}
-        {% endembed %}
-    </li>
-    <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alignmentText.html.twig' with {framework: framework, alignment: 'justify' } only %}
-            {% block content %}
-                Your "justify" alignment text !
             {% endblock %}
         {% endembed %}
     </li>

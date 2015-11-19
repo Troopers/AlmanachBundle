@@ -1,5 +1,5 @@
 <h3><b>Transform Text</b></h3>
-<h4>+ Use</h4>
+<h4>- Use</h4>
 <ul>
     <li>
         <b>with twig extension:</b>
@@ -16,7 +16,7 @@
 {{ "{% endembed %}"|e }}</pre>
     </li>
 </ul>
-<br><h4>+ parameters:</h4>
+<br><h4>- parameters:</h4>
 <ul>
     <li>
         <b>content</b>: content of your title.
@@ -38,10 +38,23 @@
         </ul>
     </li>
 </ul>
-<h4>+ example</h4>
+<h4>- example</h4>
 <ul style="list-style-type: none">
     <li>
+        <pre>
+{{ "{{ almanach_transformText('Your 'uppercase' text !', framework, 'upper') }}"|e }}</pre>
+    </li>
+    <li>
         {{ almanach_transformText('Your "uppercase" text !', framework, 'upper') }}
+    </li>
+    <hr>
+    <li>
+        <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_transformText.html.twig' with {framework: framework, transform: 'capital' } only %}
+    {% block content %}
+        Your 'capitalize' text !
+    {% endblock %}
+{% endembed %}"|e }}</pre>
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_transformText.html.twig' with {framework: framework, transform: 'capital' } only %}

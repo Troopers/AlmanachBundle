@@ -1,5 +1,5 @@
 <h3><b>Inline Text</b></h3>
-<h4>+ >Use</h4>
+<h4>- >Use</h4>
 <ul>
     <li>
         <b>with twig extension:</b>
@@ -16,7 +16,7 @@
 {{ "{% endembed %}"|e }}</pre>
     </li>
 </ul>
-<br><h4>+ parameters:</h4>
+<br><h4>- parameters:</h4>
 <ul>
     <li>
         <b>content</b>: content of your inline text.
@@ -43,13 +43,23 @@
         </ul>
     </li>
 </ul>
-<h4>+ example</h4>
+<h4>- example</h4>
 <ul style="list-style-type: none">
+    <li>
+        <pre>
+{{ "{{ almanach_inlineText('Your 'deleted' inline text !', framework, 'deleted') }}"|e }}</pre>
+    </li>
     <li>
         {{ almanach_inlineText('Your "deleted" inline text !', framework, 'deleted') }}
     </li>
+    <hr>
     <li>
-        {{ almanach_inlineText('Your "inserted" inline text !', framework, 'inserted') }}
+        <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'bold' } only %}
+    {% block content %}
+        Your 'bold' inline text !
+    {% endblock %}
+{% endembed %}"|e }}</pre>
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'bold' } only %}
@@ -57,6 +67,10 @@
                 Your "bold" inline text !
             {% endblock %}
         {% endembed %}
+    </li>
+    <hr>
+    <li>
+        {{ almanach_inlineText('Your "inserted" inline text !', framework, 'inserted') }}
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'italic' } only %}

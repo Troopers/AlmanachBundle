@@ -1,5 +1,5 @@
 <h3><b>Titles</b></h3>
-<h4>+ Use</h4>
+<h4>- Use</h4>
 <ul>
     <li>
         {{ almanach_inlineText('twig extension:', framework, 'bold') }}
@@ -9,14 +9,14 @@
     <li>
         <b>twig embed:</b>
             <pre>
-{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {content: content, framework: framework, ... } only %}"|e }}
-{{ "    {% block content %}"|e }}
-{{ "        {# content #}"|e }}
-{{ "    {% endblock %}"|e }}
-{{ "{% endembed %}"|e }}</pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {content: content, framework: framework, ... } only %}
+    {% block content %}
+        {# content #}
+    {% endblock %}
+{% endembed %}"|e }}</pre>
     </li>
 </ul>
-<br><h4>+ parameters:</h4>
+<br><h4>- parameters:</h4>
 <ul>
     <li>
         <b>content</b>: content of your transform text.
@@ -41,10 +41,23 @@
         </ul>
     </li>
 </ul>
-<h4>+ example</h4>
+<h4>- example</h4>
 <ul style="list-style-type: none">
     <li>
+        <pre>
+{{ "{{ almanach_title('Your 'h2' text !', framework, 'h2') }}" }}</pre>
+    </li>
+    <li>
         {{ almanach_title('Your "h2" text !', framework, 'h2') }}
+    </li>
+    <hr>
+    <li>
+        <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {framework: framework, size: 'h4' } only %}
+    {% block content %}
+        Your 'h4' text !
+    {% endblock %}
+{% endembed %}"|e }}</pre>
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {framework: framework, size: 'h4' } only %}

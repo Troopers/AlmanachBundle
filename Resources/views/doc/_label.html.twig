@@ -1,5 +1,5 @@
 <h3><b>Labels</b></h3>
-<h4>+ Use</h4>
+<h4>- Use</h4>
 <ul>
     <li>
         <b>with twig extension:</b>
@@ -16,7 +16,7 @@
 {{ "{% endembed %}"|e }}</pre>
     </li>
 </ul>
-<br><h4>+ parameters:</h4>
+<br><h4>- parameters:</h4>
 <ul>
     <li>
         <b>content</b>: content of your label.
@@ -50,12 +50,24 @@
         </ul>
     </li>
 </ul>
-<h4>+ example</h4>
+<h4>- example</h4>
 <ul style="list-style-type: none">
+    <li>
+        <pre>
+{{ "{{ almanach_label('Your 'error' and 'radius' label !', framework, 'error', 'default') }}"|e }}</pre>
+    </li>
     <li>
         {{ almanach_label('Your "error" and "radius" label !', framework, 'error', 'default') }}
     </li>
-
+    <hr>
+    <li>
+        <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {framework: framework, theme: 'success', border: 'radius' } only %}
+    {% block content %}
+        Your 'success' and 'radius' label !
+    {% endblock %}
+{% endembed %}"|e }}</pre>
+    </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {framework: framework, theme: 'success', border: 'radius' } only %}
             {% block content %}
@@ -63,6 +75,7 @@
             {% endblock %}
         {% endembed %}
     </li>
+    <hr>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {framework: framework, theme: 'warning', border: 'round' } only %}
             {% block content %}

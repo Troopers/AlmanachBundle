@@ -1,5 +1,5 @@
 <h3><b>Alerts</b></h3>
-<h4>+ Use</h4>
+<h4>- Use</h4>
 <ul>
     <li>
         <b>with twig extension:</b>
@@ -16,7 +16,7 @@
 {{ "{% endembed %}"|e }}</pre>
     </li>
 </ul>
-<br><h4>+ parameters:</h4>
+<br><h4>- parameters:</h4>
 <ul>
     <li>
         <b>content</b>: content of your alert.
@@ -51,20 +51,33 @@
         </ul>
     </li>
 </ul>
-<h4>+ example</h4>
+<h4>- example</h4>
 <ul style="list-style-type: none">
+    <li>
+        <pre>
+{{ "{{ almanach_alert('Your 'error' and 'radius' alert !', framework, 'error', 'default', [], [], 'button') }}"|e }}</pre>
+    </li>
     <li>
         {{ almanach_alert('Your "error" and "radius" alert !', framework, 'error', 'default', [], [], 'button') }}
     </li>
+    <hr>
     <li>
-        {{ almanach_alert('Your "information" and "round" alert !', framework, 'success', 'radius', [], [], 'button') }}
+        <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alert.html.twig' with {framework: framework, theme: 'warning', border: 'round', tag: 'button' } only %}
+    {% block content %}
+        Your 'warning' and 'round' alert !
+    {% endblock %}
+{% endembed %}"|e }}</pre>
     </li>
-
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alert.html.twig' with {framework: framework, theme: 'warning', border: 'round', tag: 'button' } only %}
             {% block content %}
                 Your "warning" and "round" alert !
             {% endblock %}
         {% endembed %}
+    </li>
+    <hr>
+    <li>
+        {{ almanach_alert('Your "information" and "round" alert !', framework, 'success', 'radius', [], [], 'button') }}
     </li>
 </ul>
