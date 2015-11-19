@@ -1,29 +1,35 @@
 {% set almanach = attribute(almanach, framework) %}
-
-{% set defaultAttributes = {} %}
-
-{% set tag = tag|default('button') %}
+{% set classes = classes is defined ? classes : [] %}
+{% set attributes = attributes is defined ? attributes : {} %}
 {% set link = link|default('#') %}
-{% if tag == 'a' %}
-    {% set link = {href: link} %}
-    {% set defaultAttributes = defaultAttributes|merge(link) %}
-{% endif %}
+{% set tag = tag|default('button') %}
 
-{% set classes = [
+{% set classes = classes|merge([
     "button",
     attribute(almanach.button.theme, theme),
     attribute(almanach.button.size, size),
     attribute(almanach.button.state, state),
     attribute(almanach.button.border, border)
-] %}
+]) %}
 
-{#Markup#}
+{% if tag == 'a' %}
+    {% set link = {href: link} %}
+    {% set attributes = attributes|merge(link) %}
+{% endif %}
+
 <{{ tag }}
     {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
         classes: classes,
-        attributes: defaultAttributes,
-    } only %}>
+        attributes: attributes
+    } only %}
+>
     {% block content %}
         {{ content|raw }}
     {% endblock %}
 </{{ tag }}>
+
+
+
+
+
+
