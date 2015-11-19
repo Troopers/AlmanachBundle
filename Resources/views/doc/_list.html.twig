@@ -1,0 +1,81 @@
+<h3><b>List</b></h3>
+<h4>+ Use</h4>
+<h4>The list is composed of the global list + the list item, so we will see the usage for the list and the list item, then the </h4>
+<ul>
+    <li>
+        <b>with twig extension:</b>
+            <pre>
+{{ "{{ alamanach_list($content, $framework, $order = 'default', $decoration = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e }}</pre>
+    </li>
+    <li>
+        <b>with twig embed:</b>
+            <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_list.html.twig' with {content: content, framework: framework, ... } only %}"|e }}
+{{ "    {% block content %}"|e }}
+{{ "        {# content #}"|e }}
+{{ "    {% endblock %}"|e }}
+{{ "{% endembed %}"|e }}</pre>
+    </li>
+</ul>
+<br><h4>+ parameters:</h4>
+<ul>
+    <li>
+        <b>content</b>: content of your list.
+    </li>
+    <li>
+        <b>framework</b>: framework you are using.
+        <ul>
+            <li>bootstrap</li>
+            <li>foundation</li>
+        </ul>
+    </li>
+    <li>
+        <b>order</b>: order of your list.
+        <ul>
+            <li>default</li>
+            <li>ordered</li>
+            <li>unordered</li>
+        </ul>
+    </li>
+    <li>
+        <b>decoration</b>: decoration of your list.
+        <ul>
+            <li>default</li>
+            <li>inline</li>
+            <li>unstyled</li>
+            <li>disc</li>
+            <li>square</li>
+            <li>circle</li>
+            <li>nothing</li>
+        </ul>
+    </li>
+</ul>
+<h4>+ example</h4>
+
+<ul style="list-style-type: none">
+    <li>
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_list.html.twig' with {framework: framework, order: 'unordered', decoration: 'disc'} only %}
+            {% block content %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_listItem.html.twig' with {framework: framework} only %}
+                    {% block content %}
+                        Unordered list disc
+                    {% endblock %}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
+    </li>
+    <li>
+    {{ almanach_list([
+        almanach_listItem('Title' ~ almanach_list([
+            almanach_listItem('Content 1', framework),
+            almanach_listItem('Content 2', framework),
+            almanach_listItem('Content 3', framework),
+        ],
+        framework, 'default', 'disc'),framework),
+    ],
+    framework,
+    'default',
+    'square'
+    ) }}
+    </li>
+</ul>
