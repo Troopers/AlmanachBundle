@@ -1,50 +1,20 @@
-{##
- # ALLOWED PARAMETERS
- # classes : [Left, smallLeft, smallOnlyLeft, mediumLeft, mediumOnlyLeft, largeLeft, largeOnlyLeft, xLargeLeft, xLargeOnlyLeft, xxLargeLeft,
- Right, smallRight, smallOnlyRight, mediumRight, mediumOnlyRight, largeRight, LargeOnlyRight, xLargeRight, xLargeOnlyRight, xxLargeRight,
- Center, smallCenter, smallOnlyCenter, mediumCenter, mediumOnlyCenter, largeCenter, largeOnlyCenter, xLargeCenter, xLargeOnlyCenter, xxLargeCenter,
- Justify, smallJustify, smallOnlyJustify, mediumJustify, mediumOnlyJustify, largeJustify, largeOnlyJustify, xLargeJustify, xLargeOnlyJustify, xxLargeJustify,]
- #}
+{% set almanach = attribute(almanach, framework) %}
+{% set classes = classes is defined ? classes : [] %}
+{% set attributes = attributes is defined ? attributes : {} %}
 
-{#Tag par défault pour cette feature : #}
 {% set tag = tag|default('div') %}
 
-{#Class par défault pour cette feature : #}
-{% set almanach = attribute(almanach, framework) %}
-{% set classes = [
+{% set classes = classes|merge([
     attribute(almanach.alignmentText.alignment, alignment)
-] %}
+]) %}
 
-{#Fonction permettant de merge des class créées aux classes de base de la features : #}
-{% if class is defined %}
-    {% set classes = classes|merge(class) %}
-{% endif %}
-
-{#Attributs par défault pour cette feature : #}
-{% set defaultAttributes = {
-    'class': classes|join(' ')
-} %}
-{% set link = link|default('#') %}
-{% if tag == 'a' %}
-    {% set link = {href: link} %}
-    {% set defaultAttributes = defaultAttributes|merge(link) %}
-{% endif %}
-
-{#Fonction permettant de fusionner des attributs crées aux attributs de base de la features : #}
-{% if attributes is defined %}
-    {% set defaultAttributes = defaultAttributes|merge(attributes) %}
-{% endif %}
-
-{#Markup de base de cette feature pour BOOTSTRAP : #}
-{% spaceless %}
 <{{ tag }}
-    {% for attr, value in defaultAttributes %}
-        {{ attr }}="{{ value|e("html_attr") }}"
-        {% if not loop.last %}{% endif %}
-    {% endfor %}
+    {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+        classes: classes,
+        attributes: attributes
+    } only %}
 >
-{% block content %}
-    {{ content|raw }}
-{% endblock %}
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
 </{{ tag }}>
-{% endspaceless %}
