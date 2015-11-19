@@ -38,7 +38,9 @@ class Configuration implements ConfigurationInterface
             $this->addTransformText($frameworkNode);
             $this->addAlignmentText($frameworkNode);
             $this->addList($frameworkNode);
-            $this->addListItem($frameworkNode);
+            $this->addTab($frameworkNode);
+            $this->addTabTitle($frameworkNode);
+            $this->addTabContent($frameworkNode);
             $this->addButton($frameworkNode);
             $this->addDropdownButton($frameworkNode);
             $this->addSplitDropdownButton($frameworkNode);
@@ -47,7 +49,6 @@ class Configuration implements ConfigurationInterface
             $frameworkNode
                 ->end()
                     ->end();
-
         }
 
         // Here you should define the parameters that are allowed to
@@ -248,20 +249,59 @@ class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addListItem(ArrayNodeDefinition $frameworkNode) {
+    private function addTab(ArrayNodeDefinition $frameworkNode) {
         $frameworkNode
             ->children()
-                ->arrayNode('listItem')
+                ->arrayNode('tab')
                     ->children()
-                        ->arrayNode('decoration')
+                        ->arrayNode('theme')
                             ->children()
                                 ->scalarNode('default')->end()
-                                ->scalarNode('inline')->end()
-                                ->scalarNode('unstyled')->end()
-                                ->scalarNode('disc')->end()
-                                ->scalarNode('square')->end()
-                                ->scalarNode('circle')->end()
-                                ->scalarNode('nothing')->end()
+                                ->scalarNode('tab')->end()
+                                ->scalarNode('pill')->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('style')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('vertical')->end()
+                                ->scalarNode('justify')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addTabTitle(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('tabTitle')
+                    ->children()
+                        ->arrayNode('state')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('active')->end()
+                                ->scalarNode('disabled')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addTabContent(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('tabContent')
+                    ->children()
+                        ->arrayNode('state')
+                            ->children()
+                                ->scalarNode('default')->end()
+                                ->scalarNode('active')->end()
+                                ->scalarNode('disabled')->end()
                             ->end()
                         ->end()
                     ->end()
