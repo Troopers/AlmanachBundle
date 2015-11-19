@@ -7,13 +7,12 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * This is the class that validates and merges configuration from your app/config files
+ * This is the class that validates and merges configuration from your app/config files.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
  */
 class Configuration implements ConfigurationInterface
 {
-
     /**
      * {@inheritdoc}
      */
@@ -24,7 +23,6 @@ class Configuration implements ConfigurationInterface
         $frameworks = ['bootstrap', 'foundation'];
 
         foreach ($frameworks as $framework) {
-
             $frameworkNode =
                 $rootNode
                     ->children()
@@ -58,7 +56,8 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function addContainer(ArrayNodeDefinition $frameworkNode) {
+    private function addContainer(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('container')
@@ -70,11 +69,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addLabel(ArrayNodeDefinition $frameworkNode) {
+    private function addLabel(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('label')
@@ -100,11 +99,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addAlert(ArrayNodeDefinition $frameworkNode) {
+    private function addAlert(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('alert')
@@ -131,11 +130,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addTitle(ArrayNodeDefinition $frameworkNode) {
+    private function addTitle(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('title')
@@ -153,11 +152,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addInlineText(ArrayNodeDefinition $frameworkNode) {
+    private function addInlineText(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('inlineText')
@@ -177,11 +176,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addTransformText(ArrayNodeDefinition $frameworkNode) {
+    private function addTransformText(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('transformText')
@@ -196,11 +195,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addAlignmentText(ArrayNodeDefinition $frameworkNode) {
+    private function addAlignmentText(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('alignmentText')
@@ -252,11 +251,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addList(ArrayNodeDefinition $frameworkNode) {
+    private function addList(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('list')
@@ -281,11 +280,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addTab(ArrayNodeDefinition $frameworkNode) {
+    private function addTab(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('tab')
@@ -306,11 +305,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addTabTitle(ArrayNodeDefinition $frameworkNode) {
+    private function addTabTitle(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('tabTitle')
@@ -324,11 +323,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addTabContent(ArrayNodeDefinition $frameworkNode) {
+    private function addTabContent(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('tabContent')
@@ -342,11 +341,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addButton(ArrayNodeDefinition $frameworkNode) {
+    private function addButton(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('button')
@@ -389,11 +388,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addDropdownButton(ArrayNodeDefinition $frameworkNode) {
+    private function addDropdownButton(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('dropdownButton')
@@ -438,11 +437,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addSplitDropdownButton(ArrayNodeDefinition $frameworkNode) {
+    private function addSplitDropdownButton(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('splitDropdownButton')
@@ -485,11 +484,11 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
-    private function addButtonGroup(ArrayNodeDefinition $frameworkNode) {
+    private function addButtonGroup(ArrayNodeDefinition $frameworkNode)
+    {
         $frameworkNode
             ->children()
                 ->arrayNode('buttonGroup')
@@ -540,10 +539,6 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 }
-
-
-
