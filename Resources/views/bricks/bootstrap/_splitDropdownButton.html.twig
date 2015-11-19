@@ -1,55 +1,46 @@
-{#Tag par défault pour cette feature : #}
+{% set almanach = attribute(almanach, framework) %}
+{% set classes = classes is defined ? classes : [] %}
+{% set attributes = attributes is defined ? attributes : {} %}
+{% set link = link|default('#') %}
 {% set tag = tag|default('button') %}
 
-{#Class par défault pour cette feature : #}
-{% set almanach = attribute(almanach, framework) %}
-{% set classes = [
+{% set classes = classes|merge([
     "btn",
+    "dropdown-toggle",
     attribute(almanach.splitDropdownButton.theme, theme),
     attribute(almanach.splitDropdownButton.size, size),
     attribute(almanach.splitDropdownButton.state, state),
-    attribute(almanach.splitDropdownButton.border, border),
-    "dropdown-toggle"
-] %}
+    attribute(almanach.splitDropdownButton.border, border)
+]) %}
 
-{#Fonction permettant de merge des class créées aux classes de base de la features : #}
-{% if class is defined %}
-    {% set classes = classes|merge(class) %}
-{% endif %}
-
-{#Attributs par défault pour cette feature : #}
-{% set defaultAttributes = {
+{% set attributes = attributes|merge({
     "type": "button",
     "data-toggle": "dropdown",
     "aria-haspopup": "true",
-    "aria-expanded": "false",
-    'class': classes|join(' ')
-} %}
-{% set link = link|default('#') %}
+    "aria-expanded": "false"
+}) %}
+
 {% if tag == 'a' %}
     {% set link = {href: link} %}
-    {% set defaultAttributes = defaultAttributes|merge(link) %}
+    {% set attributes = attributes|merge(link) %}
 {% endif %}
 
-{#Fonction permettant de fusionner des attributs crées aux attributs de base de la features : #}
-{% if attributes is defined %}
-    {% set defaultAttributes = defaultAttributes|merge(attributes) %}
-{% endif %}
-
-{#Markup de base de cette feature pour BOOTSTRAP : #}
 <div class="btn-group">
     <{{ tag }}
         {% if tag == 'a' %} href="{{ link|default('#') }}" {% endif %}
         class="btn {{ attribute(almanach.splitDropdownButton.theme, theme) }} {{ attribute(almanach.splitDropdownButton.size, size) }}
-        {{ attribute(almanach.splitDropdownButton.state, state) }} {{ attribute(almanach.splitDropdownButton.border, border) }}">
-        {% block content %}{{ content|raw }}{% endblock %}
+        {{ attribute(almanach.splitDropdownButton.state, state) }} {{ attribute(almanach.splitDropdownButton.border, border) }}"
+    >
+        {% block content %}
+            {{ content|raw }}
+        {% endblock %}
     </{{ tag }}>
 
     <{{ tag }}
-        {% for attr, value in defaultAttributes %}
-            {{ attr }}="{{ value|e("html_attr") }}"
-            {% if not loop.last %}{% endif %}
-        {% endfor %}
+        {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+            classes: classes,
+            attributes: attributes
+        } only %}
     >
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>

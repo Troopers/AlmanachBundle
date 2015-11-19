@@ -1,14 +1,5 @@
-{##
- # ALLOWED PARAMETERS
- # classes : [Left, smallLeft, smallOnlyLeft, mediumLeft, mediumOnlyLeft, largeLeft, largeOnlyLeft, xLargeLeft, xLargeOnlyLeft, xxLargeLeft,
- Right, smallRight, smallOnlyRight, mediumRight, mediumOnlyRight, largeRight, LargeOnlyRight, xLargeRight, xLargeOnlyRight, xxLargeRight,
- Center, smallCenter, smallOnlyCenter, mediumCenter, mediumOnlyCenter, largeCenter, largeOnlyCenter, xLargeCenter, xLargeOnlyCenter, xxLargeCenter,
- Justify, smallJustify, smallOnlyJustify, mediumJustify, mediumOnlyJustify, largeJustify, largeOnlyJustify, xLargeJustify, xLargeOnlyJustify, xxLargeJustify,]
- #}
-
 {% set almanach = attribute(almanach, framework) %}
 
-{#Markup de base de cette feature pour BOOTSTRAP : #}
 <{{ attribute(almanach.list.order, order is defined ? order : 'default') }} class="{{ attribute(almanach.list.decoration, decoration is defined ? decoration : 'default') }}">
     {% block content %}
         {% for item in content %}
