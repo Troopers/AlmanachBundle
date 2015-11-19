@@ -1,0 +1,131 @@
+<h3><b>Tab</b></h3>
+<h4>+ Use</h4>
+<h4>The tab is composed of the global tab + the tab item, so we will see the usage for the tab and the tab item, then the </h4>
+<ul>
+    <li>
+        <b>with twig extension:</b>
+            <pre>
+{{ "{{ alamanach_tab($content, $framework, $theme = 'default', $style = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e }}</pre>
+    </li>
+    <li>
+        <b>with twig embed:</b>
+            <pre>
+{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tab.html.twig' with {content: content, framework: framework, ... } only %}"|e }}
+{{ "    {% block content %}"|e }}
+{{ "        {# content #}"|e }}
+{{ "    {% endblock %}"|e }}
+{{ "{% endembed %}"|e }}</pre>
+    </li>
+</ul>
+<br><h4>+ parameters:</h4>
+<ul>
+    <li>
+        <b>content</b>: content of your tab.
+    </li>
+    <li>
+        <b>framework</b>: framework you are using.
+        <ul>
+            <li>bootstrap</li>
+            <li>foundation</li>
+        </ul>
+    </li>
+    <li>
+        <b>theme</b>: theme of your list.
+        <ul>
+            <li>default</li>
+            <li>tab</li>
+            <li>pill</li>
+        </ul>
+    </li>
+    <li>
+        <b>style</b>: style of your list.
+        <ul>
+            <li>default</li>
+            <li>vertical</li>
+            <li>justify</li>
+        </ul>
+    </li>
+</ul>
+
+<h4>+ example</h4>
+<ul style="list-style-type: none">
+    <li>
+        {#{{ almanach_tab('test', 'Default tab', framework, 'default', 'default') }}#}
+    </li>
+    <li>
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tab.html.twig' with {framework: framework, tabId: 'tab1'} only %}
+            {% block tabTitles %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 1', framework: framework, link: '#panel1', classes: ['active']} only %}
+                    {#{% block content %}#}
+                        {#TITRE PANEL 1#}
+                    {#{% endblock %}#}
+                {% endembed %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 2', framework: framework, link: '#panel2'} only %}
+                    {#{% block content %}#}
+                        {#TITRE PANEL 2#}
+                    {#{% endblock %}#}
+                {% endembed %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 3', framework: framework, link: '#panel3'} only %}
+                    {#{% block content %}#}
+                        {#TITRE PANEL 3#}
+                    {#{% endblock %}#}
+                {% endembed %}
+            {% endblock %}
+            {% block tabContent %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 1', framework: framework, id: 'panel1', classes: ['active']} only %}
+                    {#{% block content %}#}
+                        {#CONTENU PANEL 1#}
+                    {#{% endblock %}#}
+                {% endembed %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 2', framework: framework, id: 'panel2'} only %}
+                    {#{% block content %}#}
+                        {#CONTENU PANEL 2#}
+                    {#{% endblock %}#}
+                {% endembed %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 3', framework: framework, id: 'panel3'} only %}
+                    {#{% block content %}#}
+                        {#CONTENU PANEL 3#}
+                    {#{% endblock %}#}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
+    </li>
+    <li>
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tab.html.twig' with {framework: framework, tabId: 'tab2'} only %}
+            {% block tabTitles %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 1', framework: framework, link: '#panel1', classes: ['active']} only %}
+                    {#{% block content %}#}
+                        {#TITRE PANEL 1#}
+                    {#{% endblock %}#}
+                {% endembed %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 2', framework: framework, link: '#panel2'} only %}
+                    {#{% block content %}#}
+                        {#TITRE PANEL 2#}
+                    {#{% endblock %}#}
+                {% endembed %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 3', framework: framework, link: '#panel3'} only %}
+                    {#{% block content %}#}
+                        {#TITRE PANEL 3#}
+                    {#{% endblock %}#}
+                {% endembed %}
+            {% endblock %}
+            {% block tabContent %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 1', framework: framework, id: 'panel1', classes: ['active']} only %}
+                    {#{% block content %}#}
+                        {#CONTENU PANEL 1#}
+                    {#{% endblock %}#}
+                {% endembed %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 2', framework: framework, id: 'panel2'} only %}
+                    {#{% block content %}#}
+                        {#CONTENU PANEL 2#}
+                    {#{% endblock %}#}
+                {% endembed %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 3', framework: framework, id: 'panel3'} only %}
+                    {#{% block content %}#}
+                        {#CONTENU PANEL 3#}
+                    {#{% endblock %}#}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
+    </li>
+</ul>
