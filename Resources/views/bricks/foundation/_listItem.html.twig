@@ -1,8 +1,10 @@
 {% set almanach = attribute(almanach, framework) %}
-{#class="{{ attribute(almanach.listItem.decoration, decoration) }}"#}
-{#Markup de base de cette feature pour BOOTSTRAP : #}
+{% set classes = classes is defined ? classes : [] %}
 
-<li {% include 'AlmanachBundle:bricks/global:attributes.html.twig' only %}>
+{#Markup de base de cette feature pour BOOTSTRAP : #}
+<li {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+    classes: classes
+} only %}>
     {% block content %}
         {{ content|raw }}
     {% endblock %}
