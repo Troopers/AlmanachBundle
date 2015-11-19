@@ -22,7 +22,9 @@ class DocController extends Controller
         $transformText       = ($almanach['transformText']) ? : null;
         $alignmentText       = ($almanach['alignmentText']) ? : null;
         $list                = ($almanach['list']) ? : null;
-        $listItem            = ($almanach['listItem']) ? : null;
+        $tab                 = ($almanach['tab']) ? : null;
+        $tabTitle            = ($almanach['tabTitle']) ? : null;
+        $tabContent          = ($almanach['tabContent']) ? : null;
         $button              = ($almanach['button']) ? : null;
         $dropdownButton      = ($almanach['dropdownButton']) ? : null;
         $splitDropdownButton = ($almanach['splitDropdownButton']) ? : null;
@@ -38,7 +40,9 @@ class DocController extends Controller
             'config_transformText'       => $transformText,
             'config_alignmentText'       => $alignmentText,
             'config_list'                => $list,
-            'config_listItem'            => $listItem,
+            'config_tab'                 => $tab,
+            'config_tabTitle'            => $tabTitle,
+            'config_tabContent'          => $tabContent,
             'config_button'              => $button,
             'config_dropdownButton'      => $dropdownButton,
             'config_splitDropdownButton' => $splitDropdownButton,
