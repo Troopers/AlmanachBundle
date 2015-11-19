@@ -1,0 +1,12 @@
+{% set almanach = attribute(almanach, framework) %}
+{% set classes = classes is defined ? classes : [] %}
+{% set attributes = attributes is defined ? attributes : {} %}
+
+{% set classes = classes|merge([
+    'content',
+    attribute(almanach.tabContent.state, state is defined ? state : 'default')
+]) %}
+
+{% set attributes = id is defined ? attributes|merge({id: id}) : attributes %}
+
+{{ almanach_alignmentText(content, framework, 'default', classes, attributes) }}
