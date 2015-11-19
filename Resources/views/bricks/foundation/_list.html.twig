@@ -9,10 +9,10 @@
 {% set almanach = attribute(almanach, framework) %}
 
 {#Markup de base de cette feature pour FOUNDATION : #}
-<{{ attribute(almanach.list.order, order) }} class="{{ attribute(almanach.list.decoration, decoration) }}">
+<{{ attribute(almanach.list.order, order is defined ? order : 'default') }} class="{{ attribute(almanach.list.decoration, decoration is defined ? decoration : 'default') }}">
     {% block content %}
         {% for item in content %}
             {{ item|raw }}
         {% endfor %}
     {% endblock %}
-</{{ attribute(almanach.list.order, order) }}>
+</{{ attribute(almanach.list.order, order is defined ? order : 'default') }}>
