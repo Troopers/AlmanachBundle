@@ -31,7 +31,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode($framework);
 
             $this->addContainer($frameworkNode);
-            $this->addGrid($frameworkNode);
+            $this->addGridItem($frameworkNode);
             $this->addLabel($frameworkNode);
             $this->addAlert($frameworkNode);
             $this->addTitle($frameworkNode);
@@ -75,12 +75,12 @@ class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addGrid(ArrayNodeDefinition $frameworkNode) {
+    private function addGridItem(ArrayNodeDefinition $frameworkNode) {
         $frameworkNode
             ->children()
-                ->arrayNode('grid')
+                ->arrayNode('gridItem')
                     ->children()
-                        ->arrayNode('classGrid')
+                        ->arrayNode('classGridItem')
                             ->children()
                                 ->scalarNode('xs_1')->end()
                                 ->scalarNode('xs_2')->end()
