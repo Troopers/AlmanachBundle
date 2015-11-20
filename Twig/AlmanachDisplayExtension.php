@@ -17,6 +17,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         return array(
             'almanach_container'           => new \Twig_Function_Method($this, 'displayContainer', ['is_safe' => ['html']]),
             'almanach_grid'                => new \Twig_Function_Method($this, 'displayGrid', ['is_safe' => ['html']]),
+            'almanach_gridItem'            => new \Twig_Function_Method($this, 'displayGridItem', ['is_safe' => ['html']]),
             'almanach_label'               => new \Twig_Function_Method($this, 'displayLabel', ['is_safe' => ['html']]),
             'almanach_alert'               => new \Twig_Function_Method($this, 'displayAlert', ['is_safe' => ['html']]),
             'almanach_title'               => new \Twig_Function_Method($this, 'displayTitle', ['is_safe' => ['html']]),
@@ -50,20 +51,34 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_label.html.twig", $options);
     }
 
-//    public function displayGrid($content, $framework, $classGrid,
-//                                 $class = [], $attributes = [], $tag = null, $link = null)
-//    {
-//        $options = [
-//            'content'      => $content,
-//            'framework'    => $framework,
-//            'classGrid'    => $framework,
-//            'classes'      => $class ? $class : [],
-//            'attributes'   => $attributes ? $attributes : [],
-//            'tag'          => $tag,
-//            'link'         => $link,
-//        ];
-//        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_label.html.twig", $options);
-//    }
+    public function displayGrid($content, $framework,
+                                 $class = [], $attributes = [], $tag = null, $link = null)
+    {
+        $options = [
+            'content'        => $content,
+            'framework'      => $framework,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
+        ];
+        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_grid.html.twig", $options);
+    }
+
+    public function displayGridItem($content, $framework, $classGridItem,
+                                 $class = [], $attributes = [], $tag = null, $link = null)
+    {
+        $options = [
+            'content'        => $content,
+            'framework'      => $framework,
+            'classGridItem'  => $classGridItem,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
+        ];
+        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_grid.html.twig", $options);
+    }
 
     public function displayLabel($content, $framework, $theme = 'default', $border = 'default',
                                  $class = [], $attributes = [], $tag = null, $link = null)
