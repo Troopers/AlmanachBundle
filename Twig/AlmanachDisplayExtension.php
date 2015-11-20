@@ -65,19 +65,19 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_grid.html.twig", $options);
     }
 
-    public function displayGridItem($content, $framework, $classGridItem,
+    public function displayGridItem($content, $framework, $classGridItem = [],
                                  $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
             'content'        => $content,
             'framework'      => $framework,
-            'classGridItem'  => $classGridItem,
+            'classGridItem'  => $classGridItem ? $classGridItem : [],
             'classes'        => $class ? $class : [],
             'attributes'     => $attributes ? $attributes : [],
             'tag'            => $tag,
             'link'           => $link,
         ];
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_grid.html.twig", $options);
+        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_gridItem.html.twig", $options);
     }
 
     public function displayLabel($content, $framework, $theme = 'default', $border = 'default',
