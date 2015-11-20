@@ -4,8 +4,11 @@
 <ul>
     <li>
         {{ almanach_inlineText('twig extension:', framework, 'bold') }}
-        <pre>
-{{  "{{ almanach_title($content1 ~ almanach_label($content, framework, $theme = 'default', $border = 'default'), framework, $size = 'default') }}"|e  }}</pre>
+        {% spaceless %}
+            <pre>
+                {{- "{{ almanach_title($content1 ~ almanach_label($content, framework, $theme = 'default', $border = 'default'), framework, $size = 'default') }}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
 </ul>
 <br><h4>- parameters:</h4>

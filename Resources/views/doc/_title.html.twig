@@ -3,17 +3,23 @@
 <ul>
     <li>
         {{ almanach_inlineText('twig extension:', framework, 'bold') }}
+        {% spaceless %}
             <pre>
-{{ "{{ alamanach_title($content, $framework, $size = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e }}</pre>
+                {{- "{{ alamanach_title($content, $framework, $size = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
         <b>twig embed:</b>
+        {% spaceless %}
             <pre>
-{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {content: content, framework: framework, ... } only %}
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {content: content, framework: framework, ... } only %}
     {% block content %}
         {# content #}
     {% endblock %}
-{% endembed %}"|e }}</pre>
+{% endembed %}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
 </ul>
 <br><h4>- parameters:</h4>
@@ -44,20 +50,26 @@
 <h4>- example</h4>
 <ul style="list-style-type: none">
     <li>
-        <pre>
-{{ "{{ almanach_title('Your 'h2' text !', framework, 'h2') }}" }}</pre>
+        {% spaceless %}
+            <pre>
+                {{- "{{ almanach_title('Your 'h2' text !', framework, 'h2') }}" -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
         {{ almanach_title('Your "h2" text !', framework, 'h2') }}
     </li>
     <hr>
     <li>
-        <pre>
-{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {framework: framework, size: 'h4' } only %}
+        {% spaceless %}
+            <pre>
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {framework: framework, size: 'h4' } only %}
     {% block content %}
         Your 'h4' text !
     {% endblock %}
-{% endembed %}"|e }}</pre>
+{% endembed %}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {framework: framework, size: 'h4' } only %}

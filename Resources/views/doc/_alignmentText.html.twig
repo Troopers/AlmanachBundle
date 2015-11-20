@@ -3,17 +3,23 @@
 <ul>
     <li>
         <b>with twig extension:</b>
+        {% spaceless %}
             <pre>
-{{ "{{ alamanach_alignmentText($content, $framework, $alignment = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e }}</pre>
+                {{- "{{ alamanach_alignmentText($content, $framework, $alignment = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
         <b>with twig embed:</b>
+        {% spaceless %}
             <pre>
-{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alignmentText.html.twig' with {content: content, framework: framework, ... } only %}"|e }}
-{{ "    {% block content %}"|e }}
-{{ "        {# content #}"|e }}
-{{ "    {% endblock %}"|e }}
-{{ "{% endembed %}"|e }}</pre>
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alignmentText.html.twig' with {content: content, framework: framework, ... } only %}
+    {% block content %}
+        {# content #}
+    {% endblock %}
+{% endembed %}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
 </ul>
 <br><h4>- parameters:</h4>
@@ -41,20 +47,26 @@
 <h4>- example</h4>
 <ul style="list-style-type: none">
     <li>
-        <pre>
-{{ "{{ almanach_alignmentText('Your 'left' alignment text !', framework, 'left') }}"|e }}</pre>
+        {% spaceless %}
+            <pre>
+                {{- "{{ almanach_alignmentText('Your 'left' alignment text !', framework, 'left') }}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
         {{ almanach_alignmentText('Your "left" alignment text !', framework, 'left') }}
     </li>
     <hr>
     <li>
-        <pre>
-{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alignmentText.html.twig' with {framework: framework, alignment: 'right' } only %}
+        {% spaceless %}
+            <pre>
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alignmentText.html.twig' with {framework: framework, alignment: 'right' } only %}
     {% block content %}
         Your 'right' alignment text !
     {% endblock %}
-{% endembed %}"|e }}</pre>
+{% endembed %}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alignmentText.html.twig' with {framework: framework, alignment: 'right' } only %}
