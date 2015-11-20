@@ -16,6 +16,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function getFunctions() {
         return array(
             'almanach_container'           => new \Twig_Function_Method($this, 'displayContainer', ['is_safe' => ['html']]),
+            'almanach_grid'                => new \Twig_Function_Method($this, 'displayGrid', ['is_safe' => ['html']]),
             'almanach_label'               => new \Twig_Function_Method($this, 'displayLabel', ['is_safe' => ['html']]),
             'almanach_alert'               => new \Twig_Function_Method($this, 'displayAlert', ['is_safe' => ['html']]),
             'almanach_title'               => new \Twig_Function_Method($this, 'displayTitle', ['is_safe' => ['html']]),
@@ -34,32 +35,48 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         );
     }
 
-    public function displayContainer($content, $framework, $class = 'container',
+    public function displayContainer($content, $framework, $classContainer = 'container',
                                  $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'classContainer' => $classContainer,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_label.html.twig", $options);
     }
+
+//    public function displayGrid($content, $framework, $classGrid,
+//                                 $class = [], $attributes = [], $tag = null, $link = null)
+//    {
+//        $options = [
+//            'content'      => $content,
+//            'framework'    => $framework,
+//            'classGrid'    => $framework,
+//            'classes'      => $class ? $class : [],
+//            'attributes'   => $attributes ? $attributes : [],
+//            'tag'          => $tag,
+//            'link'         => $link,
+//        ];
+//        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_label.html.twig", $options);
+//    }
 
     public function displayLabel($content, $framework, $theme = 'default', $border = 'default',
                                  $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'theme'        => $theme,
-            'border'       => $border,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'theme'          => $theme,
+            'border'         => $border,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_label.html.twig", $options);
     }
@@ -68,14 +85,14 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                  $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'theme'        => $theme,
-            'border'       => $border,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'theme'          => $theme,
+            'border'         => $border,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_alert.html.twig", $options);
     }
@@ -84,13 +101,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                  $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'size'         => $size,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'size'           => $size,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_title.html.twig", $options);
     }
@@ -99,13 +116,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                       $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'inline'       => $inline,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'inline'         => $inline,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_inlineText.html.twig", $options);
     }
@@ -114,13 +131,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                          $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'transform'    => $transform,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'transform'      => $transform,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_transformText.html.twig", $options);
     }
@@ -129,13 +146,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                          $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'alignment'    => $alignment,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'alignment'      => $alignment,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_alignmentText.html.twig", $options);
     }
@@ -144,15 +161,15 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                          $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'order'        => $order,
-            'decoration'   => $decoration,
-            'list'         => $list ? $list : [],
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'order'          => $order,
+            'decoration'     => $decoration,
+            'list'           => $list ? $list : [],
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_list.html.twig", $options);
     }
@@ -160,12 +177,12 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayListItem($content, $framework, $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_listItem.html.twig", $options);
     }
@@ -174,16 +191,16 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                          $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'tabTitles'    => $titles,
-            'tabContent'   => $content,
-            'framework'    => $framework,
-            'theme'        => $theme,
-            'style'        => $style,
-            'list'         => $list ? $list : [],
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'tabTitles'      => $titles,
+            'tabContent'     => $content,
+            'framework'      => $framework,
+            'theme'          => $theme,
+            'style'          => $style,
+            'list'           => $list ? $list : [],
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tab.html.twig", $options);
     }
@@ -192,14 +209,14 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                          $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'state'        => $state,
-            'list'         => $list ? $list : [],
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'state'          => $state,
+            'list'           => $list ? $list : [],
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tabTitle.html.twig", $options);
     }
@@ -208,14 +225,14 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                          $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'state'        => $state,
-            'list'         => $list ? $list : [],
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'state'          => $state,
+            'list'           => $list ? $list : [],
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tabContent.html.twig", $options);
     }
@@ -224,16 +241,16 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                   $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'theme'        => $theme,
-            'size'         => $size,
-            'state'        => $state,
-            'border'       => $border,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'theme'          => $theme,
+            'size'           => $size,
+            'state'          => $state,
+            'border'         => $border,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_button.html.twig", $options);
     }
@@ -242,17 +259,17 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                           $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'theme'        => $theme,
-            'size'         => $size,
-            'state'        => $state,
-            'border'       => $border,
-            'list'         => $list ? $list : [],
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'theme'          => $theme,
+            'size'           => $size,
+            'state'          => $state,
+            'border'         => $border,
+            'list'           => $list ? $list : [],
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_dropdownButton.html.twig", $options);
     }
@@ -261,17 +278,17 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                                $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'theme'        => $theme,
-            'size'         => $size,
-            'state'        => $state,
-            'border'       => $border,
-            'list'         => $list ? $list : [],
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'theme'          => $theme,
+            'size'           => $size,
+            'state'          => $state,
+            'border'         => $border,
+            'list'           => $list ? $list : [],
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_splitDropdownButton.html.twig", $options);
     }
@@ -280,17 +297,17 @@ class AlmanachDisplayExtension extends \Twig_Extension {
                                        $class = [], $attributes = [], $tag = null, $link = null)
     {
         $options = [
-            'content'      => $content,
-            'framework'    => $framework,
-            'theme'        => $theme,
-            'size'         => $size,
-            'state'        => $state,
-            'border'       => $border,
-            'group'        => $group,
-            'classes'      => $class ? $class : [],
-            'attributes'   => $attributes ? $attributes : [],
-            'tag'          => $tag,
-            'link'         => $link,
+            'content'        => $content,
+            'framework'      => $framework,
+            'theme'          => $theme,
+            'size'           => $size,
+            'state'          => $state,
+            'border'         => $border,
+            'group'          => $group,
+            'classes'        => $class ? $class : [],
+            'attributes'     => $attributes ? $attributes : [],
+            'tag'            => $tag,
+            'link'           => $link,
         ];
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_buttonGroup.html.twig", $options);
     }

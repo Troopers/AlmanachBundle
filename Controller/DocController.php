@@ -15,6 +15,7 @@ class DocController extends Controller
     public function indexAction($framework) {
         $almanach            = $this->getParameter('almanach_' . $framework);
         $container           = ($almanach['container']) ? : null;
+        $grid                = ($almanach['grid']) ? : null;
         $label               = ($almanach['label']) ? : null;
         $alert               = ($almanach['alert']) ? : null;
         $title               = ($almanach['title']) ? : null;
@@ -33,6 +34,7 @@ class DocController extends Controller
         return array(
             'framework'                  => $framework,
             'config_container'           => $container,
+            'config_grid'                => $grid,
             'config_label'               => $label,
             'config_alert'               => $alert,
             'config_title'               => $title,
