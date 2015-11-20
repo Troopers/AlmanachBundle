@@ -1,0 +1,9 @@
+{% set almanach = attribute(almanach, framework) %}
+
+<div class="row">
+    {% block content %}
+        {% for item in content %}
+            {{ item|raw }}
+        {% endfor %}
+    {% endblock %}
+</div>
