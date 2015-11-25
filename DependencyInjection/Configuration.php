@@ -31,6 +31,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode($framework);
 
             $this->addContainer($frameworkNode);
+            $this->addContainerFluid($frameworkNode);
             $this->addGridItem($frameworkNode);
             $this->addLabel($frameworkNode);
             $this->addAlert($frameworkNode);
@@ -64,9 +65,25 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('container')
                     ->children()
-                        ->arrayNode('classContainer')
+                        ->arrayNode('classCont')
                             ->children()
-                                ->scalarNode('container')->end()
+                                ->scalarNode('cont')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addContainerFluid(ArrayNodeDefinition $frameworkNode) {
+        $frameworkNode
+            ->children()
+                ->arrayNode('containerFluid')
+                    ->children()
+                        ->arrayNode('classContFluid')
+                            ->children()
+                                ->scalarNode('contFluid')->end()
                             ->end()
                         ->end()
                     ->end()
