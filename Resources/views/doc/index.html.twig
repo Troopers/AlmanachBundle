@@ -22,6 +22,10 @@
                 'h1'
             ) }}
             <h2><b>Basic feature</b></h2>
+            {% include "AlmanachBundle:doc:_container.html.twig" %}
+            <hr><br>
+            {% include "AlmanachBundle:doc:_containerFluid.html.twig" %}
+            <hr><br>
             {% include "AlmanachBundle:doc:_title.html.twig" %}
             <hr><br>
             {% include "AlmanachBundle:doc:_transformText.html.twig" %}
@@ -47,8 +51,8 @@
             <hr><br>
             {% include "AlmanachBundle:doc:_list.html.twig" %}
             <hr><br>
-            {% include "AlmanachBundle:doc:_tab.html.twig" %}
-            <hr><br>
+            {#{% include "AlmanachBundle:doc:_tab.html.twig" %}#}
+            {#<hr><br>#}
             {% include "AlmanachBundle:doc:_grid.html.twig" %}
             <hr><br>
         {% endblock content %}
