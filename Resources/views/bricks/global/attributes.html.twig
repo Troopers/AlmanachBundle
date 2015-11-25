@@ -1,12 +1,12 @@
-{% set classes = classes is defined ? classes : [] %}
+{% set classComponent = classComponent is defined ? classComponent : [] %}
 {% set attributes = attributes is defined ? attributes : {} %}
 
 {% if class is defined %}
-    {% set classes = classes|merge(class) %}
+    {% set classComponent = classComponent|merge(class) %}
 {% endif %}
 
-{% set attributes = classes|length ? attributes|merge({
-    'class': classes|join(' ')
+{% set attributes = classComponent|length ? attributes|merge({
+    'class': classComponent|join(' ')
 }) : attributes %}
 
 {% if attributes is defined %}
@@ -17,3 +17,4 @@
     {{ attr }}="{{ value|e("html_attr") }}"
     {% if not loop.last %}{% endif %}
 {% endfor %}
+
