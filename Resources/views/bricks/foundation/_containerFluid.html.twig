@@ -1,3 +1,24 @@
-<div class="row">
-    {{ block('content') }}
-</div>
+{% set almanach = attribute(almanach, framework) %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
+{% set tag = tag|default('div') %}
+
+{% set classComponent = class|merge([
+    'row',
+]) %}
+
+{% if tag == 'a' %}
+    {% set link = {href: link} %}
+    {% set attr = attr|merge(link) %}
+{% endif %}
+
+<{{ tag }}
+    {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+        class: classComponent,
+        attr: attr
+    } only %}
+>
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
+</{{ tag }}>
