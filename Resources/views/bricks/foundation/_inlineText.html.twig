@@ -1,7 +1,16 @@
 {% set almanach = attribute(almanach, framework) %}
+{% set options = {} %}
+{% set options = inline is defined ? options|merge({inline: inline}) : options %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 
-<{{ attribute(almanach.inlineText.inline, inline) }}>
+<{{ attribute(almanach.inlineText.inline, options.inline) }}
+    {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+        class: class,
+        attributes: attr
+    } only %}
+>
     {% block content %}
         {{ content|raw }}
     {% endblock %}
-</{{ attribute(almanach.inlineText.inline, inline) }}>
+</{{ attribute(almanach.inlineText.inline, options.inline) }}>

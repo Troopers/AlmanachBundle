@@ -1,13 +1,13 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = classes is defined ? classes : [] %}
-{% set attributes = attributes is defined ? attributes : {} %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 {% set link = link|default('#') %}
 {% set tag = tag|default('a') %}
 
-{% set classes = classes|merge([
-    "button",
-    "split",
-    "dropdown",
+{% set classComponent = class|merge([
+    'button',
+    'split',
+    'dropdown',
     attribute(almanach.dropdownButton.theme, theme),
     attribute(almanach.dropdownButton.size, size),
     attribute(almanach.dropdownButton.state, state),
@@ -16,13 +16,13 @@
 
 {% if tag == 'a' %}
     {% set link = {href: link} %}
-    {% set attributes = attributes|merge(link) %}
+    {% set attr = attr|merge(link) %}
 {% endif %}
 
 <{{ tag }}
     {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
-        classes: classes,
-        attributes: attributes
+        class: classComponent,
+        attributes: attr
     } only %}
 >
     {% block content %}
@@ -31,9 +31,6 @@
     <span data-dropdown="drop"></span>
 </{{ tag }}>
 <ul id="drop" class="f-dropdown" data-dropdown-content>
-    {#{% for item in list %}#}
-        {#<li><a href="{{ item.link }}}">{{ item.label }}</a></li>#}
-    {#{% endfor %}#}
     <li><a href="#">Link 1</a></li>
     <li><a href="#">Link 2</a></li>
     <li><a href="#">Link 3</a></li>

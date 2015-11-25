@@ -1,9 +1,21 @@
 {% set almanach = attribute(almanach, framework) %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
+{% set tag = tag|default('div') %}
 
-<div class="row">
+{% set classComponent = class|merge([
+    'row'
+]) %}
+
+<{{ tag }} 
+    {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+        class: classComponent,
+        attributes: attr
+    } only %}
+>
     {% block content %}
         {% for item in content %}
             {{ item|raw }}
         {% endfor %}
     {% endblock %}
-</div>
+</{{ tag }}>

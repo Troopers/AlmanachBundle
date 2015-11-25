@@ -1,20 +1,20 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = classes is defined ? classes : [] %}
-{% set attributes = attributes is defined ? attributes : {} %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 
-{% set classes = classes|merge([
+{% set classComponent = class|merge([
     "alert-box",
     attribute(almanach.alert.theme, theme),
     attribute(almanach.alert.border, border)
 ]) %}
 
-{% set attributes = attributes|merge({
+{% set attr = attr|merge({
     'data-alert': ''
 }) %}
 
 <div {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
-        classes: classes,
-        attributes: attributes
+        class: classComponent,
+        attributes: attr
     } only %}
 >
     {% block content %}
@@ -22,3 +22,4 @@
     {% endblock %}
     <a href="#" class="close">&times;</a>
 </div>
+
