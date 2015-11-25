@@ -1,16 +1,16 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = classes is defined ? classes : [] %}
-{% set attributes = attributes is defined ? attributes : {} %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 {% set tag = tag|default('div') %}
 
-{% set classes = classes|merge([
+{% set class = class|merge([
     attribute(almanach.gridItem.classGridItem, classGridItem)
 ]) %}
 
 <{{ tag }}
     {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
-        classes: classes,
-        attributes: attributes
+        class: class,
+        attr: attr
     } only %}
 >
     {% block content %}

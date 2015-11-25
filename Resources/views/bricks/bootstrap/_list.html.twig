@@ -1,9 +1,22 @@
 {% set almanach = attribute(almanach, framework) %}
+{% set options = {} %}
+{% set options = order is defined ? options|merge({order: order}) : options %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 
-<{{ attribute(almanach.list.order, order is defined ? order : 'default') }} class="{{ attribute(almanach.list.decoration, decoration is defined ? decoration : 'default') }}">
+{% set classComponent = class|merge([
+    attribute(almanach.list.decoration, decoration)
+]) %}
+
+<{{ attribute(almanach.list.order, options.order) }}
+     {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+        class: classComponent,
+        attributes: attr
+     } only %}
+>
     {% block content %}
         {% for item in content %}
             {{ item|raw }}
         {% endfor %}
     {% endblock %}
-</{{ attribute(almanach.list.order, order is defined ? order : 'default') }}>
+</{{ attribute(almanach.list.order, options.order) }}>

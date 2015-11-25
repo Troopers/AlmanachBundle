@@ -1,40 +1,31 @@
-{#Class par défault pour cette feature : #}
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = [
-    "btn-group",
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
+{% set tag = tag|default('div') %}
+
+{% set classComponent = class|merge([
     attribute(almanach.buttonGroup.theme, theme),
     attribute(almanach.buttonGroup.size, size),
     attribute(almanach.buttonGroup.state, state),
     attribute(almanach.buttonGroup.border, border),
     attribute(almanach.buttonGroup.group, group)
-] %}
+]) %}
 
-{#Fonction permettant de merge des class créées aux classes de base de la features : #}
-{% if class is defined %}
-    {% set classes = classes|merge(class) %}
-{% endif %}
+{% set attr = attr|merge({
+    'role': 'group',
+    'aria-label': 'buttonGroup'
+}) %}
 
-{#Attributs par défault pour cette feature : #}
-{% set defaultAttributes = {
-    "role": "button",
-    "aria-label": "buttonGroup",
-    'class': classes|join(' ')
-} %}
-
-{#Fonction permettant de fusionner des attributs crées aux attributs de base de la features : #}
-{% if attributes is defined %}
-    {% set defaultAttributes = defaultAttributes|merge(attributes) %}
-{% endif %}
-
-{#Markup de base de cette feature pour BOOTSTRAP : #}
-<div
-    {% for attr, value in defaultAttributes %}
-        {{ attr }}="{{ value|e("html_attr") }}"
-        {% if not loop.last %}{% endif %}
-    {% endfor %}
+<{{ tag }}
+    {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+        class: classComponent,
+        attributes: attr
+    } only %}
 >
     {% block content %}
-        {{ content|raw }}
+        {% for item in content %}
+            {{ item|raw }}
+        {% endfor %}
     {% endblock %}
-</div>
+</{{ tag }}>
 

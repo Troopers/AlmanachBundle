@@ -1,27 +1,28 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = classes is defined ? classes : [] %}
-{% set attributes = attributes is defined ? attributes : {} %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 {% set link = link|default('#') %}
 {% set tag = tag|default('span') %}
 
-{% set classes = classes|merge([
-    "label",
+{% set classComponent = class|merge([
+    'label',
     attribute(almanach.label.theme, theme),
     attribute(almanach.label.border, border)
 ]) %}
 
 {% if tag == 'a' %}
     {% set link = {href: link} %}
-    {% set defaultAttributes = defaultAttributes|merge(link) %}
+    {% set attr = attr|merge(link) %}
 {% endif %}
 
 <{{ tag }}
     {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
-        classes: classes,
-        attributes: attributes
+        class: classComponent,
+        attributes: attr
     } only %}
 >
     {% block content %}
         {{ content|raw }}
     {% endblock %}
 </{{ tag }}>
+

@@ -1,46 +1,45 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = classes is defined ? classes : [] %}
-{% set attributes = attributes is defined ? attributes : {} %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 
-{% set classes = classes|merge([
-    "alert",
+{% set classComponent = class|merge([
+    'alert',
     attribute(almanach.alert.theme, theme),
     attribute(almanach.alert.border, border)
 ]) %}
 
-{% set attributes = attributes|merge({
-    "role": "alert"
+{% set attr = attr|merge({
+    role: "alert"
 }) %}
 
 <div {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
-        classes: classes,
-        attributes: attributes
+        class: classComponent,
+        attributes: attr
     } only %}
 >
     {{ almanach_button(
         almanach_inlineText(
             '&times;',
-            framework,
-            'default',
-            [],
-            {
-                'aria-hidden': 'true'
+            framework, {
+                inline: 'default',
+                attr: {
+                    'aria-hidden': 'true'
+                }
             }),
-        framework,
-        'default',
-        'default',
-        'default',
-        'default',
-        ['close'],
-        {
-            'type': 'button',
-            'data-dismiss' : 'alert',
-            'aria-label' : 'Close'
+        framework, {
+        class: [
+            'close'
+        ],
+        attr: {
+            type: 'button',
+            'data-dismiss': 'alert',
+            'aria-label': 'Close',
         },
-        'button'
-    ) }}
+        tag: 'button',
+    }) }}
     {% block content %}
         {{ content|raw }}
     {% endblock %}
 </div>
+
 

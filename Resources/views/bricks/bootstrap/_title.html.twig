@@ -1,6 +1,13 @@
 {% set almanach = attribute(almanach, framework) %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 
-<{{ attribute(almanach.title.size, size) }}>
+<{{ attribute(almanach.title.size, size) }}
+    {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+        class: class,
+        attr: attr
+    } only %}
+>
     {% block content %}
         {{ content|raw }}
     {% endblock %}
