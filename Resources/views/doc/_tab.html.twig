@@ -6,7 +6,7 @@
         <b>with twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_tab($content, $framework, $theme = 'default', $style = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_tab($content, $framework, $theme = 'default', $style = 'default', $class_component = [], $attr_component = [], $tag = null, $link = null) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -61,36 +61,36 @@
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tab.html.twig' with {framework: framework, tabId: 'tab1'} only %}
             {% block tabTitles %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 1', framework: framework, link: '#panel1', classes: ['active']} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 1', framework: framework, control: 'testA', class: ['active']} %}
                     {#{% block content %}#}
-                        {#TITRE PANEL 1#}
+                        {#TITRE TEST A#}
                     {#{% endblock %}#}
                 {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 2', framework: framework, link: '#panel2'} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 2', framework: framework, control: 'testB'} %}
                     {#{% block content %}#}
-                        {#TITRE PANEL 2#}
+                        {#TITRE TEST B#}
                     {#{% endblock %}#}
                 {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 3', framework: framework, link: '#panel3'} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 3', framework: framework, control: 'testC'} %}
                     {#{% block content %}#}
-                        {#TITRE PANEL 3#}
+                        {#TITRE TEST C#}
                     {#{% endblock %}#}
                 {% endembed %}
             {% endblock %}
             {% block tabContent %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 1', framework: framework, id: 'panel1', classes: ['active']} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 1', framework: framework, id: 'testA', class: ['active']} %}
                     {#{% block content %}#}
-                        {#CONTENU PANEL 1#}
+                        {#CONTENU TEST A#}
                     {#{% endblock %}#}
                 {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 2', framework: framework, id: 'panel2'} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 2', framework: framework, id: 'testB'} %}
                     {#{% block content %}#}
-                        {#CONTENU PANEL 2#}
+                        {#CONTENU TEST B#}
                     {#{% endblock %}#}
                 {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 3', framework: framework, id: 'panel3'} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 3', framework: framework, id: 'testC'} %}
                     {#{% block content %}#}
-                        {#CONTENU PANEL 3#}
+                        {#CONTENU TEST C#}
                     {#{% endblock %}#}
                 {% endembed %}
             {% endblock %}
@@ -99,36 +99,36 @@
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tab.html.twig' with {framework: framework, tabId: 'tab2'} only %}
             {% block tabTitles %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 1', framework: framework, link: '#panel1', classes: ['active']} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 1', framework: framework, control: 'test1', class: ['active']} %}
                     {#{% block content %}#}
-                        {#TITRE PANEL 1#}
+                        {#TITRE TEST 1#}
+                    {#{% endblock %}#}
+                {% endembed %}1
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 2', framework: framework, control: 'test2'} %}
+                    {#{% block content %}#}
+                        {#TITRE TEST 2#}
                     {#{% endblock %}#}
                 {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 2', framework: framework, link: '#panel2'} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 3', framework: framework, control: 'test3'} %}
                     {#{% block content %}#}
-                        {#TITRE PANEL 2#}
-                    {#{% endblock %}#}
-                {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 3', framework: framework, link: '#panel3'} only %}
-                    {#{% block content %}#}
-                        {#TITRE PANEL 3#}
+                        {#TITRE TEST 3#}
                     {#{% endblock %}#}
                 {% endembed %}
             {% endblock %}
             {% block tabContent %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 1', framework: framework, id: 'panel1', classes: ['active']} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 1', framework: framework, id: 'test1', class: ['active']} %}
                     {#{% block content %}#}
-                        {#CONTENU PANEL 1#}
+                        {#CONTENU TEST 1#}
                     {#{% endblock %}#}
                 {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 2', framework: framework, id: 'panel2'} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 2', framework: framework, id: 'test2'} %}
                     {#{% block content %}#}
-                        {#CONTENU PANEL 2#}
+                        {#CONTENU TEST 2#}
                     {#{% endblock %}#}
                 {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 3', framework: framework, id: 'panel3'} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 3', framework: framework, id: 'test3'} %}
                     {#{% block content %}#}
-                        {#CONTENU PANEL 3#}
+                        {#CONTENU TEST 3#}
                     {#{% endblock %}#}
                 {% endembed %}
             {% endblock %}
