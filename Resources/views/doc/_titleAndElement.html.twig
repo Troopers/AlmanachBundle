@@ -66,25 +66,25 @@
         {{ almanach_title(
             'h2' ~ ' ' ~ '- Voici le projet Almanach !' ~ almanach_label(
             'This is awesome',
-            framework,
-            'success',
-            'radius'
-            ),
-        framework,
-        'h2'
-        ) }}
+            framework, {
+                theme: 'success',
+                border: 'radius',
+        }),
+        framework, {
+            size: 'h2',
+        }) }}
     </li>
     <li>
         {{ almanach_title(
             'h4' ~ ' ' ~ '- Voici le projet Almanach !' ~ almanach_label(
             'This is awesome',
-            framework,
-            'success',
-            'radius'
-            ),
-        framework,
-        'h4'
-        ) }}
+            framework, {
+                theme: 'success',
+                border: 'radius',
+        }),
+        framework, {
+            size: 'h4',
+        }) }}
     </li>
 </ul><br>
 <h4>- We can also merge with other feature/option as transformText :</h4>
@@ -93,22 +93,22 @@
         {{ almanach_title(
             'h2' ~ ' ' ~ '- Voici le projet Almanach !' ~ almanach_inlineText(
             'This is awesome',
-            framework,
-            'small'
-            ),
-        framework,
-        'h2'
-        ) }}
+            framework, {
+                inline: 'small',
+            }),
+        framework, {
+            size: 'h2',
+        }) }}
     </li>
     <li>
         {{ almanach_title(
             'h4' ~ ' ' ~ '- Voici le projet Almanach !' ~ almanach_inlineText(
             'This is awesome',
-            framework,
-            'small'
-            ),
-        framework,
-        'h4'
-        ) }}
+            framework, {
+            inline: 'small',
+        }),
+        framework, {
+            size: 'h4',
+        }) }}
     </li>
 </ul>

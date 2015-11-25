@@ -6,7 +6,7 @@
         <b>with twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_list($content, $framework, $order = 'default', $decoration = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_list($content, $framework, $order = 'default', $decoration = 'default', $class_component = [], $attr_component = [], $tag = null, $link = null) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -60,9 +60,9 @@
 
 <ul style="list-style-type: none">
     <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_list.html.twig' with {framework: framework, order: 'unordered', decoration: 'disc'} only %}
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_list.html.twig' with {framework: framework, order: 'unordered', decoration: 'circle'} only %}
             {% block content %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_listItem.html.twig' with {framework: framework} only %}
+                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_listItem.html.twig' with {framework: framework, } only %}
                     {% block content %}
                         Unordered list disc
                     {% endblock %}
@@ -77,11 +77,17 @@
             almanach_listItem('Content 2', framework),
             almanach_listItem('Content 3', framework),
         ],
-        framework, 'default', 'disc'),framework),
+        framework,
+    {
+        order: 'default',
+    }),
+    framework),
     ],
     framework,
-    'default',
-    'square'
+    {
+        order: 'default',
+        decoration: 'disc',
+    }
     ) }}
     </li>
 </ul>

@@ -5,7 +5,7 @@
         <b>with twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_inlineText($content, $framework, $inline = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_inlineText($content, $framework, $inline = 'default', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -56,7 +56,11 @@
 {{ "{{ almanach_inlineText('Your 'deleted' inline text !', framework, 'deleted') }}"|e }}</pre>
     </li>
     <li>
-        {{ almanach_inlineText('Your "deleted" inline text !', framework, 'deleted') }}
+        {{ almanach_inlineText('Your "deleted" inline text !', framework,
+            {
+                inline: 'deleted',
+            }
+        )}}
     </li>
     <hr>
     <li>
@@ -76,7 +80,11 @@
     </li>
     <hr>
     <li>
-        {{ almanach_inlineText('Your "inserted" inline text !', framework, 'inserted') }}
+        {{ almanach_inlineText('Your "inserted" inline text !', framework,
+            {
+                inline: 'inserted',
+            })
+        }}
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'italic' } only %}

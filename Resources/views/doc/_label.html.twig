@@ -5,7 +5,7 @@
         <b>with twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_label($content, $framework, $theme = 'default', $border = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_label($content, $framework, $theme = 'default', $border = 'default', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -66,7 +66,10 @@
         {% endspaceless %}
     </li>
     <li>
-        {{ almanach_label('Your "error" and "radius" label !', framework, 'error', 'default') }}
+        {{ almanach_label('Your "error" and "radius" label !', framework, {
+            theme: 'error',
+            border: 'default',
+        }) }}
     </li>
     <hr>
     <li>

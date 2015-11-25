@@ -5,7 +5,7 @@
         <b>with twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_alert($content, $framework, $theme = 'default', $border = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_alert($content, $framework, $theme = 'default', $border = 'default', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -67,7 +67,14 @@
         {% endspaceless %}
     </li>
     <li>
-        {{ almanach_alert('Your "error" and "radius" alert !', framework, 'error', 'default', [], [], 'button') }}
+        {{ almanach_alert('Your "error" and "radius" alert !', framework, {
+            theme: 'error',
+            border: 'default',
+        },
+        [],
+        [],
+        'button'
+        ) }}
     </li>
     <hr>
     <li>
@@ -90,6 +97,13 @@
     </li>
     <hr>
     <li>
-        {{ almanach_alert('Your "information" and "round" alert !', framework, 'success', 'radius', [], [], 'button') }}
+        {{ almanach_alert('Your "information" and "round" alert !', framework, {
+            theme: 'success',
+            border: 'radius',
+        },
+        [],
+        [],
+        'button'
+        ) }}
     </li>
 </ul>

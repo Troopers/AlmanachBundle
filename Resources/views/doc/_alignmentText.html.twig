@@ -5,7 +5,7 @@
         <b>with twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_alignmentText($content, $framework, $alignment = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_alignmentText($content, $framework, $alignment = 'default', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -54,7 +54,11 @@
         {% endspaceless %}
     </li>
     <li>
-        {{ almanach_alignmentText('Your "left" alignment text !', framework, 'left') }}
+        {{ almanach_alignmentText('Your "left" alignment text !', framework,
+            {
+                alignment: 'left',
+            }
+        )}}
     </li>
     <hr>
     <li>

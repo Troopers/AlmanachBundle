@@ -6,7 +6,7 @@
         <b>with twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_grid($content, $framework, $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_grid($content, $framework, $class_component = [], $attr_component = [], $tag = null, $link = null) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -70,12 +70,17 @@
     </li>
     <li>
         {{ almanach_grid([
-            almanach_gridItem('Div 1', framework, 'lg4'),
-            almanach_gridItem('Div 1', framework, 'lg4'),
-            almanach_gridItem('Div 1', framework, 'lg4'),
+            almanach_gridItem('Div 1', framework, {
+                classGridItem:'sm4'
+            }),
+            almanach_gridItem('Div 1', framework, {
+                classGridItem:'sm4'
+            }),
+            almanach_gridItem('Div 1', framework, {
+                classGridItem: 'sm4'
+            }),
         ],
         framework
         ) }}
     </li>
 </ul>
-{#almanach_gridItem('Div 3', framework, ['xs4', 'sm4', 'md4', 'lg4']),#}

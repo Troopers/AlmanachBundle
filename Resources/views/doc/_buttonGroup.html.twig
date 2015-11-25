@@ -85,20 +85,145 @@
 <h4>+ example</h4>
 <ul style="list-style-type: none">
             <li>
-                {{ almanach_buttonGroup( 'Button', framework, 'default', 'default', 'default', 'default', 'vertical') }}
-                {{ almanach_buttonGroup( 'Button', framework, 'error', 'small', 'default', 'radius', 'vertical') }}
-                {{ almanach_buttonGroup( 'Button', framework, 'error', 'small', 'active', 'radius', 'vertical') }}
+                {{ almanach_buttonGroup([
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'success',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'success',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'success',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    ],
+                    framework, {
+                        class: [
+                            'btn-group-vertical'
+                        ]
+                    })
+                }}
 
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_buttonGroup.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'default', border: 'radius', group: 'stack'} only %}
-                    {% block content %}
-                        Button
-                    {% endblock %}
-                {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_buttonGroup.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'disabled', border: 'round', group: 'stack'} only %}
-                    {% block content %}
-                        Button
-                    {% endblock %}
-                {% endembed %}
+                {{ almanach_buttonGroup([
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'error',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'error',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'error',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    ],
+                    framework, {
+                        class: [
+                            'btn-group'
+                        ]
+                    })
+                }}
+
+                {{ almanach_buttonGroup([
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'error',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'error',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'error',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    ],
+                    framework, {
+                        size: 'large',
+                        class: [
+                            'btn-group'
+                        ]
+                    })
+                }}
+
+                {{ almanach_buttonGroup([
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'warning',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'warning',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    almanach_button(
+                        'Button',
+                        framework, {
+                            theme: 'warning',
+                            attr: {
+                                type: 'button'
+                            }
+                        }),
+                    ],
+                    framework, {
+                        size: 'expanded',
+                        class: [
+                            'btn-group'
+                        ]
+                    })
+                }}
+
+                {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_buttonGroup.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'disabled', border: 'round', group: 'stack'} only %}#}
+                    {#{% block content %}#}
+                        {#Button#}
+                    {#{% endblock %}#}
+                {#{% endembed %}#}
             </li>
         </ul>
     </li>

@@ -5,7 +5,7 @@
         <b>with twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_transformText($content, $framework, $transform = 'default', $class = [], $attributes = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_transformText($content, $framework, $transform = 'default', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -54,7 +54,15 @@
         {% endspaceless %}
     </li>
     <li>
-        {{ almanach_transformText('Your "uppercase" text !', framework, 'upper') }}
+        {{ almanach_transformText('Your "uppercase" text !', framework,
+            {
+                transform: 'upper',
+            },
+            ['coucou', 'zizi'],
+            {
+                id: 'test'
+            }
+        )}}
     </li>
     <hr>
     <li>
