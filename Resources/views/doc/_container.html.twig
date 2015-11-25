@@ -1,0 +1,54 @@
+<h3><b>Container</b></h3>
+<h4>+ Use</h4>
+<ul>
+    <li>
+        <b>with twig extension:</b>
+        {% spaceless %}
+            <pre>
+                {{- "{{ alamanach_container($content, $framework, $classCont = 'cont', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
+            </pre>
+        {% endspaceless %}
+    </li>
+    <li>
+        <b>with twig embed:</b>
+        {% spaceless %}
+            <pre>
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_button.html.twig' with {content: content, framework: framework, ... } only %}
+    {% block content %}
+        {# content #}
+    {% endblock %}
+{% endembed %}"|e -}}
+            </pre>
+        {% endspaceless %}
+    </li>
+</ul>
+<br><h4>+ parameters:</h4>
+<ul>
+    <li>
+        <b>content</b>: content of your container.
+    </li>
+    <li>
+        <b>framework</b>: framework you are using.
+        <ul>
+            <li>bootstrap</li>
+            <li>foundation</li>
+        </ul>
+    </li>
+    <li>
+        <b>classCont</b>: classCont of your container.
+        <ul>
+            <li>cont</li>
+        </ul>
+</ul>
+<h4>+ example</h4>
+<ul style="list-style-type: none">
+    <li>
+        {{ almanach_container( 'My container', framework) }}
+
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_container.html.twig' with {framework: framework, classCont: 'cont'} only %}
+            {% block content %}
+                My container
+            {% endblock %}
+        {% endembed %}
+    </li>
+</ul>
