@@ -17,6 +17,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function getFunctions() {
         return array(
             'almanach_container'           => new \Twig_Function_Method($this, 'displayContainer', ['is_safe' => ['html']]),
+            'almanach_containerFluid'      => new \Twig_Function_Method($this, 'displayContainerFluid', ['is_safe' => ['html']]),
             'almanach_grid'                => new \Twig_Function_Method($this, 'displayGrid', ['is_safe' => ['html']]),
             'almanach_gridItem'            => new \Twig_Function_Method($this, 'displayGridItem', ['is_safe' => ['html']]),
             'almanach_label'               => new \Twig_Function_Method($this, 'displayLabel', ['is_safe' => ['html']]),
@@ -42,7 +43,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         $defaultOptions = [
             'content'        => $content,
             'framework'      => $framework,
-            'classContainer' => 'container',
+            'classCont'      => 'container',
             'class'          => [],
             'attr'           => [],
             'tag'            => null,
@@ -52,6 +53,23 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_container.html.twig", $defaultOptions);
+    }
+
+    public function displayContainerFluid($content, $framework, $options = null)
+    {
+        $defaultOptions = [
+            'content'        => $content,
+            'framework'      => $framework,
+            'classContFluid' => 'containerFluid',
+            'class'          => [],
+            'attr'           => [],
+            'tag'            => null,
+            'link'           => null,
+        ];
+        if (is_array($options)) {
+            $defaultOptions = array_merge($defaultOptions, $options);
+        }
+        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_containerFluid.html.twig", $defaultOptions);
     }
 
     public function displayGrid($content, $framework, $options = null)
