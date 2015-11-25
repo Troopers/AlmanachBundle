@@ -243,11 +243,11 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_listItem.html.twig", $defaultOptions);
     }
 
-    public function displayTab($titles, $content, $framework, $options = null)
+    public function displayTab($tabTitles, $tabContent, $framework, $options = null)
     {
         $defaultOptions = [
-            'tabTitles'      => $titles,
-            'tabContent'     => $content,
+            'tabTitles'      => $tabTitles,
+            'tabContent'     => $tabContent,
             'framework'      => $framework,
             'theme'          => 'default',
             'style'          => 'default',
