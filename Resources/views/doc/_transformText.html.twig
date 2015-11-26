@@ -78,7 +78,7 @@
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_transformText.html.twig' with {framework: framework, transform: 'capital' } only %}
-            {% block content %}
+            {% block contentTransformText %}
                 Your "capitalize" text !
             {% endblock %}
         {% endembed %}

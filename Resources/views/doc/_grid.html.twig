@@ -49,19 +49,19 @@
 <ul style="list-style-type: none">
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_grid.html.twig' with {framework: framework} only %}
-            {% block content %}
+            {% block contentGrid %}
                 {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_gridItem.html.twig' with {framework: framework, classGridItem: 'lg2'} only %}
-                    {% block content %}
+                    {% block contentGridItem %}
                         Div 1
                     {% endblock %}
                 {% endembed %}
                 {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_gridItem.html.twig' with {framework: framework, classGridItem: 'lg2'} only %}
-                    {% block content %}
+                    {% block contentGridItem %}
                         Div 2
                     {% endblock %}
                 {% endembed %}
                 {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_gridItem.html.twig' with {framework: framework, classGridItem: 'lg2'} only %}
-                    {% block content %}
+                    {% block contentGridItem %}
                         Div 3
                     {% endblock %}
                 {% endembed %}

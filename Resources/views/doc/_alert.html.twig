@@ -90,7 +90,7 @@
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_alert.html.twig' with {framework: framework, theme: 'warning', border: 'round', tag: 'button' } only %}
-            {% block content %}
+            {% block contentAlert %}
                 Your "warning" and "round" alert !
             {% endblock %}
         {% endembed %}

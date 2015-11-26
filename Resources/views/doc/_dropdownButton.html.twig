@@ -91,13 +91,13 @@
         }) }}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_dropdownButton.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'default', border: 'round'} only %}
-            {% block content %}
+            {% block contentDropdownButton %}
                 DropdownButton
             {% endblock %}
         {% endembed %}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_dropdownButton.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'disabled', border: 'round'} only %}
-            {% block content %}
+            {% block contentDropdownButton %}
                 DropdownButton
             {% endblock %}
         {% endembed %}

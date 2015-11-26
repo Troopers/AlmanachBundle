@@ -85,7 +85,7 @@
         }) }}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_button.html.twig' with {framework: framework, theme: 'error', size: 'extra_small', state: 'active', border: 'radius'} only %}
-            {% block content %}
+            {% block contentButton %}
                 Button
             {% endblock %}
         {% endembed %}
@@ -97,7 +97,7 @@
         }) }}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_button.html.twig' with {framework: framework, theme: 'success', size: 'medium', state: 'disabled', border: 'radius'} only %}
-            {% block content %}
+            {% block contentButton %}
                 Button
             {% endblock %}
         {% endembed %}
@@ -109,7 +109,7 @@
         }) }}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_button.html.twig' with {framework: framework, theme: 'warning', size: 'large', state: 'active', border: 'round'} only %}
-            {% block content %}
+            {% block contentButton %}
                 Button
             {% endblock %}
         {% endembed %}

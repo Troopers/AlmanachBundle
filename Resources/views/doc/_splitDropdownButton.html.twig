@@ -92,13 +92,13 @@
         }) }}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_splitDropdownButton.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'default', border: 'round'} only %}
-            {% block content %}
+            {% block contentSplitDropdownButton %}
                 SplitDropdownButton
             {% endblock %}
         {% endembed %}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_splitDropdownButton.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'disabled', border: 'round'} only %}
-            {% block content %}
+            {% block contentSplitDropdownButton %}
                 SplitDropdownButton
             {% endblock %}
         {% endembed %}

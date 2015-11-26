@@ -46,7 +46,7 @@
         {{ almanach_container( 'My container', framework) }}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_container.html.twig' with {framework: framework, classCont: 'cont'} only %}
-            {% block content %}
+            {% block contentContainer %}
                 My container
             {% endblock %}
         {% endembed %}

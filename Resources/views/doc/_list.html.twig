@@ -61,9 +61,9 @@
 <ul style="list-style-type: none">
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_list.html.twig' with {framework: framework, order: 'unordered', decoration: 'circle'} only %}
-            {% block content %}
+            {% block contentList %}
                 {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_listItem.html.twig' with {framework: framework, } only %}
-                    {% block content %}
+                    {% block contentListItem %}
                         Unordered list disc
                     {% endblock %}
                 {% endembed %}

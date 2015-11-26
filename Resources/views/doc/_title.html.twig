@@ -75,7 +75,7 @@
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_title.html.twig' with {framework: framework, size: 'h4' } only %}
-            {% block content %}
+            {% block contentTitle %}
                 Your "h4 " text !
             {% endblock %}
         {% endembed %}

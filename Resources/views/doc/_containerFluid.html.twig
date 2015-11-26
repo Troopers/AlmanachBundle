@@ -46,7 +46,7 @@
         {{ almanach_containerFluid( 'My Fluid container', framework) }}
 
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_containerFluid.html.twig' with {framework: framework, classContFluid: 'contFluid'} only %}
-            {% block content %}
+            {% block contentContainerFluid %}
                 My Fluid container
             {% endblock %}
         {% endembed %}

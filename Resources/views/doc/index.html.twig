@@ -3,24 +3,25 @@
 {% block content %}
     {#CONTENT#}
     {% embed "AlmanachBundle:bricks:#{framework}/_container.html.twig" %}
-        {% block content %}
+        {% block contentContainer %}
             {{ almanach_title(
                 almanach_alignmentText(
                     almanach_inlineText(
                         almanach_inlineText(
                         'Almanach documentation',
-                        framework,
-                        'italic'
-                        ),
-                    framework,
-                    'bold'
-                    ),
-                    framework,
-                    'center'
-                ),
-                framework,
-                'h1'
-            ) }}
+                        framework, {
+                            inline: 'italic'
+                        }),
+                    framework, {
+                        inline: 'bold'
+                    }),
+                    framework, {
+                        alignment: 'center'
+                    }),
+                framework, {
+                    size: 'h1'
+                })
+            }}
             <h2><b>Basic feature</b></h2>
             {% include "AlmanachBundle:doc:_container.html.twig" %}
             <hr><br>
@@ -55,8 +56,93 @@
             {#<hr><br>#}
             {% include "AlmanachBundle:doc:_grid.html.twig" %}
             <hr><br>
-        {% endblock content %}
+        {% endblock contentContainer %}
     {% endembed %}
+
+    {#<nav class="timeline-nav hidden-xs hidden-sm affix-top" id="timeline-nav-489" style="right: 50px; position: absolute; z-index: 1; top: 50%; transform: translateY(-50%);">#}
+        {#<ul class="nav nav-stacked timeline-nav-list" style="list-style: none;">#}
+            {#<li class="">#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Container#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Container Fluid#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Title#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-1957" data-scroll="smooth">#}
+                    {#Transform Text#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Alignment Text#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Inline Text#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Label#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Alert#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Button#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Dropdown Button#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Split Dropdown Button#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Button Group#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Title + Element#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#list#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
+                    {#Tab#}
+                {#</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-2002" data-scroll="smooth">#}
+                    {#Grid#}
+                {#</a>#}
+            {#</li>#}
+        {#</ul>#}
+    {#</nav>#}
 {% endblock content %}
 
 {% block javascript %}

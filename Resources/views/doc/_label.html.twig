@@ -85,7 +85,7 @@
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {framework: framework, theme: 'success', border: 'radius' } only %}
-            {% block content %}
+            {% block contentLabel %}
                 Your "success" and "radius" label !
             {% endblock %}
         {% endembed %}
@@ -93,7 +93,7 @@
     <hr>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {framework: framework, theme: 'warning', border: 'round' } only %}
-            {% block content %}
+            {% block contentLabel %}
                 Your "warning" and "round" label !
             {% endblock %}
         {% endembed %}

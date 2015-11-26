@@ -73,7 +73,7 @@
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'bold' } only %}
-            {% block content %}
+            {% block contentInlineText %}
                 Your "bold" inline text !
             {% endblock %}
         {% endembed %}
@@ -88,7 +88,7 @@
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'italic' } only %}
-            {% block content %}
+            {% block contentInlineText %}
                 Your "italic" inline text !
             {% endblock %}
         {% endembed %}
