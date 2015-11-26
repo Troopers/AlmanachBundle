@@ -41,13 +41,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayContainer($contentContainer, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentContainer' => $contentContainer,
-            'framework'        => $framework,
-            'classCont'        => 'cont',
-            'class'            => [],
-            'attr'             => [],
-            'tag'              => null,
-            'link'             => null,
+            'contentContainer'           => $contentContainer,
+            'framework'                  => $framework,
+            'classCont'                  => 'cont',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -58,13 +58,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayContainerFluid($contentContainerFluid, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentContainerFluid' => $contentContainerFluid,
-            'framework'      => $framework,
-            'classContFluid' => 'contFluid',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentContainerFluid'      => $contentContainerFluid,
+            'framework'                  => $framework,
+            'classContFluid'             => 'contFluid',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -75,12 +75,12 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayGrid($contentGrid, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentGrid'        => $contentGrid,
-            'framework'      => $framework,
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentGrid'                => $contentGrid,
+            'framework'                  => $framework,
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -90,13 +90,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayGridItem($contentGridItem, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentGridItem'        => $contentGridItem,
-            'framework'      => $framework,
-            'classGridItem'  => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentGridItem'            => $contentGridItem,
+            'framework'                  => $framework,
+            'classGridItem'              => [],
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -107,14 +107,14 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayLabel($contentLabel, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentLabel'        => $contentLabel,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'border'         => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentLabel'               => $contentLabel,
+            'framework'                  => $framework,
+            'theme'                      => 'default',
+            'border'                     => 'default',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -125,14 +125,14 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayAlert($contentAlert, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentAlert'        => $contentAlert,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'border'         => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentAlert'               => $contentAlert,
+            'framework'                  => $framework,
+            'theme'                      => 'default',
+            'border'                     => 'default',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -143,13 +143,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayTitle($contentTitle, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentTitle'        => $contentTitle,
-            'framework'      => $framework,
-            'size'           => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentTitle'               => $contentTitle,
+            'framework'                  => $framework,
+            'size'                       => 'default',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -160,13 +160,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayInlineText($contentInlineText, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentInlineText'        => $contentInlineText,
-            'framework'      => $framework,
-            'inline'         => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentInlineText'          => $contentInlineText,
+            'framework'                  => $framework,
+            'inline'                     => 'default',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -177,13 +177,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayTransformText($contentTransformText, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentTransformText'        => $contentTransformText,
-            'framework'      => $framework,
-            'transform'      => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentTransformText'       => $contentTransformText,
+            'framework'                  => $framework,
+            'transform'                  => 'default',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -194,13 +194,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayAlignmentText($contentAlignmentText, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentAlignmentText'        => $contentAlignmentText,
-            'framework'      => $framework,
-            'alignment'      => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentAlignmentText'       => $contentAlignmentText,
+            'framework'                  => $framework,
+            'alignment'                  => 'default',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -211,15 +211,15 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayList($contentList, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentList'        => $contentList,
-            'framework'      => $framework,
-            'order'          => 'default',
-            'decoration'     => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentList'                => $contentList,
+            'framework'                  => $framework,
+            'order'                      => 'default',
+            'decoration'                 => 'default',
+            'list'                       => [],
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -230,12 +230,12 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayListItem($contentListItem, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentListItem'        => $contentListItem,
-            'framework'      => $framework,
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentListItem'            => $contentListItem,
+            'framework'                  => $framework,
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -246,16 +246,16 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayTab($titles, $content, $framework, $options = null)
     {
         $defaultOptions = [
-            'tabTitles'      => $titles,
-            'tabContent'     => $content,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'style'          => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'tabTitles'                  => $titles,
+            'tabContent'                 => $content,
+            'framework'                  => $framework,
+            'theme'                      => 'default',
+            'style'                      => 'default',
+            'list'                       => [],
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -266,14 +266,14 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayTabTitle($content, $framework, $options = null)
     {
         $defaultOptions = [
-            'content'        => $content,
-            'framework'      => $framework,
-            'state'          => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'content'                    => $content,
+            'framework'                  => $framework,
+            'state'                      => 'default',
+            'list'                       => [],
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -284,14 +284,14 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayTabContent($content, $framework, $options = null)
     {
         $defaultOptions = [
-            'content'        => $content,
-            'framework'      => $framework,
-            'state'          => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'content'                    => $content,
+            'framework'                  => $framework,
+            'state'                      => 'default',
+            'list'                       => [],
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -302,16 +302,16 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayButton($contentButton, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentButton'        => $contentButton,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'size'           => 'default',
-            'state'          => 'default',
-            'border'         => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentButton'              => $contentButton,
+            'framework'                  => $framework,
+            'theme'                      => 'default',
+            'size'                       => 'default',
+            'state'                      => 'default',
+            'border'                     => 'default',
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -322,17 +322,17 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayDropdownButton($contentDropdownButton, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentDropdownButton'        => $contentDropdownButton,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'size'           => 'default',
-            'state'          => 'default',
-            'border'         => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentDropdownButton'      => $contentDropdownButton,
+            'framework'                  => $framework,
+            'theme'                      => 'default',
+            'size'                       => 'default',
+            'state'                      => 'default',
+            'border'                     => 'default',
+            'list'                       => [],
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -343,17 +343,17 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displaySplitDropdownButton($contentSplitDropdownButton, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentSplitDropdownButton'        => $contentSplitDropdownButton,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'size'           => 'default',
-            'state'          => 'default',
-            'border'         => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentSplitDropdownButton' => $contentSplitDropdownButton,
+            'framework'                  => $framework,
+            'theme'                      => 'default',
+            'size'                       => 'default',
+            'state'                      => 'default',
+            'border'                     => 'default',
+            'list'                       => [],
+            'class'                      => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
@@ -364,17 +364,17 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     public function displayButtonGroup($contentButtonGroup, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentButtonGroup'        => $contentButtonGroup,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'size'           => 'default',
-            'state'          => 'default',
-            'border'         => 'default',
-            'group'          => 'default',
-            'classes'        => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'contentButtonGroup'         => $contentButtonGroup,
+            'framework'                  => $framework,
+            'theme'                      => 'default',
+            'size'                       => 'default',
+            'state'                      => 'default',
+            'border'                     => 'default',
+            'group'                      => 'default',
+            'classes'                    => [],
+            'attr'                       => [],
+            'tag'                        => null,
+            'link'                       => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
