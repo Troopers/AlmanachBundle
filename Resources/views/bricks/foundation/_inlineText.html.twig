@@ -10,7 +10,7 @@
         attributes: attr
     } only %}
 >
-    {% block content %}
-        {{ content|raw }}
+    {% block contentInlineText %}
+        {{ contentInlineText|raw }}
     {% endblock %}
 </{{ attribute(almanach.inlineText.inline, options.inline) }}>
