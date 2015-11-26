@@ -2,20 +2,20 @@
 
 namespace AppVentus\AlmanachBundle\Twig;
 
-use Symfony\Component\Templating\EngineInterface;
-
-class AlmanachDisplayExtension extends \Twig_Extension {
-
+class AlmanachDisplayExtension extends \Twig_Extension
+{
     protected $almanach;
     protected $templating;
 
-    public function __construct($almanach, \Twig_Environment $templating) {
+    public function __construct($almanach, \Twig_Environment $templating)
+    {
         $this->almanach = $almanach;
         $this->templating = $templating;
     }
 
-    public function getFunctions() {
-        return array(
+    public function getFunctions()
+    {
+        return [
             'almanach_container'           => new \Twig_Function_Method($this, 'displayContainer', ['is_safe' => ['html']]),
             'almanach_containerFluid'      => new \Twig_Function_Method($this, 'displayContainerFluid', ['is_safe' => ['html']]),
             'almanach_grid'                => new \Twig_Function_Method($this, 'displayGrid', ['is_safe' => ['html']]),
@@ -35,7 +35,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'almanach_dropdownButton'      => new \Twig_Function_Method($this, 'displayDropdownButton', ['is_safe' => ['html']]),
             'almanach_splitDropdownButton' => new \Twig_Function_Method($this, 'displaySplitDropdownButton', ['is_safe' => ['html']]),
             'almanach_buttonGroup'         => new \Twig_Function_Method($this, 'displayButtonGroup', ['is_safe' => ['html']]),
-        );
+        ];
     }
 
     public function displayContainer($contentContainer, $framework, $options = null)
@@ -52,195 +52,208 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_container.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_container.html.twig', $defaultOptions);
     }
 
     public function displayContainerFluid($contentContainerFluid, $framework, $options = null)
     {
         $defaultOptions = [
             'contentContainerFluid' => $contentContainerFluid,
-            'framework'      => $framework,
-            'classContFluid' => 'contFluid',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'             => $framework,
+            'classContFluid'        => 'contFluid',
+            'class'                 => [],
+            'attr'                  => [],
+            'tag'                   => null,
+            'link'                  => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_containerFluid.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_containerFluid.html.twig', $defaultOptions);
     }
 
     public function displayGrid($contentGrid, $framework, $options = null)
     {
         $defaultOptions = [
             'contentGrid'        => $contentGrid,
-            'framework'      => $framework,
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'          => $framework,
+            'class'              => [],
+            'attr'               => [],
+            'tag'                => null,
+            'link'               => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_grid.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_grid.html.twig', $defaultOptions);
     }
+
     public function displayGridItem($contentGridItem, $framework, $options = null)
     {
         $defaultOptions = [
             'contentGridItem'        => $contentGridItem,
-            'framework'      => $framework,
-            'classGridItem'  => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'              => $framework,
+            'classGridItem'          => [],
+            'class'                  => [],
+            'attr'                   => [],
+            'tag'                    => null,
+            'link'                   => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_gridItem.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_gridItem.html.twig', $defaultOptions);
     }
 
     public function displayLabel($contentLabel, $framework, $options = null)
     {
         $defaultOptions = [
             'contentLabel'        => $contentLabel,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'border'         => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'           => $framework,
+            'theme'               => 'default',
+            'border'              => 'default',
+            'class'               => [],
+            'attr'                => [],
+            'tag'                 => null,
+            'link'                => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_label.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_label.html.twig', $defaultOptions);
     }
 
     public function displayAlert($contentAlert, $framework, $options = null)
     {
         $defaultOptions = [
             'contentAlert'        => $contentAlert,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'border'         => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'           => $framework,
+            'theme'               => 'default',
+            'border'              => 'default',
+            'class'               => [],
+            'attr'                => [],
+            'tag'                 => null,
+            'link'                => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_alert.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_alert.html.twig', $defaultOptions);
     }
 
     public function displayTitle($contentTitle, $framework, $options = null)
     {
         $defaultOptions = [
             'contentTitle'        => $contentTitle,
-            'framework'      => $framework,
-            'size'           => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'           => $framework,
+            'size'                => 'default',
+            'class'               => [],
+            'attr'                => [],
+            'tag'                 => null,
+            'link'                => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_title.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_title.html.twig', $defaultOptions);
     }
 
     public function displayInlineText($contentInlineText, $framework, $options = null)
     {
         $defaultOptions = [
             'contentInlineText'        => $contentInlineText,
-            'framework'      => $framework,
-            'inline'         => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'                => $framework,
+            'inline'                   => 'default',
+            'class'                    => [],
+            'attr'                     => [],
+            'tag'                      => null,
+            'link'                     => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_inlineText.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_inlineText.html.twig', $defaultOptions);
     }
 
     public function displayTransformText($contentTransformText, $framework, $options = null)
     {
         $defaultOptions = [
             'contentTransformText'        => $contentTransformText,
-            'framework'      => $framework,
-            'transform'      => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'                   => $framework,
+            'transform'                   => 'default',
+            'class'                       => [],
+            'attr'                        => [],
+            'tag'                         => null,
+            'link'                        => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_transformText.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_transformText.html.twig', $defaultOptions);
     }
 
     public function displayAlignmentText($contentAlignmentText, $framework, $options = null)
     {
         $defaultOptions = [
             'contentAlignmentText'        => $contentAlignmentText,
-            'framework'      => $framework,
-            'alignment'      => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'                   => $framework,
+            'alignment'                   => 'default',
+            'class'                       => [],
+            'attr'                        => [],
+            'tag'                         => null,
+            'link'                        => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_alignmentText.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_alignmentText.html.twig', $defaultOptions);
     }
 
     public function displayList($contentList, $framework, $options = null)
     {
         $defaultOptions = [
             'contentList'        => $contentList,
-            'framework'      => $framework,
-            'order'          => 'default',
-            'decoration'     => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'          => $framework,
+            'order'              => 'default',
+            'decoration'         => 'default',
+            'list'               => [],
+            'class'              => [],
+            'attr'               => [],
+            'tag'                => null,
+            'link'               => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_list.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_list.html.twig', $defaultOptions);
     }
 
     public function displayListItem($contentListItem, $framework, $options = null)
     {
         $defaultOptions = [
             'contentListItem'        => $contentListItem,
-            'framework'      => $framework,
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'              => $framework,
+            'class'                  => [],
+            'attr'                   => [],
+            'tag'                    => null,
+            'link'                   => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_listItem.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_listItem.html.twig', $defaultOptions);
     }
 
     public function displayTab($titles, $content, $framework, $options = null)
@@ -260,7 +273,8 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tab.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_tab.html.twig', $defaultOptions);
     }
 
     public function displayTabTitle($content, $framework, $options = null)
@@ -278,7 +292,8 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tabTitle.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_tabTitle.html.twig', $defaultOptions);
     }
 
     public function displayTabContent($content, $framework, $options = null)
@@ -296,93 +311,99 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tabContent.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_tabContent.html.twig', $defaultOptions);
     }
 
     public function displayButton($contentButton, $framework, $options = null)
     {
         $defaultOptions = [
             'contentButton'        => $contentButton,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'size'           => 'default',
-            'state'          => 'default',
-            'border'         => 'default',
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'            => $framework,
+            'theme'                => 'default',
+            'size'                 => 'default',
+            'state'                => 'default',
+            'border'               => 'default',
+            'class'                => [],
+            'attr'                 => [],
+            'tag'                  => null,
+            'link'                 => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_button.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_button.html.twig', $defaultOptions);
     }
 
     public function displayDropdownButton($contentDropdownButton, $framework, $options = null)
     {
         $defaultOptions = [
             'contentDropdownButton'        => $contentDropdownButton,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'size'           => 'default',
-            'state'          => 'default',
-            'border'         => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'                    => $framework,
+            'theme'                        => 'default',
+            'size'                         => 'default',
+            'state'                        => 'default',
+            'border'                       => 'default',
+            'list'                         => [],
+            'class'                        => [],
+            'attr'                         => [],
+            'tag'                          => null,
+            'link'                         => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_dropdownButton.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_dropdownButton.html.twig', $defaultOptions);
     }
 
     public function displaySplitDropdownButton($contentSplitDropdownButton, $framework, $options = null)
     {
         $defaultOptions = [
             'contentSplitDropdownButton'        => $contentSplitDropdownButton,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'size'           => 'default',
-            'state'          => 'default',
-            'border'         => 'default',
-            'list'           => [],
-            'class'          => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'                         => $framework,
+            'theme'                             => 'default',
+            'size'                              => 'default',
+            'state'                             => 'default',
+            'border'                            => 'default',
+            'list'                              => [],
+            'class'                             => [],
+            'attr'                              => [],
+            'tag'                               => null,
+            'link'                              => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_splitDropdownButton.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_splitDropdownButton.html.twig', $defaultOptions);
     }
 
     public function displayButtonGroup($contentButtonGroup, $framework, $options = null)
     {
         $defaultOptions = [
             'contentButtonGroup'        => $contentButtonGroup,
-            'framework'      => $framework,
-            'theme'          => 'default',
-            'size'           => 'default',
-            'state'          => 'default',
-            'border'         => 'default',
-            'group'          => 'default',
-            'classes'        => [],
-            'attr'           => [],
-            'tag'            => null,
-            'link'           => null,
+            'framework'                 => $framework,
+            'theme'                     => 'default',
+            'size'                      => 'default',
+            'state'                     => 'default',
+            'border'                    => 'default',
+            'group'                     => 'default',
+            'classes'                   => [],
+            'attr'                      => [],
+            'tag'                       => null,
+            'link'                      => null,
         ];
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_buttonGroup.html.twig", $defaultOptions);
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$framework.'/_buttonGroup.html.twig', $defaultOptions);
     }
 
-    public function getName() {
+    public function getName()
+    {
         return 'appventus_almanach_display';
     }
 }
