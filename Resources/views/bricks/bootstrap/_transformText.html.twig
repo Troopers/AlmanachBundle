@@ -19,8 +19,8 @@
         attributes: attr
     } only %}
 >
-    {% block content %}
-        {{ content|raw }}
+    {% block contentTransformText %}
+        {{ contentTransformText|raw }}
     {% endblock %}
 </{{ tag }}>
 

@@ -13,8 +13,8 @@
         attributes: attr
     } only %}
 >
-    {% block content %}
-        {% for item in content %}
+    {% block contentGrid %}
+        {% for item in contentGrid %}
             {{ item|raw }}
         {% endfor %}
     {% endblock %}

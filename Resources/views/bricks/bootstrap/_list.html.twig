@@ -14,8 +14,8 @@
         attributes: attr
      } only %}
 >
-    {% block content %}
-        {% for item in content %}
+    {% block contentList %}
+        {% for item in contentList %}
             {{ item|raw }}
         {% endfor %}
     {% endblock %}
