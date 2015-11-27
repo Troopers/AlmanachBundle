@@ -22,7 +22,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'almanach_gridItem'            => new \Twig_Function_Method($this, 'displayGridItem', ['is_safe' => ['html']]),
             'almanach_label'               => new \Twig_Function_Method($this, 'displayLabel', ['is_safe' => ['html']]),
             'almanach_alert'               => new \Twig_Function_Method($this, 'displayAlert', ['is_safe' => ['html']]),
-            'almanach_title'               => new \Twig_Function_Method($this, 'displayTitle', ['is_safe' => ['html']]),
+            'almanach_heading'             => new \Twig_Function_Method($this, 'displayHeading', ['is_safe' => ['html']]),
             'almanach_inlineText'          => new \Twig_Function_Method($this, 'displayInlineText', ['is_safe' => ['html']]),
             'almanach_transformText'       => new \Twig_Function_Method($this, 'displayTransformText', ['is_safe' => ['html']]),
             'almanach_alignmentText'       => new \Twig_Function_Method($this, 'displayAlignmentText', ['is_safe' => ['html']]),
@@ -140,10 +140,10 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_alert.html.twig", $defaultOptions);
     }
 
-    public function displayTitle($contentTitle, $framework, $options = null)
+    public function displayHeading($contentHeading, $framework, $options = null)
     {
         $defaultOptions = [
-            'contentTitle'               => $contentTitle,
+            'contentHeading'             => $contentHeading,
             'framework'                  => $framework,
             'size'                       => 'default',
             'class'                      => [],
@@ -154,7 +154,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         if (is_array($options)) {
             $defaultOptions = array_merge($defaultOptions, $options);
         }
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_title.html.twig", $defaultOptions);
+        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_heading.html.twig", $defaultOptions);
     }
 
     public function displayInlineText($contentInlineText, $framework, $options = null)
