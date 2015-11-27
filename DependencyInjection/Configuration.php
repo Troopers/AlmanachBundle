@@ -35,7 +35,7 @@ class Configuration implements ConfigurationInterface
             $this->addGridItem($frameworkNode);
             $this->addLabel($frameworkNode);
             $this->addAlert($frameworkNode);
-            $this->addTitle($frameworkNode);
+            $this->addHeading($frameworkNode);
             $this->addInlineText($frameworkNode);
             $this->addTransformText($frameworkNode);
             $this->addAlignmentText($frameworkNode);
@@ -217,10 +217,10 @@ class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addTitle(ArrayNodeDefinition $frameworkNode) {
+    private function addHeading(ArrayNodeDefinition $frameworkNode) {
         $frameworkNode
             ->children()
-                ->arrayNode('title')
+                ->arrayNode('heading')
                     ->children()
                         ->arrayNode('size')
                             ->children()
