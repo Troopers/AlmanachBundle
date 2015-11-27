@@ -1,0 +1,94 @@
+<h3><b><i>Heading</i></b></h3>
+<h4><b>- Global use :</b></h4>
+<ul>
+    <li>
+        <b>Twig extension:</b>
+        {% spaceless %}
+            <pre>
+                {{- "{{ alamanach_heading(
+    $content,
+    $framework, {
+        size: 'YOUR_SIZE',
+    })
+}}"|e -}}
+            </pre>
+        {% endspaceless %}
+    </li>
+    <li>
+        <b>Twig embed:</b>
+        {% spaceless %}
+            <pre>
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_heading.html.twig' with {
+    content: 'YOUR_CONTENT',
+    framework: 'YOUR_FRAMEWORK',
+    size: 'YOUR_SIZE',
+ } only %}
+    {% block contentHeading %}
+        {# contentSize #}
+    {% endblock %}
+{% endembed %}"|e -}}
+            </pre>
+        {% endspaceless %}
+    </li>
+</ul>
+
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Content :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your Heading</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Size :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>h1</i></li>
+                <li><i>h2</i></li>
+                <li><i>h3</i></li>
+                <li><i>h4</i></li>
+                <li><i>h5</i></li>
+                <li><i>h6</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Size of your Heading</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
+    <li>
+        {% spaceless %}
+            <pre>
+                {{- "{{ almanach_heading(
+    'Your 'h2' Heading !',
+    framework, {
+        size: 'h2',
+    })
+}}"|e -}}
+            </pre>
+        {% endspaceless %}
+    </li>
+    <li>
+        {{ almanach_heading(
+            'Your "h2" Heading !',
+            framework, {
+                size: 'h2',
+            })
+        }}
+    </li>
+</ul>
+<hr><br>
