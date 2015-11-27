@@ -19,7 +19,7 @@ class DocController extends Controller
         $gridItem            = ($almanach['gridItem']) ? : null;
         $label               = ($almanach['label']) ? : null;
         $alert               = ($almanach['alert']) ? : null;
-        $title               = ($almanach['title']) ? : null;
+        $heading             = ($almanach['heading']) ? : null;
         $inlineText          = ($almanach['inlineText']) ? : null;
         $transformText       = ($almanach['transformText']) ? : null;
         $alignmentText       = ($almanach['alignmentText']) ? : null;
@@ -39,7 +39,7 @@ class DocController extends Controller
             'config_gridItem'            => $gridItem,
             'config_label'               => $label,
             'config_alert'               => $alert,
-            'config_title'               => $title,
+            'config_heading'             => $heading,
             'config_inlineText'          => $inlineText,
             'config_transformText'       => $transformText,
             'config_alignmentText'       => $alignmentText,
