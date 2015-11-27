@@ -1,14 +1,17 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = classes is defined ? classes : [] %}
-{% set attributes = attributes is defined ? attributes : {} %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
 
-{% set classes = classes|merge([
+{% set class = class|merge([
     'tab-pane',
     attribute(almanach.tabContent.state, state is defined ? state : 'default')
 ]) %}
 
-{% set attributes = id is defined ? attributes|merge({id: id}) : attributes %}
+{% set attr = id is defined ? attr|merge({id: id}) %}
 
-{% set attributes = attributes|merge({'role': 'tabpanel'}) %}
+{% set attr = attr|merge({
+    role: 'tabpanel',
+    id: id
+}) %}
 
-{{ almanach_alignmentText(content, framework, 'default', classes, attributes) }}
+{{ almanach_alignmentText(content, framework, {attr: attr}) }}

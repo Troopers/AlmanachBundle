@@ -1,34 +1,35 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set tabClasses = tabClasses is defined ? tabClasses : [] %}
-{% set tabAttributes = tabAttributes is defined ? tabAttributes : {} %}
-{% set contentClasses = contentClasses is defined ? contentClasses : [] %}
+{% set tabClass = tabClass is defined ? tabClass : [] %}
+{% set tabAttr = tabAttr is defined ? tabAttr : {} %}
+{% set contentClass = contentClass is defined ? contentClass : [] %}
 
-{% set tabClasses = tabClasses|merge([
+{% set tabClass = tabClass|merge([
     'nav',
     attribute(almanach.tab.theme, theme is defined ? theme : 'default'),
     attribute(almanach.tab.style, style is defined ? style : 'default')
 ]) %}
 
-{% set tabAttributes = tabAttributes|merge({
+{% set tabAttr = tabAttr|merge({
     role: 'tablist',
-    id: tabId,
 }) %}
 
-{% set contentClasses = contentClasses|merge([
+{% set contentClass = contentClass|merge([
     'tab-content'
 ]) %}
 
 <ul {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
-    classes: tabClasses,
-    attributes: tabAttributes
-} only %}>
+        class: tabClass,
+        attributes: tabAttr
+    } only %}
+>
     {% block tabTitles %}
         {{ tabTitles|raw }}
     {% endblock %}
 </ul>
 <div {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
-    classes: contentClasses
-} only %}>
+        class: contentClass
+    } only %}
+>
     {% block tabContent %}
         {{ tabContent|raw }}
     {% endblock %}
