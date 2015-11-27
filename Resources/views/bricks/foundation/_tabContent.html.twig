@@ -1,12 +1,34 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = classes is defined ? classes : [] %}
-{% set attributes = attributes is defined ? attributes : {} %}
+{% set class = class is defined ? class : [] %}
+{% set attr = attr is defined ? attr : {} %}
+{% set tag = tag|default('div') %}
 
-{% set classes = classes|merge([
+{% set classComponent = class|merge([
     'content',
     attribute(almanach.tabContent.state, state is defined ? state : 'default')
 ]) %}
 
-{% set attributes = id is defined ? attributes|merge({id: id}) : attributes %}
+{% set attr = id is defined ? attr|merge({id: id}) : attr %}
 
-{{ almanach_alignmentText(content, framework, 'default', classes, attributes) }}
+{#{% set attr = attr|merge({#}
+    {#id: id#}
+{#}) %}#}
+
+{#{{ almanach_alignmentText(content, framework, {#}
+        {#class: [#}
+            {#'content'#}
+        {#]#}
+    {#})#}
+{#}}#}
+
+<{{ tag }}
+    {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
+        class: classComponent,
+        attr: attr
+    } only %}
+>
+    {% block content %}
+        {{ content|raw }}
+    {% endblock %}
+</{{ tag }}>
+

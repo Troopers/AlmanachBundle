@@ -1,12 +1,16 @@
 {% set almanach = attribute(almanach, framework) %}
-{% set classes = classes is defined ? classes : [] %}
+{% set class = class is defined ? class : [] %}
 {% set link = link is defined ? link : '#' %}
 
-{% set classes = classes|merge([
+{% set class = class|merge([
     'tab-title',
     attribute(almanach.tabTitle.state, state is defined ? state : 'default')
 ]) %}
 
 {{ almanach_listItem(
-    almanach_button(content, framework, 'default', 'default', 'default', 'default', [], {}, 'a', link),
-    framework, classes) }}
+    almanach_button(content, framework, {
+        tag: 'a',
+    }),
+    framework)
+}}
+
