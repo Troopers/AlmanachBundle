@@ -1,96 +1,96 @@
-<h3><b>Inline Text</b></h3>
-<h4>- >Use</h4>
+<h3><b><i>Inline Text</i></b></h3>
+<h4><b>- Global use :</b></h4>
 <ul>
     <li>
-        <b>with twig extension:</b>
+        <b>Twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_inlineText($content, $framework, $inline = 'default', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_inlineText(
+    $content,
+    $framework, {
+        inline: 'YOUR_INLINE',
+    })
+}}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        <b>with twig embed:</b>
+        <b>Twig embed:</b>
         {% spaceless %}
             <pre>
-                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {content: content, framework: framework, ... } only %}
-    {% block content %}
-        {# content #}
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {
+    content: 'YOUR_CONTENT',
+    framework: 'YOUR_FRAMEWORK',
+    inline: 'YOUR_INLINE',
+ } only %}
+    {% block contentInlineText %}
+        {# contentInlineText #}
     {% endblock %}
 {% endembed %}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
 </ul>
-<br><h4>- parameters:</h4>
-<ul>
+
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Content :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your Inline Text</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Inline :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>marked</i></li>
+                <li><i>deleted</i></li>
+                <li><i>strike</i></li>
+                <li><i>inserted</i></li>
+                <li><i>underlined</i></li>
+                <li><i>small</i></li>
+                <li><i>bold</i></li>
+                <li><i>italic</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Inline of your Inline Text</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
     <li>
-        <b>content</b>: content of your inline text.
+        {% spaceless %}
+            <pre>
+                {{- "{{ almanach_inlineText(
+    'Your 'deleted' inline text !',
+    framework, {
+        inline: 'deleted',
+    })
+}}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
-        <b>framework</b>: framework you are using.
-        <ul>
-            <li>bootstrap</li>
-            <li>foundation</li>
-        </ul>
-    </li>
-    <li>
-        <b>inline</b>: inline of your text.
-        <ul>
-            <li>default</li>
-            <li>marked</li>
-            <li>deleted</li>
-            <li>strike</li>
-            <li>inserted</li>
-            <li>underlined</li>
-            <li>small</li>
-            <li>bold</li>
-            <li>italic</li>
-        </ul>
-    </li>
-</ul>
-<h4>- example</h4>
-<ul style="list-style-type: none">
-    <li>
-        <pre>
-{{ "{{ almanach_inlineText('Your 'deleted' inline text !', framework, 'deleted') }}"|e }}</pre>
-    </li>
-    <li>
-        {{ almanach_inlineText('Your "deleted" inline text !', framework,
-            {
+        {{ almanach_inlineText(
+            'Your "deleted" inline text !',
+            framework, {
                 inline: 'deleted',
-            }
-        )}}
-    </li>
-    <hr>
-    <li>
-        <pre>
-{{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'bold' } only %}
-    {% block content %}
-        Your 'bold' inline text !
-    {% endblock %}
-{% endembed %}"|e }}</pre>
-    </li>
-    <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'bold' } only %}
-            {% block contentInlineText %}
-                Your "bold" inline text !
-            {% endblock %}
-        {% endembed %}
-    </li>
-    <hr>
-    <li>
-        {{ almanach_inlineText('Your "inserted" inline text !', framework,
-            {
-                inline: 'inserted',
             })
         }}
     </li>
-    <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_inlineText.html.twig' with {framework: framework, inline: 'italic' } only %}
-            {% block contentInlineText %}
-                Your "italic" inline text !
-            {% endblock %}
-        {% endembed %}
-    </li>
 </ul>
+<hr><br>

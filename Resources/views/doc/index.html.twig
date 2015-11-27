@@ -4,7 +4,7 @@
     {#CONTENT#}
     {% embed "AlmanachBundle:bricks:#{framework}/_container.html.twig" %}
         {% block contentContainer %}
-            {{ almanach_title(
+            {{ almanach_heading(
                 almanach_alignmentText(
                     almanach_inlineText(
                         almanach_inlineText(
@@ -22,127 +22,53 @@
                     size: 'h1'
                 })
             }}
-            <h2><b>Basic feature</b></h2>
+            <h2><b>Basic feature :</b></h2>
             {% include "AlmanachBundle:doc:_container.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_containerFluid.html.twig" %}
-            <hr><br>
-            {% include "AlmanachBundle:doc:_title.html.twig" %}
-            <hr><br>
+            {% include "AlmanachBundle:doc:_heading.html.twig" %}
             {% include "AlmanachBundle:doc:_transformText.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_alignmentText.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_inlineText.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_label.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_alert.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_button.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_dropdownButton.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_splitDropdownButton.html.twig" %}
-            <hr><br>
             {% include "AlmanachBundle:doc:_buttonGroup.html.twig" %}
-            <hr><br>
-            <h2><b>Composed features</b></h2>
-            {% include "AlmanachBundle:doc:_titleAndElement.html.twig" %}
-            <hr><br>
+            <h2><b>Composed features (Needs nesting) :</b></h2>
+            {% include "AlmanachBundle:doc:_headingAndElement.html.twig" %}
             {% include "AlmanachBundle:doc:_list.html.twig" %}
-            <hr><br>
-            {#{% include "AlmanachBundle:doc:_tab.html.twig" %}#}
-            {#<hr><br>#}
+            {% include "AlmanachBundle:doc:_tab.html.twig" %}
             {% include "AlmanachBundle:doc:_grid.html.twig" %}
-            <hr><br>
-        {% endblock contentContainer %}
-    {% endembed %}
+            <h2><b>Inventory Almanach :</b></h2>
+            {% include "AlmanachBundle:doc:_inventoryOfAlmanach.html.twig" %}
 
-    {#<nav class="timeline-nav hidden-xs hidden-sm affix-top" id="timeline-nav-489" style="right: 50px; position: absolute; z-index: 1; top: 50%; transform: translateY(-50%);">#}
-        {#<ul class="nav nav-stacked timeline-nav-list" style="list-style: none;">#}
-            {#<li class="">#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Container#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Container Fluid#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Title#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-1957" data-scroll="smooth">#}
-                    {#Transform Text#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Alignment Text#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Inline Text#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Label#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Alert#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Button#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Dropdown Button#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Split Dropdown Button#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Button Group#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Title + Element#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#list#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-" data-scroll="smooth">#}
-                    {#Tab#}
-                {#</a>#}
-            {#</li>#}
-            {#<li>#}
-                {#<a style="padding: 0 15px;" class="timeline-nav-anchor" href="#timeline-item-anchor-489-2002" data-scroll="smooth">#}
-                    {#Grid#}
-                {#</a>#}
-            {#</li>#}
-        {#</ul>#}
-    {#</nav>#}
+            <style>
+                .flat-table {
+                    font-family: sans-serif;
+                    -webkit-font-smoothing: antialiased;
+                    font-size: 100%;
+                    overflow: auto;
+                    width: 100%;
+                }
+                .flat-table .flat-table-th {
+                        background-color: rgb(112, 196, 105);
+                        color: white;
+                        font-weight: normal;
+                        padding: 20px 30px;
+                        text-align: center;
+                        border: 2px solid white;
+                }
+                .flat-table .flat-table-td {
+                        background-color: rgb(238, 238, 238);
+                        color: rgb(111, 111, 111);
+                        padding: 5px 10px;
+                        text-align: center;
+                        border: 2px solid white;
+                }
+            </style>
+        {% endblock %}
+    {% endembed %}
 {% endblock content %}
 
 {% block javascript %}

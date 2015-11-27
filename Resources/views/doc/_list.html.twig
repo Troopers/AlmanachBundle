@@ -1,93 +1,164 @@
-<h3><b>List</b></h3>
-<h4>- Use</h4>
-<h4>The list is composed of the global list + the list item</h4>
+<h3><b><i>List</i></b></h3>
+<h4><b>- Global use :</b></h4>
+<h4>The list is composed of the global list + the list item :</h4>
 <ul>
     <li>
-        <b>with twig extension:</b>
+        <b>Twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_list($content, $framework, $order = 'default', $decoration = 'default', $class_component = [], $attr_component = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ almanach_list([
+    almanach_listItem(
+        'contentList' ~ almanach_list([
+        almanach_listItem(
+            'contentListItem',
+            framework),
+        almanach_listItem(
+            'contentListItem',
+            framework
+        )],
+    framework, {
+        order: 'YOUR_ORDER_LIST',
+        decoration: 'YOUR_DECORATION_LIST_ITEM',
+    }),
+    framework
+    )],
+    framework, {
+        order: 'YOUR_ORDER_LIST',
+        decoration: 'YOUR_DECORATION_LIST',
+    })
+}}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        <b>with twig embed:</b>
+        <b>Twig embed:</b>
         {% spaceless %}
             <pre>
-                {{ "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_list.html.twig' with {content: content, framework: framework, ... } only %}
-    {% block content %}
-        {# content #}
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_list.html.twig' with {
+    content: 'YOUR_CONTENT_LIST,
+    framework: 'YOUR_FRAMEWORK',
+    order: 'YOUR_ORDER',
+    decoration: 'YOUR_DECORATION'
+} only %}
+    {% block contentList %}
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_listItem.html.twig' with {
+            content: YOUR_CONTENT_LIST_ITEM,
+            framework: YOUR_FRAMEWORK
+        } only %}
+            {% block contentListItem %}
+                Your List
+            {% endblock %}
+        {% endembed %}
     {% endblock %}
 {% endembed %}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
 </ul>
-<br><h4>- parameters:</h4>
-<ul>
-    <li>
-        <b>content</b>: content of your list.
-    </li>
-    <li>
-        <b>framework</b>: framework you are using.
-        <ul>
-            <li>bootstrap</li>
-            <li>foundation</li>
-        </ul>
-    </li>
-    <li>
-        <b>order</b>: order of your list.
-        <ul>
-            <li>default</li>
-            <li>ordered</li>
-            <li>unordered</li>
-        </ul>
-    </li>
-    <li>
-        <b>decoration</b>: decoration of your list.
-        <ul>
-            <li>default</li>
-            <li>inline</li>
-            <li>unstyled</li>
-            <li>disc</li>
-            <li>square</li>
-            <li>circle</li>
-            <li>nothing</li>
-        </ul>
-    </li>
-</ul>
-<h4>- example</h4>
 
-<ul style="list-style-type: none">
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>ContentList :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your List</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>ContentListItem :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your List Item</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Order :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>ordered</i></li>
+                <li><i>unordered</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Order of your List</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Decoration :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>inline</i></li>
+                <li><i>unstyled</i></li>
+                <li><i>disc</i></li>
+                <li><i>square</i></li>
+                <li><i>circle</i></li>
+                <li><i>nothing</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Decoration of your List</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
     <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_list.html.twig' with {framework: framework, order: 'unordered', decoration: 'circle'} only %}
-            {% block contentList %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_listItem.html.twig' with {framework: framework, } only %}
-                    {% block contentListItem %}
-                        Unordered list disc
-                    {% endblock %}
-                {% endembed %}
-            {% endblock %}
-        {% endembed %}
+        {% spaceless %}
+            <pre>
+                {{- "{{ almanach_list([
+    almanach_listItem(
+        'Title of your List' ~ almanach_list([
+        almanach_listItem(
+            'Content of your List Item 1',
+            framework),
+        almanach_listItem(
+            'Content of your List Item 2',
+            framework
+        )],
+    framework, {
+        order: 'default',
+        decoration: 'square',
+    }),
+    framework
+    )],
+    framework, {
+        order: 'default',
+        decoration: 'circle',
+    })
+}}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
-    {{ almanach_list([
-        almanach_listItem('Title' ~ almanach_list([
-            almanach_listItem('Content 1', framework),
-            almanach_listItem('Content 2', framework),
-            almanach_listItem('Content 3', framework),
-        ],
-        framework,
-    {
-        order: 'default',
-    }),
-    framework),
-    ],
-    framework,
-    {
-        order: 'default',
-        decoration: 'disc',
-    }
-    ) }}
+        {{ almanach_list([
+            almanach_listItem(
+                'Title of your List' ~ almanach_list([
+                almanach_listItem(
+                    'Content of your List Item 1',
+                    framework),
+                almanach_listItem(
+                    'Content of your List Item 2',
+                    framework
+                )],
+            framework, {
+                order: 'default',
+                decoration: 'square',
+            }),
+            framework
+            )],
+            framework, {
+                order: 'default',
+                decoration: 'circle',
+            })
+        }}
     </li>
 </ul>
+<hr><br>

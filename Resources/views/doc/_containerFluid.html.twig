@@ -1,54 +1,84 @@
-<h3><b>Container Fluid</b></h3>
-<h4>+ Use</h4>
+<h3><b><i>Container Fluid</i></b></h3>
+<h4><b>- Global use :</b></h4>
 <ul>
     <li>
-        <b>with twig extension:</b>
+        <b>Twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_containerFluid($content, $framework, $classContFluid = 'contFluid', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_containerFluid(
+    $content,
+    $framework, {
+        classContFluid: 'YOUR_CLASSCONTFLUID',
+    })
+}}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        <b>with twig embed:</b>
+        <b>Twig embed:</b>
         {% spaceless %}
             <pre>
-                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_button.html.twig' with {content: content, framework: framework, ... } only %}
-    {% block content %}
-        {# content #}
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_containerFluid.html.twig' with {
+    content: 'YOUR_CONTENT',
+    framework: 'YOUR_FRAMEWORK',
+    classContFluid: 'YOUR_CLASSCONTFLUID',
+ } only %}
+    {% block contentContainerFluid %}
+        {# contentContainerFluid #}
     {% endblock %}
 {% endembed %}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
 </ul>
-<br><h4>+ parameters:</h4>
-<ul>
-    <li>
-        <b>content</b>: content of your container Fluid.
-    </li>
-    <li>
-        <b>framework</b>: framework you are using.
-        <ul>
-            <li>bootstrap</li>
-            <li>foundation</li>
-        </ul>
-    </li>
-    <li>
-        <b>classContFluid</b>: classContFluid of your container Fluid.
-        <ul>
-            <li>contFluid</li>
-        </ul>
-</ul>
-<h4>+ example</h4>
-<ul style="list-style-type: none">
-    <li>
-        {{ almanach_containerFluid( 'My Fluid container', framework) }}
 
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_containerFluid.html.twig' with {framework: framework, classContFluid: 'contFluid'} only %}
-            {% block contentContainerFluid %}
-                My Fluid container
-            {% endblock %}
-        {% endembed %}
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Content :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your Container Fluid</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>classContFluid :</b></td>
+        <td class="flat-table-td">contFluid</td>
+        <td class="flat-table-td"><i>Class of your Container Fluid</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
+    <li>
+        {% spaceless %}
+            <pre>
+                {{- "{{ almanach_containerFluid(
+    'Your Fluid Container',
+    framework, {
+        classContFluid: 'contFluid',
+    })
+}}"|e -}}
+            </pre>
+        {% endspaceless %}
+    </li>
+    <li>
+        {{ almanach_containerFluid(
+            'Your Fluid Container',
+            framework, {
+                classContFluid: 'contFluid',
+            })
+        }}
     </li>
 </ul>
+<hr><br>

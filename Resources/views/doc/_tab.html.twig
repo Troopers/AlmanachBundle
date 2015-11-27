@@ -1,6 +1,6 @@
-<h3><b>Tab</b></h3>
-<h4>- Use</h4>
-<h4>The tab is composed of the global tab + the tab item, so we will see the usage for the tab and the tab item, then the </h4>
+<h3><b><i>Tab</i></b></h3>
+<h4><b>- Global use :</b></h4>
+<h4>The tab is composed of the tabTitle + tabContent :</h4>
 <ul>
     <li>
         <b>with twig extension:</b>
@@ -23,7 +23,7 @@
         {% endspaceless %}
     </li>
 </ul>
-<br><h4>- parameters:</h4>
+<h4><b>- Table of parameters :</b></h4>
 <ul>
     <li>
         <b>content</b>: content of your tab.
@@ -53,52 +53,104 @@
     </li>
 </ul>
 
-<h4>- example</h4>
-<ul style="list-style-type: none">
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>ContentList :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your List</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>ContentListItem :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your List Item</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Order :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>ordered</i></li>
+                <li><i>unordered</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Order of your List</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Decoration :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>inline</i></li>
+                <li><i>unstyled</i></li>
+                <li><i>disc</i></li>
+                <li><i>square</i></li>
+                <li><i>circle</i></li>
+                <li><i>nothing</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Decoration of your List</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
     <li>
-        {{ almanach_tab([
-            almanach_tabTitle(
-                'Title1',
-                framework, {
-                    state: 'active',
-                    link: 'test1'
-                }),
-            almanach_tabTitle(
-                'Title2',
-                framework, {
-                    link: 'test2'
-                }),
-            almanach_tabTitle(
-                'Title3',
-                framework, {
-                    link: 'test3'
-                 })
-            ],
-            [almanach_tabContent(
-                'Content1',
-                framework, {
-                    state: 'active',
-                    attr: {
-                        id: 'test1'
-                    }
-                }),
-            almanach_tabContent(
-                'Content2',
-                framework, {
-                    attr: {
-                        id: 'test2'
-                    }
-                }),
-            almanach_tabContent(
-                'Content3',
-                framework, {
-                    attr: {
-                        id: 'test3'
-                    }
-                })
-            ],
-            framework)
-        }}
+        {#{{ almanach_tab([#}
+            {#almanach_tabTitle(#}
+                {#'Title1',#}
+                {#framework, {#}
+                    {#state: 'active',#}
+                    {#link: 'test1'#}
+                {#}),#}
+            {#almanach_tabTitle(#}
+                {#'Title2',#}
+                {#framework, {#}
+                    {#link: 'test2'#}
+                {#}),#}
+            {#almanach_tabTitle(#}
+                {#'Title3',#}
+                {#framework, {#}
+                    {#link: 'test3'#}
+                 {#})#}
+            {#],#}
+            {#[almanach_tabContent(#}
+                {#'Content1',#}
+                {#framework, {#}
+                    {#state: 'active',#}
+                    {#attr: {#}
+                        {#id: 'test1'#}
+                    {#}#}
+                {#}),#}
+            {#almanach_tabContent(#}
+                {#'Content2',#}
+                {#framework, {#}
+                    {#attr: {#}
+                        {#id: 'test2'#}
+                    {#}#}
+                {#}),#}
+            {#almanach_tabContent(#}
+                {#'Content3',#}
+                {#framework, {#}
+                    {#attr: {#}
+                        {#id: 'test3'#}
+                    {#}#}
+                {#})#}
+            {#],#}
+            {#framework)#}
+        {#}}#}
     </li>
     <li>
         {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tab.html.twig' with {framework: framework, tabId: 'tab1'} only %}
@@ -138,42 +190,7 @@
             {% endblock %}
         {% endembed %}
     </li>
-    {#<li>#}
-        {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tab.html.twig' with {framework: framework, tabId: 'tab2'} only %}#}
-            {#{% block tabTitles %}#}
-                {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 1', framework: framework, control: 'test1', class: ['active']} only %}#}
-                    {#&#123;&#35;{% block content %}&#35;&#125;#}
-                        {#&#123;&#35;TITRE TEST 1&#35;&#125;#}
-                    {#&#123;&#35;{% endblock %}&#35;&#125;#}
-                {#{% endembed %}1#}
-                {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 2', framework: framework, control: 'test2'} only %}#}
-                    {#&#123;&#35;{% block content %}&#35;&#125;#}
-                        {#&#123;&#35;TITRE TEST 2&#35;&#125;#}
-                    {#&#123;&#35;{% endblock %}&#35;&#125;#}
-                {#{% endembed %}#}
-                {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabTitle.html.twig' with {content: 'TITRE 3', framework: framework, control: 'test3'} only %}#}
-                    {#&#123;&#35;{% block content %}&#35;&#125;#}
-                        {#&#123;&#35;TITRE TEST 3&#35;&#125;#}
-                    {#&#123;&#35;{% endblock %}&#35;&#125;#}
-                {#{% endembed %}#}
-            {#{% endblock %}#}
-            {#{% block tabContent %}#}
-                {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 1', framework: framework, id: 'test1', class: ['active']} only %}#}
-                    {#&#123;&#35;{% block content %}&#35;&#125;#}
-                        {#&#123;&#35;CONTENU TEST 1&#35;&#125;#}
-                    {#&#123;&#35;{% endblock %}&#35;&#125;#}
-                {#{% endembed %}#}
-                {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 2', framework: framework, id: 'test2'} only %}#}
-                    {#&#123;&#35;{% block content %}&#35;&#125;#}
-                        {#&#123;&#35;CONTENU TEST 2&#35;&#125;#}
-                    {#&#123;&#35;{% endblock %}&#35;&#125;#}
-                {#{% endembed %}#}
-                {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_tabContent.html.twig' with {content: 'Content 3', framework: framework, id: 'test3'} only %}#}
-                    {#&#123;&#35;{% block content %}&#35;&#125;#}
-                        {#&#123;&#35;CONTENU TEST A3&#35;&#125;#}
-                    {#&#123;&#35;{% endblock %}&#35;&#125;#}
-                {#{% endembed %}#}
-            {#{% endblock %}#}
-        {#{% endembed %}#}
-    {#</li>#}
 </ul>
+<hr><br>
+
+

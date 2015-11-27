@@ -1,106 +1,141 @@
-<h3><b>Split dropdown buttons</b></h3>
-<h4>- Use</h4>
+<h3><b><i>Split dropdown buttons</i></b></h3>
+<h4><b>- Global use :</b></h4>
 <ul>
     <li>
-        <b>with twig extension:</b>
+        <b>Twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_splitDropdownButton($content, $framework, $theme = 'default', $size = 'default', $state = 'default', $border = 'default', $class_component = [], $attr_component = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_splitDropdownButton(
+    $content,
+    $framework, {
+        theme: 'YOUR_THEME',
+        size: 'YOUR_SIZE',
+        state: 'YOUR_STATE',
+        border: 'YOUR_BORDER',
+    })
+}}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        <b>with twig embed:</b>
+        <b>Twig embed:</b>
         {% spaceless %}
             <pre>
-                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_splitDropdownButton.html.twig' with {content: content, framework: framework, ... } only %}
-    {% block content %}
-        {# content #}
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_splitDropdownButton.html.twig' with {
+    content: 'YOUR_CONTENT',
+    framework: 'YOUR_FRAMEWORK',
+    theme: 'YOUR_THEME',
+    size: 'YOUR_SIZE',
+    state: 'YOUR_STATE',
+    border: 'YOUR_BORDER',
+ } only %}
+    {% block contentSplitDropdownButton %}
+        {# contentSplitDropdownButton #}
     {% endblock %}
 {% endembed %}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
 </ul>
-<br><h4>- parameters:</h4>
-<ul>
+
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Content :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your Split Dropdown Button</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Theme :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>error</i></li>
+                <li><i>information</i></li>
+                <li><i>link</i></li>
+                <li><i>primary</i></li>
+                <li><i>secondary</i></li>
+                <li><i>success</i></li>
+                <li><i>warning</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Theme of your Split Dropdown Button</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Size :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>extra_small</i></li>
+                <li><i>small</i></li>
+                <li><i>medium</i></li>
+                <li><i>large</i></li>
+                <li><i>expanded</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Size of your Split Dropdown Button</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>State :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>active</i></li>
+                <li><i>disabled</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>State of your Split Dropdown Button</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Border :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>round</i></li>
+                <li><i>radius</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Border of your Split Dropdown Button</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
     <li>
-        <b>content</b>: content of your split dropdown button.
+        {% spaceless %}
+            <pre>
+                {{- "{{ alamanach_splitDropdownButton(
+    'SplitDropdownButton',
+    $framework, {
+        theme: 'error',
+        size: 'large',
+        border: 'radius',
+    })
+}}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
-        <b>framework</b>: framework you are using.
-        <ul>
-            <li>bootstrap</li>
-            <li>foundation</li>
-        </ul>
-    </li>
-    <li>
-        <b>theme</b>: theme of your split dropdown button.
-        <ul>
-            <li>default</li>
-            <li>error</li>
-            <li>information</li>
-            <li>link</li>
-            <li>primary</li>
-            <li>secondary</li>
-            <li>success</li>
-            <li>warning</li>
-        </ul>
-    </li>
-    <b>size</b>: size of your split dropdown button.
-    <ul>
-        <li>default</li>
-        <li>extra_small</li>
-        <li>small</li>
-        <li>medium</li>
-        <li>large</li>
-        <li>expanded</li>
-    </ul>
-    </li>
-    <b>state</b>: state of your split dropdown button.
-    <ul>
-        <li>default</li>
-        <li>active</li>
-        <li>disabled</li>
-    </ul>
-    </li>
-    <li>
-        <b>border</b>: border of your split dropdown button.
-        <ul>
-            <li>default</li>
-            <li>round</li>
-            <li>radius</li>
-        </ul>
+        {{ almanach_splitDropdownButton(
+            'SplitDropdownButton',
+            framework, {
+                theme: 'error',
+                size: 'large',
+                border: 'radius',
+            })
+        }}
     </li>
 </ul>
-<h4>- example</h4>
-<ul style="list-style-type: none">
-    <li>
-        {{ almanach_splitDropdownButton( 'SplitDropdownButton', framework) }}
-
-        {{ almanach_splitDropdownButton( 'SplitDropdownButton', framework, {
-            theme: 'error',
-            size: 'small',
-            border: 'radius',
-        }) }}
-
-        {{ almanach_splitDropdownButton( 'SplitDropdownButton', framework, {
-            theme: 'error',
-            size: 'small',
-            state: 'active',
-            border: 'radius',
-        }) }}
-
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_splitDropdownButton.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'default', border: 'round'} only %}
-            {% block contentSplitDropdownButton %}
-                SplitDropdownButton
-            {% endblock %}
-        {% endembed %}
-
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_splitDropdownButton.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'disabled', border: 'round'} only %}
-            {% block contentSplitDropdownButton %}
-                SplitDropdownButton
-            {% endblock %}
-        {% endembed %}
-    </li>
-</ul>
+<hr><br>

@@ -1,86 +1,169 @@
-<h3><b>Grid</b></h3>
-<h4>- Use</h4>
-<h4>The grid is composed of the global grid + the grid item</h4>
+<h3><b><i>Grid</i></b></h3>
+<h4><b>- Global use :</b></h4>
+<h4>The grid is composed of the global grid + the grid item :</h4>
 <ul>
     <li>
-        <b>with twig extension:</b>
+        <b>Twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_grid($content, $framework, $class_component = [], $attr_component = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ almanach_grid([
+    almanach_gridItem(
+        $content,
+        framework, {
+            classGridItem: {
+                xs: 'YOUR_CLASS_GRID_ITEM', (optional)
+                sm: 'YOUR_CLASS_GRID_ITEM', (optional)
+                md: 'YOUR_CLASS_GRID_ITEM', (optional)
+                lg: 'YOUR_CLASS_GRID_ITEM', (optional)
+            }
+        }),
+    almanach_gridItem(
+        $content,
+        framework, {
+            classGridItem: {
+                xs: 'YOUR_CLASS_GRID_ITEM', (optional)
+                sm: 'YOUR_CLASS_GRID_ITEM', (optional)
+                md: 'YOUR_CLASS_GRID_ITEM', (optional)
+                lg: 'YOUR_CLASS_GRID_ITEM', (optional)
+            }
+        })],
+    framework
+) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        <b>with twig embed:</b>
+        <b>Twig embed:</b>
         {% spaceless %}
             <pre>
-                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_grid.html.twig' with {content: content, framework: framework, ... } only %}
-    {% block content %}
-        {# content #}
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_grid.html.twig' with {
+    content: 'YOUR_CONTENT_GRID,
+    framework: 'YOUR_FRAMEWORK',
+} only %}
+    {% block contentGrid %}
+        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_gridItem.html.twig' with {
+            content: YOUR_CONTENT_GRID_ITEM,
+            framework: YOUR_FRAMEWORK,
+            classGridItem: {
+                xs: 'YOUR_CLASS_GRID_ITEM',
+                sm: 'YOUR_CLASS_GRID_ITEM',
+                md: 'YOUR_CLASS_GRID_ITEM',
+                lg: 'YOUR_CLASS_GRID_ITEM'
+             }
+        } only %}
+            {% block contentGridItem %}
+                Your Grid
+            {% endblock %}
+        {% endembed %}
     {% endblock %}
 {% endembed %}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
 </ul>
-<br><h4>- parameters:</h4>
-<ul>
-    <li>
-        <b>content</b>: content of your grid.
-    </li>
-    <li>
-        <b>framework</b>: framework you are using.
-        <ul>
-            <li>bootstrap</li>
-            <li>foundation</li>
-        </ul>
-    </li>
-    <li>
-        <b>classGridItem</b>: classGridItem of your grid item.
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </li>
-</ul>
-<h4>- example</h4>
 
-<ul style="list-style-type: none">
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>ContentGrid :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your Grid</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>ContentGridItem :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your grid Item</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>ClassGridItem :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>---</i></li>
+                <li><i>xs: 1, xs: 2, xs: 3, xs: 4</i></li>
+                <li><i>xs: 5, xs: 6, xs: 7, xs: 8</i></li>
+                <li><i>xs: 9, xs: 10, xs: 11, xs: 12</i></li>
+                <li><i>---</i></li>
+                <li><i>sm: 1, sm: 2, sm: 3, sm: 4</i></li>
+                <li><i>sm: 5, sm: 6, sm: 7, sm: 8</i></li>
+                <li><i>sm: 9, sm: 10, sm: 11, sm: 12</i></li>
+                <li><i>---</i></li>
+                <li><i>md: 1, md: 2, md: 3, md: 4</i></li>
+                <li><i>md: 5, md: 6, md: 7, md: 8</i></li>
+                <li><i>md: 9, md: 10, md: 11, md: 12</i></li>
+                <li><i>---</i></li>
+                <li><i>lg: 1, lg: 2, lg: 3, lg: 4</i></li>
+                <li><i>lg: 5, lg: 6, lg: 7, lg: 8</i></li>
+                <li><i>lg: 9, lg: 10, lg: 11, lg: 12</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Class of your Grid Item</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
     <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_grid.html.twig' with {framework: framework} only %}
-            {% block contentGrid %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_gridItem.html.twig' with {framework: framework, classGridItem: 'lg2'} only %}
-                    {% block contentGridItem %}
-                        Div 1
-                    {% endblock %}
-                {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_gridItem.html.twig' with {framework: framework, classGridItem: 'lg2'} only %}
-                    {% block contentGridItem %}
-                        Div 2
-                    {% endblock %}
-                {% endembed %}
-                {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_gridItem.html.twig' with {framework: framework, classGridItem: 'lg2'} only %}
-                    {% block contentGridItem %}
-                        Div 3
-                    {% endblock %}
-                {% endembed %}
-            {% endblock %}
-        {% endembed %}
+        {% spaceless %}
+            <pre>
+                {{- "{{ almanach_grid([
+    almanach_gridItem('Div Grid Item 1', framework, {
+        classGridItem: {
+            sm: 4,
+            lg: 2
+        }
+    }),
+    almanach_gridItem('Div Grid Item 2', framework, {
+        classGridItem: {
+            sm: 6,
+            lg: 4
+        }
+    }),
+    almanach_gridItem('Div Grid Item 3', framework, {
+        classGridItem: {
+            sm: 4,
+            lg: 4
+        }
+    })],
+    framework
+) }}"|e -}}
+            </pre>
+        {% endspaceless %}
     </li>
     <li>
         {{ almanach_grid([
-            almanach_gridItem('Div 1', framework, {
-                classGridItem:'sm4'
+            almanach_gridItem('Div Grid Item 1', framework, {
+                classGridItem: {
+                    sm: 2,
+                    lg: 4
+                }
             }),
-            almanach_gridItem('Div 1', framework, {
-                classGridItem:'sm4'
+            almanach_gridItem('Div Grid Item 2', framework, {
+                classGridItem: {
+                    sm: 6,
+                    lg: 4
+                }
             }),
-            almanach_gridItem('Div 1', framework, {
-                classGridItem: 'sm4'
-            }),
-        ],
-        framework
+            almanach_gridItem('Div Grid Item 3', framework, {
+                classGridItem: {
+                    sm: 4,
+                    lg: 4
+                }
+            })],
+            framework
         ) }}
     </li>
 </ul>
+<hr><br>

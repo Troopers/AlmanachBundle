@@ -1,86 +1,92 @@
-<h3><b>Transform Text</b></h3>
-<h4>- Use</h4>
+<h3><b><i>Transform Text</i></b></h3>
+<h4><b>- Global use :</b></h4>
 <ul>
     <li>
-        <b>with twig extension:</b>
+        <b>Twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_transformText($content, $framework, $transform = 'default', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_transformText(
+    $content,
+    $framework, {
+        transform: 'YOUR_TRANSFORM',
+    })
+}}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        <b>with twig embed:</b>
+        <b>Twig embed:</b>
         {% spaceless %}
             <pre>
-                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_transformText.html.twig' with {content: content, framework: framework, ... } only %}
-    {% block content %}
-        {# content #}
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_transformText.html.twig' with {
+    content: 'YOUR_CONTENT',
+    framework: 'YOUR_FRAMEWORK',
+    transform: 'YOUR_TRANSFORM',
+ } only %}
+    {% block contentTransformText %}
+        {# contentTransformText #}
     {% endblock %}
 {% endembed %}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
 </ul>
-<br><h4>- parameters:</h4>
-<ul>
-    <li>
-        <b>content</b>: content of your title.
-    </li>
-    <li>
-        <b>framework</b>: framework you are using.
-        <ul>
-            <li>bootstrap</li>
-            <li>foundation</li>
-        </ul>
-    </li>
-    <li>
-        <b>transform</b>: transform of your text.
-        <ul>
-            <li>default</li>
-            <li>lower</li>
-            <li>upper</li>
-            <li>capital</li>
-        </ul>
-    </li>
-</ul>
-<h4>- example</h4>
-<ul style="list-style-type: none">
+
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Content :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your Transform Text</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Transform :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>lower</i></li>
+                <li><i>upper</i></li>
+                <li><i>capital</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Transform of your Transform Text</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
     <li>
         {% spaceless %}
             <pre>
-                {{- "{{ almanach_transformText('Your 'uppercase' text !', framework, 'upper') }}"|e -}}
+                {{- "{{ almanach_transformText(
+    'Your 'uppercase' transform text !',
+    framework, {
+        transform: 'upper',
+    })
+}}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        {{ almanach_transformText('Your "uppercase" text !', framework,
-            {
+        {{ almanach_transformText(
+            'Your "uppercase" transform text !',
+            framework, {
                 transform: 'upper',
-            },
-            ['coucou', 'zizi'],
-            {
-                id: 'test'
-            }
-        )}}
-    </li>
-    <hr>
-    <li>
-        {% spaceless %}
-            <pre>
-                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_transformText.html.twig' with {framework: framework, transform: 'capital' } only %}
-    {% block content %}
-        Your 'capitalize' text !
-    {% endblock %}
-{% endembed %}"|e -}}
-            </pre>
-        {% endspaceless %}
-    </li>
-    <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_transformText.html.twig' with {framework: framework, transform: 'capital' } only %}
-            {% block contentTransformText %}
-                Your "capitalize" text !
-            {% endblock %}
-        {% endembed %}
+            })
+        }}
     </li>
 </ul>
+<hr><br>
+

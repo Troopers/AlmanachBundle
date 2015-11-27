@@ -1,101 +1,110 @@
-<h3><b>Labels</b></h3>
-<h4>- Use</h4>
+<h3><b><i>Label</i></b></h3>
+<h4><b>- Global use :</b></h4>
 <ul>
     <li>
-        <b>with twig extension:</b>
+        <b>Twig extension:</b>
         {% spaceless %}
             <pre>
-                {{- "{{ alamanach_label($content, $framework, $theme = 'default', $border = 'default', $class = [], $attr = [], $tag = null, $link = null) }}"|e -}}
+                {{- "{{ alamanach_label(
+    $content,
+    $framework, {
+        theme: 'YOUR_THEME',
+        border: 'YOUR_BORDER',
+    })
+}}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        <b>with twig embed:</b>
+        <b>Twig embed:</b>
         {% spaceless %}
             <pre>
-                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {content: content, framework: framework, ... } only %}
-    {% block content %}
-        {# content #}
+                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {
+    content: 'YOUR_CONTENT',
+    framework: 'YOUR_FRAMEWORK',
+    theme: 'YOUR_THEME',
+    border: 'YOUR_BORDER',
+ } only %}
+    {% block contentLabel %}
+        {# contentLabel #}
     {% endblock %}
 {% endembed %}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
 </ul>
-<br><h4>- parameters:</h4>
-<ul>
-    <li>
-        <b>content</b>: content of your label.
-    </li>
-    <li>
-        <b>framework</b>: framework you are using.
-        <ul>
-            <li>bootstrap</li>
-            <li>foundation</li>
-        </ul>
-    </li>
-    <li>
-        <b>theme</b>: theme of your label.
-        <ul>
-            <li>default</li>
-            <li>error</li>
-            <li>information</li>
-            <li>link</li>
-            <li>primary</li>
-            <li>secondary</li>
-            <li>success</li>
-            <li>warning</li>
-        </ul>
-    </li>
-    <li>
-        <b>border</b>: border of your label.
-        <ul>
-            <li>default</li>
-            <li>round</li>
-            <li>radius</li>
-        </ul>
-    </li>
-</ul>
-<h4>- example</h4>
-<ul style="list-style-type: none">
+
+<h4><b>- Table of parameters :</b></h4>
+<table class="flat-table">
+    <tbody>
+    <tr>
+        <th class="flat-table-th"><b>PARAMETERS</b></th>
+        <th class="flat-table-th"><b>POTENTIAL</b></th>
+        <th class="flat-table-th"><b>DESCRIPTION</b></th>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Content :</b></td>
+        <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
+        <td class="flat-table-td"><i>Content of your Label</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Framework :</b></td>
+        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
+        <td class="flat-table-td"><i>The framework that you want to use</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Theme :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>error</i></li>
+                <li><i>information</i></li>
+                <li><i>link</i></li>
+                <li><i>primary</i></li>
+                <li><i>secondary</i></li>
+                <li><i>success</i></li>
+                <li><i>warning</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Theme of your Label</i></td>
+    </tr>
+    <tr>
+        <td class="flat-table-td"><b>Border :</b></td>
+        <td class="flat-table-td">
+            <ul style="list-style-type: none; padding: 0;">
+                <li><i>default</i></li>
+                <li><i>round</i></li>
+                <li><i>radius</i></li>
+            </ul>
+        </td>
+        <td class="flat-table-td"><i>Border of your Label</i></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4><b>- Rendering example :</b></h4>
+<ul style="list-style-type: none; padding: 0;">
     <li>
         {% spaceless %}
             <pre>
-                {{- "{{ almanach_label('Your 'error' and 'radius' label !', framework, 'error', 'default') }}"|e -}}
+                {{- "{{ alamanach_label(
+    'Your 'error' and 'radius' label !',
+    $framework, {
+        theme: 'error',
+        border: 'radius',
+    })
+}}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        {{ almanach_label('Your "error" and "radius" label !', framework, {
-            theme: 'error',
-            border: 'default',
-        }) }}
-    </li>
-    <hr>
-    <li>
-        {% spaceless %}
-            <pre>
-                {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {framework: framework, theme: 'success', border: 'radius' } only %}
-    {% block content %}
-        Your 'success' and 'radius' label !
-    {% endblock %}
-{% endembed %}"|e -}}
-            </pre>
-        {% endspaceless %}
-    </li>
-    <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {framework: framework, theme: 'success', border: 'radius' } only %}
-            {% block contentLabel %}
-                Your "success" and "radius" label !
-            {% endblock %}
-        {% endembed %}
-    </li>
-    <hr>
-    <li>
-        {% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_label.html.twig' with {framework: framework, theme: 'warning', border: 'round' } only %}
-            {% block contentLabel %}
-                Your "warning" and "round" label !
-            {% endblock %}
-        {% endembed %}
+        {{ almanach_label(
+            "Your label with 'error' theme and 'default' border !" ,
+            framework, {
+                theme: 'error',
+                border: 'radius',
+            })
+        }}
     </li>
 </ul>
+<hr><br>
