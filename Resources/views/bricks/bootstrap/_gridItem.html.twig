@@ -3,9 +3,11 @@
 {% set attr = attr is defined ? attr : {} %}
 {% set tag = tag|default('div') %}
 
-{% set class = class|merge([
-    attribute(almanach.gridItem.classGridItem, classGridItem)
-]) %}
+{% for key, value in classGridItem %}
+    {% set class = class|merge([
+        attribute(almanach.gridItem.classGridItem, key ~ value)
+    ]) %}
+{% endfor %}
 
 <{{ tag }}
     {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
