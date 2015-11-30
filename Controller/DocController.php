@@ -2,9 +2,9 @@
 
 namespace AppVentus\AlmanachBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DocController extends Controller
 {
@@ -12,27 +12,28 @@ class DocController extends Controller
      * @Route("/{framework}")
      * @Template()
      */
-    public function indexAction($framework) {
-        $almanach            = $this->getParameter('almanach_' . $framework);
-        $container           = ($almanach['container']) ? : null;
-        $containerFluid      = ($almanach['containerFluid']) ? : null;
-        $gridItem            = ($almanach['gridItem']) ? : null;
-        $label               = ($almanach['label']) ? : null;
-        $alert               = ($almanach['alert']) ? : null;
-        $heading             = ($almanach['heading']) ? : null;
-        $inlineText          = ($almanach['inlineText']) ? : null;
-        $transformText       = ($almanach['transformText']) ? : null;
-        $alignmentText       = ($almanach['alignmentText']) ? : null;
-        $list                = ($almanach['list']) ? : null;
-        $tab                 = ($almanach['tab']) ? : null;
-        $tabTitle            = ($almanach['tabTitle']) ? : null;
-        $tabContent          = ($almanach['tabContent']) ? : null;
-        $button              = ($almanach['button']) ? : null;
-        $dropdownButton      = ($almanach['dropdownButton']) ? : null;
-        $splitDropdownButton = ($almanach['splitDropdownButton']) ? : null;
-        $buttonGroup         = ($almanach['buttonGroup']) ? : null;
+    public function indexAction($framework)
+    {
+        $almanach = $this->getParameter('almanach_'.$framework);
+        $container = ($almanach['container']) ?: null;
+        $containerFluid = ($almanach['containerFluid']) ?: null;
+        $gridItem = ($almanach['gridItem']) ?: null;
+        $label = ($almanach['label']) ?: null;
+        $alert = ($almanach['alert']) ?: null;
+        $heading = ($almanach['heading']) ?: null;
+        $inlineText = ($almanach['inlineText']) ?: null;
+        $transformText = ($almanach['transformText']) ?: null;
+        $alignmentText = ($almanach['alignmentText']) ?: null;
+        $list = ($almanach['list']) ?: null;
+        $tab = ($almanach['tab']) ?: null;
+        $tabTitle = ($almanach['tabTitle']) ?: null;
+        $tabContent = ($almanach['tabContent']) ?: null;
+        $button = ($almanach['button']) ?: null;
+        $dropdownButton = ($almanach['dropdownButton']) ?: null;
+        $splitDropdownButton = ($almanach['splitDropdownButton']) ?: null;
+        $buttonGroup = ($almanach['buttonGroup']) ?: null;
 
-        return array(
+        return [
             'framework'                  => $framework,
             'config_container'           => $container,
             'config_containerFluid'      => $containerFluid,
@@ -51,6 +52,6 @@ class DocController extends Controller
             'config_dropdownButton'      => $dropdownButton,
             'config_splitDropdownButton' => $splitDropdownButton,
             'config_buttonGroup'         => $buttonGroup,
-        );
+        ];
     }
 }
