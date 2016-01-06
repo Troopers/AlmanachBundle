@@ -1,0 +1,34 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {% for asset_url in [
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css"
+    ] %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endfor %}
+
+{% endblock stylesheets %}
+
+
+{% block body %}
+    {% for asset_url in [
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation/foundation.dropdown.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation/foundation.alert.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'
+    ] %}
+        <script src="{{ asset_url }}"></script>
+    {% endfor %}
+
+    {% block content %}{% endblock %}
+
+    <script>
+        $(document).foundation();
+
+        $(document).on('close.fndtn.alert', function(event) {
+            console.info('An alert box has been closed!');
+        });
+    </script>
+{% endblock %}

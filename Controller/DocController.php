@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DocController extends Controller
 {
     /**
-     * @Route("/{framework}")
+     * @Route("/{framework}", name="almanach_doc_index")
      * @Template()
      */
     public function indexAction($framework) {

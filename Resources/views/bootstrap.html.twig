@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {% for asset_url in [
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css'
+    ] %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endfor %}
+
+{% endblock stylesheets %}
+
+{% block body %}
+    {% block content %}{% endblock %}
+    {% for asset_url in [
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'
+    ] %}
+        <script src="{{ asset_url }}"></script>
+    {% endfor %}
+{% endblock %}
