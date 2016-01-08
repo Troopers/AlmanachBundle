@@ -8,7 +8,6 @@ services:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
     appventus_almanach_display:
         class: AppVentus\AlmanachBundle\Twig\AlmanachDisplayExtension
-        public: false
         arguments:
             - %almanach%
             - @twig
