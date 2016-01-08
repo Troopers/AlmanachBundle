@@ -12,5 +12,6 @@ services:
         arguments:
             - %almanach%
             - @twig
+            - %almanach.framework%
         tags:
             - { name: twig.extension }

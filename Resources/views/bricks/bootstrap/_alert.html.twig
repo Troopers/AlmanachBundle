@@ -15,28 +15,30 @@
 <div {% include 'AlmanachBundle:bricks/global:attributes.html.twig' with {
         class: classComponent,
         attributes: attr
-    } only %}
->
+    } only %}>
+
     {{ almanach_button(
         almanach_inlineText(
             '&times;',
-            framework, {
+            {
                 inline: 'default',
                 attr: {
                     'aria-hidden': 'true'
                 }
-            }),
-        framework, {
-        class: [
-            'close'
-        ],
-        attr: {
-            type: 'button',
-            'data-dismiss': 'alert',
-            'aria-label': 'Close',
-        },
-        tag: 'button',
-    }) }}
+            }
+        ),
+        {
+            class: [
+                'close'
+            ],
+            attr: {
+                type: 'button',
+                'data-dismiss': 'alert',
+                'aria-label': 'Close',
+            },
+            tag: 'button',
+        })
+    }}
     {% block contentAlert %}
         {{ contentAlert|raw }}
     {% endblock %}

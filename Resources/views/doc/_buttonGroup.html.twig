@@ -7,7 +7,7 @@
             <pre>
                 {{- "{{ alamanach_splitDropdownButton(
     $content,
-    $framework, {
+    {
         theme: 'YOUR_THEME',
         size: 'YOUR_SIZE',
         state: 'YOUR_STATE',
@@ -24,7 +24,6 @@
             <pre>
                 {{- "{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_buttonGroup.html.twig' with {
     content: 'YOUR_CONTENT',
-    framework: 'YOUR_FRAMEWORK',
     theme: 'YOUR_THEME',
     size: 'YOUR_SIZE',
     state: 'YOUR_STATE',
@@ -52,11 +51,6 @@
         <td class="flat-table-td"><b>Content :</b></td>
         <td class="flat-table-td"><i>"String" or Another twig extension</i></td>
         <td class="flat-table-td"><i>Content of your Button Group</i></td>
-    </tr>
-    <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
     </tr>
     <tr>
         <td class="flat-table-td"><b>Theme :</b></td>
@@ -132,7 +126,7 @@
                 {{- "{{ almanach_buttonGroup([
     almanach_button(
         'Button',
-        framework, {
+        {
             theme: 'error',
             attr: {
                 type: 'button'
@@ -140,7 +134,7 @@
         }),
     almanach_button(
         'Button',
-        framework, {
+        {
             theme: 'error',
             attr: {
                 type: 'button'
@@ -148,14 +142,14 @@
         }),
     almanach_button(
         'Button',
-        framework, {
+        {
             theme: 'error',
             attr: {
                 type: 'button'
             }
         }),
     ],
-    framework, {
+    {
         size: 'large',
         class: [
             'btn-group'
@@ -169,7 +163,7 @@
         {{ almanach_buttonGroup([
             almanach_button(
                 'Button',
-                framework, {
+                {
                     theme: 'error',
                     attr: {
                         type: 'button'
@@ -177,7 +171,7 @@
                 }),
             almanach_button(
                 'Button',
-                framework, {
+                {
                     theme: 'error',
                     attr: {
                         type: 'button'
@@ -185,25 +179,20 @@
                 }),
             almanach_button(
                 'Button',
-                framework, {
+                {
                     theme: 'error',
                     attr: {
                         type: 'button'
                     }
                 }),
             ],
-            framework, {
+            {
                 size: 'large',
                 class: [
                     'btn-group'
                 ]
             })
         }}
-        {#{% embed 'AlmanachBundle:bricks/' ~ framework ~ ':_buttonGroup.html.twig' with {framework: framework, theme: 'success', size: 'large', state: 'disabled', border: 'round', group: 'stack'} only %}#}
-            {#{% block contentButtonGroup %}#}
-                {#Button#}
-            {#{% endblock %}#}
-        {#{% endembed %}#}
     </li>
 </ul>
 <hr><br>

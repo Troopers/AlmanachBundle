@@ -7,7 +7,7 @@
             <pre>
                 {{- "{{ alamanach_transformText(
     $content,
-    $framework, {
+    {
         transform: 'YOUR_TRANSFORM',
     })
 }}"|e -}}
@@ -46,11 +46,6 @@
         <td class="flat-table-td"><i>Content of your Transform Text</i></td>
     </tr>
     <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
-    </tr>
-    <tr>
         <td class="flat-table-td"><b>Transform :</b></td>
         <td class="flat-table-td">
             <ul style="list-style-type: none; padding: 0;">
@@ -72,7 +67,7 @@
             <pre>
                 {{- "{{ almanach_transformText(
     'Your 'uppercase' transform text !',
-    framework, {
+    {
         transform: 'upper',
     })
 }}"|e -}}
@@ -82,7 +77,7 @@
     <li>
         {{ almanach_transformText(
             'Your "uppercase" transform text !',
-            framework, {
+            {
                 transform: 'upper',
             })
         }}

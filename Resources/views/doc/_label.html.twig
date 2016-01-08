@@ -7,7 +7,7 @@
             <pre>
                 {{- "{{ alamanach_label(
     $content,
-    $framework, {
+    {
         theme: 'YOUR_THEME',
         border: 'YOUR_BORDER',
     })
@@ -48,11 +48,6 @@
         <td class="flat-table-td"><i>Content of your Label</i></td>
     </tr>
     <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
-    </tr>
-    <tr>
         <td class="flat-table-td"><b>Theme :</b></td>
         <td class="flat-table-td">
             <ul style="list-style-type: none; padding: 0;">
@@ -89,7 +84,7 @@
             <pre>
                 {{- "{{ alamanach_label(
     'Your 'error' and 'radius' label !',
-    $framework, {
+    {
         theme: 'error',
         border: 'radius',
     })
@@ -100,7 +95,7 @@
     <li>
         {{ almanach_label(
             "Your label with 'error' theme and 'default' border !" ,
-            framework, {
+            {
                 theme: 'error',
                 border: 'radius',
             })

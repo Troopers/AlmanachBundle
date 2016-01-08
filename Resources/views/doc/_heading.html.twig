@@ -7,7 +7,7 @@
             <pre>
                 {{- "{{ alamanach_heading(
     $content,
-    $framework, {
+    {
         size: 'YOUR_SIZE',
     })
 }}"|e -}}
@@ -46,11 +46,6 @@
         <td class="flat-table-td"><i>Content of your Heading</i></td>
     </tr>
     <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
-    </tr>
-    <tr>
         <td class="flat-table-td"><b>Size :</b></td>
         <td class="flat-table-td">
             <ul style="list-style-type: none; padding: 0;">
@@ -75,7 +70,7 @@
             <pre>
                 {{- "{{ almanach_heading(
     'Your 'h2' Heading !',
-    framework, {
+    {
         size: 'h2',
     })
 }}"|e -}}
@@ -85,7 +80,7 @@
     <li>
         {{ almanach_heading(
             'Your "h2" Heading !',
-            framework, {
+            {
                 size: 'h2',
             })
         }}

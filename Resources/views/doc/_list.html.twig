@@ -10,19 +10,16 @@
     almanach_listItem(
         'contentList' ~ almanach_list([
         almanach_listItem(
-            'contentListItem',
-            framework),
+            'contentListItem'),
         almanach_listItem(
-            'contentListItem',
-            framework
+            'contentListItem'
         )],
-    framework, {
+    {
         order: 'YOUR_ORDER_LIST',
         decoration: 'YOUR_DECORATION_LIST_ITEM',
-    }),
-    framework
+    })
     )],
-    framework, {
+    {
         order: 'YOUR_ORDER_LIST',
         decoration: 'YOUR_DECORATION_LIST',
     })
@@ -75,11 +72,6 @@
         <td class="flat-table-td"><i>Content of your List Item</i></td>
     </tr>
     <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
-    </tr>
-    <tr>
         <td class="flat-table-td"><b>Order :</b></td>
         <td class="flat-table-td">
             <ul style="list-style-type: none; padding: 0;">
@@ -114,51 +106,54 @@
         {% spaceless %}
             <pre>
                 {{- "{{ almanach_list([
-    almanach_listItem(
-        'Title of your List' ~ almanach_list([
-        almanach_listItem(
-            'Content of your List Item 1',
-            framework),
-        almanach_listItem(
-            'Content of your List Item 2',
-            framework
-        )],
-    framework, {
-        order: 'default',
-        decoration: 'square',
-    }),
-    framework
-    )],
-    framework, {
-        order: 'default',
-        decoration: 'circle',
-    })
-}}"|e -}}
+                    almanach_listItem(
+                        'Title of your List' ~ almanach_list(
+                        [
+                            almanach_listItem(
+                                'Content of your List Item 1'
+                            ),
+                            almanach_listItem(
+                                'Content of your List Item 2'
+                            )
+                        ],
+                        {
+                            order: 'default',
+                            decoration: 'square',
+                        }
+                    ),
+                    )],
+                    {
+                        order: 'default',
+                        decoration: 'circle',
+                    })
+                }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        {{ almanach_list([
-            almanach_listItem(
-                'Title of your List' ~ almanach_list([
+        {{ almanach_list(
+            [
                 almanach_listItem(
-                    'Content of your List Item 1',
-                    framework),
-                almanach_listItem(
-                    'Content of your List Item 2',
-                    framework
-                )],
-            framework, {
+                    'Title of your List' ~ almanach_list([
+                            almanach_listItem(
+                                'Content of your List Item 1'
+                            ),
+                            almanach_listItem(
+                                'Content of your List Item 2'
+                            )
+                        ],
+                        {
+                            order: 'default',
+                            decoration: 'square'
+                        }
+                    )
+                )
+            ],
+            {
                 order: 'default',
-                decoration: 'square',
-            }),
-            framework
-            )],
-            framework, {
-                order: 'default',
-                decoration: 'circle',
-            })
-        }}
+                decoration: 'circle'
+            }
+        ) }}
     </li>
 </ul>
 <hr><br>

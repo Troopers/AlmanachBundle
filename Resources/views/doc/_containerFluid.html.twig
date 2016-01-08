@@ -7,7 +7,7 @@
             <pre>
                 {{- "{{ alamanach_containerFluid(
     $content,
-    $framework, {
+    {
         classContFluid: 'YOUR_CLASSCONTFLUID',
     })
 }}"|e -}}
@@ -46,11 +46,6 @@
         <td class="flat-table-td"><i>Content of your Container Fluid</i></td>
     </tr>
     <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
-    </tr>
-    <tr>
         <td class="flat-table-td"><b>classContFluid :</b></td>
         <td class="flat-table-td">contFluid</td>
         <td class="flat-table-td"><i>Class of your Container Fluid</i></td>
@@ -65,7 +60,7 @@
             <pre>
                 {{- "{{ almanach_containerFluid(
     'Your Fluid Container',
-    framework, {
+    {
         classContFluid: 'contFluid',
     })
 }}"|e -}}
@@ -75,7 +70,7 @@
     <li>
         {{ almanach_containerFluid(
             'Your Fluid Container',
-            framework, {
+            {
                 classContFluid: 'contFluid',
             })
         }}

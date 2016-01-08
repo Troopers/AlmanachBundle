@@ -28,5 +28,6 @@ class AlmanachExtension extends Extension
         $container->setParameter('almanach', $config);
         $container->setParameter('almanach_bootstrap', $config['bootstrap']);
         $container->setParameter('almanach_foundation', $config['foundation']);
+        $container->setParameter('almanach.framework', $config['framework']);
     }
 }

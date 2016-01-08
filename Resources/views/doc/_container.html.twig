@@ -7,7 +7,7 @@
             <pre>
                 {{- "{{ alamanach_container(
     $content,
-    $framework, {
+    {
         classCont: 'YOUR_CLASSCONT',
     })
 }}"|e -}}
@@ -46,11 +46,6 @@
         <td class="flat-table-td"><i>Content of your Container</i></td>
     </tr>
     <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
-    </tr>
-    <tr>
         <td class="flat-table-td"><b>classCont :</b></td>
         <td class="flat-table-td">cont</td>
         <td class="flat-table-td"><i>Class of your Container</i></td>
@@ -65,7 +60,7 @@
             <pre>
                 {{- "{{ almanach_container(
     'Your Container',
-    framework, {
+    {
         classCont: 'cont',
     })
 }}"|e -}}
@@ -75,7 +70,7 @@
     <li>
         {{ almanach_container(
             'Your Container',
-            framework, {
+            {
                 classCont: 'cont',
             })
         }}

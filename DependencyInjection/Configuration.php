@@ -21,6 +21,11 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('almanach');
+        $rootNode
+            ->children()
+                ->scalarNode('framework')->defaultValue('bootstrap')->end()
+            ->end();
+
         $frameworks = ['bootstrap', 'foundation'];
 
         foreach ($frameworks as $framework) {

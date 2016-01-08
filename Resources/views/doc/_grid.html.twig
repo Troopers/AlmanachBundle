@@ -9,7 +9,7 @@
                 {{- "{{ almanach_grid([
     almanach_gridItem(
         $content,
-        framework, {
+        {
             classGridItem: {
                 xs: 'YOUR_CLASS_GRID_ITEM', (optional)
                 sm: 'YOUR_CLASS_GRID_ITEM', (optional)
@@ -19,16 +19,14 @@
         }),
     almanach_gridItem(
         $content,
-        framework, {
+        {
             classGridItem: {
                 xs: 'YOUR_CLASS_GRID_ITEM', (optional)
                 sm: 'YOUR_CLASS_GRID_ITEM', (optional)
                 md: 'YOUR_CLASS_GRID_ITEM', (optional)
                 lg: 'YOUR_CLASS_GRID_ITEM', (optional)
             }
-        })],
-    framework
-) }}"|e -}}
+        })]) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
@@ -81,11 +79,6 @@
         <td class="flat-table-td"><i>Content of your grid Item</i></td>
     </tr>
     <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
-    </tr>
-    <tr>
         <td class="flat-table-td"><b>ClassGridItem :</b></td>
         <td class="flat-table-td">
             <ul style="list-style-type: none; padding: 0;">
@@ -119,50 +112,58 @@
         {% spaceless %}
             <pre>
                 {{- "{{ almanach_grid([
-    almanach_gridItem('Div Grid Item 1', framework, {
+    almanach_gridItem('Div Grid Item 1', {
         classGridItem: {
             sm: 4,
             lg: 2
         }
     }),
-    almanach_gridItem('Div Grid Item 2', framework, {
+    almanach_gridItem('Div Grid Item 2', {
         classGridItem: {
             sm: 6,
             lg: 4
         }
     }),
-    almanach_gridItem('Div Grid Item 3', framework, {
+    almanach_gridItem('Div Grid Item 3', {
         classGridItem: {
             sm: 4,
             lg: 4
         }
-    })],
-    framework
-) }}"|e -}}
+    })]) }}"|e -}}
             </pre>
         {% endspaceless %}
     </li>
     <li>
-        {{ almanach_grid([
-            almanach_gridItem('Div Grid Item 1', framework, {
-                classGridItem: {
-                    sm: 2,
-                    lg: 4
-                }
-            }),
-            almanach_gridItem('Div Grid Item 2', framework, {
-                classGridItem: {
-                    sm: 6,
-                    lg: 4
-                }
-            }),
-            almanach_gridItem('Div Grid Item 3', framework, {
-                classGridItem: {
-                    sm: 4,
-                    lg: 4
-                }
-            })],
-            framework
+        {{ almanach_grid(
+            [
+                almanach_gridItem(
+                    'Div Grid Item 1',
+                    {
+                        'classGridItem': {
+                            'sm': 2,
+                            'lg': 4
+                        },
+                    }
+                ),
+                almanach_gridItem(
+                    'Div Grid Item 2',
+                    {
+                        'classGridItem': {
+                            'sm': 6,
+                            'lg': 4
+                        },
+                    }
+                ),
+                almanach_gridItem(
+                    'Div Grid Item 3',
+                    {
+                        'classGridItem': {
+                            'sm': 4,
+                            'lg': 4
+                        },
+                    }
+                )
+            ]
         ) }}
     </li>
 </ul>

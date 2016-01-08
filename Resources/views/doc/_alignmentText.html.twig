@@ -7,7 +7,7 @@
             <pre>
                 {{- "{{ alamanach_alignmentText(
     $content,
-    $framework, {
+    {
         alignment: 'YOUR_ALIGNMENT',
     })
 }}"|e -}}
@@ -46,11 +46,6 @@
         <td class="flat-table-td"><i>Content of your Alignment Text</i></td>
     </tr>
     <tr>
-        <td class="flat-table-td"><b>Framework :</b></td>
-        <td class="flat-table-td"><i>Bootstrap / Foundation</i></td>
-        <td class="flat-table-td"><i>The framework that you want to use</i></td>
-    </tr>
-    <tr>
         <td class="flat-table-td"><b>Alignment :</b></td>
         <td class="flat-table-td">
             <ul style="list-style-type: none; padding: 0;">
@@ -73,7 +68,7 @@
             <pre>
                 {{- "{{ almanach_alignmentText(
     'Your 'left' alignment text !',
-    framework, {
+    {
         alignment: 'left',
     })
 }}"|e -}}
@@ -83,7 +78,7 @@
     <li>
         {{ almanach_alignmentText(
             'Your "left" alignment text !',
-            framework, {
+            {
                 alignment: 'left',
             })
         }}

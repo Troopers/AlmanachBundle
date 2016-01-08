@@ -7,16 +7,19 @@
 ]) %}
 
 {{ almanach_listItem(
-    almanach_button(content, framework, {
-        attr : {
-            'aria-controls': control,
-            'role': 'tab',
-            'data-toggle': 'tab',
-        },
-        tag: 'a',
-        link: '#' ~ control
-    }),
-    framework, {
+    almanach_button(
+        content,
+        {
+            attr : {
+                'aria-controls': control,
+                'role': 'tab',
+                'data-toggle': 'tab',
+            },
+            tag: 'a',
+            link: '#' ~ control
+        }
+    ),
+    {
         attr: {
             role: 'presentation',
         }
