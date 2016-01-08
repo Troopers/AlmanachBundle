@@ -2,29 +2,33 @@
 
 namespace AppVentus\AlmanachBundle\Twig;
 
-class AlmanachInlineTextExtension extends \Twig_Extension {
-
+class AlmanachInlineTextExtension extends \Twig_Extension
+{
     /**
-     * @var AlmanachDisplayExtension $almanachExtension
+     * @var AlmanachDisplayExtension
      */
     protected $almanachExtension;
 
     /**
      * @param string $name
-     * @param array $options
+     * @param array  $options
+     *
      * @return array
      */
-    protected function getInlineTextOptions($name, array $options) {
+    protected function getInlineTextOptions($name, array $options)
+    {
         return array_merge($options, [
             'inline' => $name,
         ]);
     }
 
-    public function __construct(AlmanachDisplayExtension $almanachExtension) {
+    public function __construct(AlmanachDisplayExtension $almanachExtension)
+    {
         $this->almanachExtension = $almanachExtension;
     }
 
-    public function getFunctions() {
+    public function getFunctions()
+    {
         return [
             'span'   => new \Twig_Function_Method($this, 'inlineTextDefault', ['is_safe' => ['html']]),
             'mark'   => new \Twig_Function_Method($this, 'inlineTextMarked', ['is_safe' => ['html']]),
@@ -38,17 +42,19 @@ class AlmanachInlineTextExtension extends \Twig_Extension {
         ];
     }
 
-    public function getName() {
+    public function getName()
+    {
         return 'appventus_almanach_inline_text';
     }
 
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         if (preg_match('/^inlineText(.*)/', $name, $match)) {
             $type = strtolower($match[1]);
 
             if (empty($arguments)) {
                 throw new \Exception(sprintf('Method %s waits at least one argument.', $name));
-            } else if (isset($arguments[1]) && !is_array($arguments[1])) {
+            } elseif (isset($arguments[1]) && !is_array($arguments[1])) {
                 throw new \Exception(sprintf('Method %s waits "array" as second argument, "%s" given.', $name, gettype($arguments[1])));
             }
 

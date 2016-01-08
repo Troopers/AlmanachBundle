@@ -9,8 +9,8 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
  *
  * @author Sullivan MAXWELLD <sullivan@appventus.com>
  */
-class KernelRequestListener {
-
+class KernelRequestListener
+{
     protected $twig;
 
     public function __construct(\Twig_Environment $twig, $almanach)
@@ -19,7 +19,8 @@ class KernelRequestListener {
         $this->almanach = $almanach;
     }
 
-    public function onKernelRequest(GetResponseEvent $event) {
+    public function onKernelRequest(GetResponseEvent $event)
+    {
         $this->twig->addGlobal('almanach', $this->almanach);
     }
 }
