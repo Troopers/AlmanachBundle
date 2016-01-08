@@ -14,12 +14,20 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     /** @var string framework */
     protected $framework;
 
+    /**
+     * @param $almanach
+     * @param \Twig_Environment $templating
+     * @param $framework
+     */
     public function __construct($almanach, \Twig_Environment $templating, $framework) {
         $this->almanach = $almanach;
         $this->templating = $templating;
         $this->framework = $framework;
     }
 
+    /**
+     * @param $framework
+     */
     public function setFramework($framework) {
         $this->framework = $framework;
     }
