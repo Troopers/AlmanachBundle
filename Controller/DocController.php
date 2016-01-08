@@ -13,6 +13,9 @@ class DocController extends Controller
      * @Template()
      */
     public function indexAction($framework) {
+        $almanachExtension = $this->get('appventus_almanach_display');
+        $almanachExtension->setFramework($framework);
+
         $almanach            = $this->getParameter('almanach_' . $framework);
         $container           = isset($almanach['container']) ? $almanach['container'] : null;
         $containerFluid      = isset($almanach['containerFluid']) ? $almanach['containerFluid'] : null;
