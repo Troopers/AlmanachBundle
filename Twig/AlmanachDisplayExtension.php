@@ -2,21 +2,64 @@
 
 namespace AppVentus\AlmanachBundle\Twig;
 
-use Symfony\Component\Templating\EngineInterface;
-
-class AlmanachDisplayExtension extends \Twig_Extension {
-
+class AlmanachDisplayExtension extends \Twig_Extension
+{
     protected $almanach;
+
+    /** @var \Twig_Environment templating */
     protected $templating;
 
-    public function __construct($almanach, \Twig_Environment $templating, $framework) {
+    /** @var string framework */
+    protected $framework;
+
+    /** @var array $defaultOptions */
+    protected static $defaultOptions = [
+        'class' => [],
+        'attr'  => [],
+        'tag'   => null,
+        'link'  => null,
+    ];
+
+    /**
+     * @param $template
+     * @param array $defaultOptions
+     * @param array $options
+     *
+     * @return string
+     */
+    protected function renderTemplate($template, array $defaultOptions, array $options)
+    {
+        $defaultOptions = array_merge($this::$defaultOptions, $defaultOptions);
+
+        $options = (is_array($options) && !empty($options)) ? array_merge($defaultOptions, $options) : $defaultOptions;
+        $options['framework'] = $this->framework;
+
+        return $this->templating->render('AlmanachBundle:bricks:'.$this->framework.'/'.$template, $options);
+    }
+
+    /**
+     * @param $almanach
+     * @param \Twig_Environment $templating
+     * @param $framework
+     */
+    public function __construct($almanach, \Twig_Environment $templating, $framework)
+    {
         $this->almanach = $almanach;
         $this->templating = $templating;
         $this->framework = $framework;
     }
 
-    public function getFunctions() {
-        return array(
+    /**
+     * @param $framework
+     */
+    public function setFramework($framework)
+    {
+        $this->framework = $framework;
+    }
+
+    public function getFunctions()
+    {
+        return [
             'almanach_container'           => new \Twig_Function_Method($this, 'displayContainer', ['is_safe' => ['html']]),
             'almanach_containerFluid'      => new \Twig_Function_Method($this, 'displayContainerFluid', ['is_safe' => ['html']]),
             'almanach_grid'                => new \Twig_Function_Method($this, 'displayGrid', ['is_safe' => ['html']]),
@@ -36,26 +79,17 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'almanach_dropdownButton'      => new \Twig_Function_Method($this, 'displayDropdownButton', ['is_safe' => ['html']]),
             'almanach_splitDropdownButton' => new \Twig_Function_Method($this, 'displaySplitDropdownButton', ['is_safe' => ['html']]),
             'almanach_buttonGroup'         => new \Twig_Function_Method($this, 'displayButtonGroup', ['is_safe' => ['html']]),
-        );
+        ];
     }
 
     public function displayContainer($contentContainer, $options = [])
     {
         $defaultOptions = [
-            'contentContainer'           => $contentContainer,
-            'framework'                  => $this->framework,
-            'classCont'                  => 'cont',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
+            'contentContainer' => $contentContainer,
+            'classCont'        => 'cont',
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_container.html.twig", $options);
+        return $this->renderTemplate('_container.html.twig', $defaultOptions, $options);
     }
 
     public function displayContainerFluid($contentContainerFluid, $options = [])
@@ -64,17 +98,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'contentContainerFluid'      => $contentContainerFluid,
             'framework'                  => $this->framework,
             'classContFluid'             => 'contFluid',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_containerFluid.html.twig", $options);
+        return $this->renderTemplate('_containerFluid.html.twig', $defaultOptions, $options);
     }
 
     public function displayGrid($contentGrid, $options = [])
@@ -82,35 +108,20 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         $defaultOptions = [
             'contentGrid'                => $contentGrid,
             'framework'                  => $this->framework,
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_grid.html.twig", $options);
+        return $this->renderTemplate('_grid.html.twig', $defaultOptions, $options);
     }
+
     public function displayGridItem($contentGridItem, $options = [])
     {
         $defaultOptions = [
             'contentGridItem'            => $contentGridItem,
             'framework'                  => $this->framework,
             'classGridItem'              => [],
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_gridItem.html.twig", $options);
+        return $this->renderTemplate('_gridItem.html.twig', $defaultOptions, $options);
     }
 
     public function displayLabel($contentLabel, $options = [])
@@ -120,17 +131,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'framework'                  => $this->framework,
             'theme'                      => 'default',
             'border'                     => 'default',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_label.html.twig", $options);
+        return $this->renderTemplate('_label.html.twig', $defaultOptions, $options);
     }
 
     public function displayAlert($contentAlert, $options = [])
@@ -140,17 +143,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'framework'                  => $this->framework,
             'theme'                      => 'default',
             'border'                     => 'default',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_alert.html.twig", $options);
+        return $this->renderTemplate('_alert.html.twig', $defaultOptions, $options);
     }
 
     public function displayHeading($contentHeading, $options = [])
@@ -159,17 +154,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'contentHeading'             => $contentHeading,
             'framework'                  => $this->framework,
             'size'                       => 'default',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_heading.html.twig", $options);
+        return $this->renderTemplate('_heading.html.twig', $defaultOptions, $options);
     }
 
     public function displayInlineText($contentInlineText, $options = [])
@@ -178,17 +165,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'contentInlineText'          => $contentInlineText,
             'framework'                  => $this->framework,
             'inline'                     => 'default',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_inlineText.html.twig", $options);
+        return $this->renderTemplate('_inlineText.html.twig', $defaultOptions, $options);
     }
 
     public function displayTransformText($contentTransformText, $options = [])
@@ -197,17 +176,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'contentTransformText'       => $contentTransformText,
             'framework'                  => $this->framework,
             'transform'                  => 'default',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_transformText.html.twig", $options);
+        return $this->renderTemplate('_transformText.html.twig', $defaultOptions, $options);
     }
 
     public function displayAlignmentText($contentAlignmentText, $options = [])
@@ -216,17 +187,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'contentAlignmentText'       => $contentAlignmentText,
             'framework'                  => $this->framework,
             'alignment'                  => 'default',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_alignmentText.html.twig", $options);
+        return $this->renderTemplate('_alignmentText.html.twig', $defaultOptions, $options);
     }
 
     public function displayList($contentList, $options = [])
@@ -237,17 +200,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'order'                      => 'default',
             'decoration'                 => 'default',
             'list'                       => [],
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_list.html.twig", $options);
+        return $this->renderTemplate('_list.html.twig', $defaultOptions, $options);
     }
 
     public function displayListItem($contentListItem, $options = [])
@@ -255,17 +210,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         $defaultOptions = [
             'contentListItem'            => $contentListItem,
             'framework'                  => $this->framework,
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_listItem.html.twig", $options);
+        return $this->renderTemplate('_listItem.html.twig', $defaultOptions, $options);
     }
 
     public function displayTab($titles, $content, $options = [])
@@ -277,17 +224,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'theme'                      => 'default',
             'style'                      => 'default',
             'list'                       => [],
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tab.html.twig", $options);
+        return $this->renderTemplate('_tab.html.twig', $defaultOptions, $options);
     }
 
     public function displayTabTitle($content, $options = [])
@@ -297,17 +236,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'framework'                  => $this->framework,
             'state'                      => 'default',
             'list'                       => [],
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tabTitle.html.twig", $options);
+        return $this->renderTemplate('_tabTitle.html.twig', $defaultOptions, $options);
     }
 
     public function displayTabContent($content, $options = [])
@@ -317,17 +248,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'framework'                  => $this->framework,
             'state'                      => 'default',
             'list'                       => [],
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_tabContent.html.twig", $options);
+        return $this->renderTemplate('_tabContent.html.twig', $defaultOptions, $options);
     }
 
     public function displayButton($contentButton, $options = [])
@@ -339,17 +262,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'size'                       => 'default',
             'state'                      => 'default',
             'border'                     => 'default',
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_button.html.twig", $options);
+        return $this->renderTemplate('_button.html.twig', $defaultOptions, $options);
     }
 
     public function displayDropdownButton($contentDropdownButton, $options = [])
@@ -362,17 +277,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'state'                      => 'default',
             'border'                     => 'default',
             'list'                       => [],
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_dropdownButton.html.twig", $options);
+        return $this->renderTemplate('_dropdownButton.html.twig', $defaultOptions, $options);
     }
 
     public function displaySplitDropdownButton($contentSplitDropdownButton, $options = [])
@@ -385,17 +292,9 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'state'                      => 'default',
             'border'                     => 'default',
             'list'                       => [],
-            'class'                      => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_splitDropdownButton.html.twig", $options);
+        return $this->renderTemplate('_splitDropdownButton.html.twig', $defaultOptions, $options);
     }
 
     public function displayButtonGroup($contentButtonGroup, $options = [])
@@ -408,20 +307,14 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'state'                      => 'default',
             'border'                     => 'default',
             'group'                      => 'default',
-            'classes'                    => [],
-            'attr'                       => [],
-            'tag'                        => null,
-            'link'                       => null,
+            'classes'                    => [], //TODO classes ?
         ];
-        if (is_array($options)) {
-            $options = array_merge($defaultOptions, $options);
-        }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_buttonGroup.html.twig", $options);
+        return $this->renderTemplate('_buttonGroup.html.twig', $defaultOptions, $options);
     }
 
-    public function getName() {
+    public function getName()
+    {
         return 'appventus_almanach_display';
     }
 }
