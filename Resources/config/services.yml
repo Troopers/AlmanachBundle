@@ -14,3 +14,9 @@ services:
             - %almanach.framework%
         tags:
             - { name: twig.extension }
+    appventus_almanach_inline_text:
+        class: AppVentus\AlmanachBundle\Twig\AlmanachInlineTextExtension
+        arguments:
+            - @appventus_almanach_display
+        tags:
+            - { name: twig.extension }
