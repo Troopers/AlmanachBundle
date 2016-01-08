@@ -20,3 +20,9 @@ services:
             - @appventus_almanach_display
         tags:
             - { name: twig.extension }
+    appventus_almanach_list:
+        class: AppVentus\AlmanachBundle\Twig\AlmanachListExtension
+        arguments:
+            - @appventus_almanach_display
+        tags:
+            - { name: twig.extension }
