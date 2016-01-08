@@ -14,6 +14,13 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     /** @var string framework */
     protected $framework;
 
+    /** @var array $defaultOptions */
+    static protected $defaultOptions = [
+        'class' => [],
+        'attr'  => [],
+        'tag'   => null,
+        'link'  => null,
+    ];
 
     /**
      * @param $template
@@ -22,12 +29,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
      * @return string
      */
     protected function renderTemplate($template, array $defaultOptions, array $options) {
-        $defaultOptions = array_merge([
-            'class' => [],
-            'attr'  => [],
-            'tag'   => null,
-            'link'  => null,
-        ], $defaultOptions);
+        $defaultOptions = array_merge($this::$defaultOptions, $defaultOptions);
 
         $options = (is_array($options) && !empty($options)) ? array_merge($defaultOptions, $options) : $defaultOptions;
         $options['framework'] = $this->framework;
@@ -301,7 +303,7 @@ class AlmanachDisplayExtension extends \Twig_Extension {
             'state'                      => 'default',
             'border'                     => 'default',
             'group'                      => 'default',
-            'classes'                    => [],
+            'classes'                    => [], //TODO classes ?
         ];
 
         return $this->renderTemplate('_buttonGroup.html.twig', $defaultOptions, $options);
