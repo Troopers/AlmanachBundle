@@ -7,11 +7,20 @@ use Symfony\Component\Templating\EngineInterface;
 class AlmanachDisplayExtension extends \Twig_Extension {
 
     protected $almanach;
+
+    /** @var \Twig_Environment templating */
     protected $templating;
+
+    /** @var string framework */
+    protected $framework;
 
     public function __construct($almanach, \Twig_Environment $templating, $framework) {
         $this->almanach = $almanach;
         $this->templating = $templating;
+        $this->framework = $framework;
+    }
+
+    public function setFramework($framework) {
         $this->framework = $framework;
     }
 
@@ -43,7 +52,6 @@ class AlmanachDisplayExtension extends \Twig_Extension {
     {
         $defaultOptions = [
             'contentContainer'           => $contentContainer,
-            'framework'                  => $this->framework,
             'classCont'                  => 'cont',
             'class'                      => [],
             'attr'                       => [],
@@ -52,10 +60,12 @@ class AlmanachDisplayExtension extends \Twig_Extension {
         ];
         if (is_array($options)) {
             $options = array_merge($defaultOptions, $options);
+        } else {
+            $options = $defaultOptions;
         }
-        $framework = (isset($options['framework']) ? $options['framework'] : $this->framework);
+        $options['framework'] = $this->framework;
 
-        return $this->templating->render("AlmanachBundle:bricks:" . $framework . "/_container.html.twig", $options);
+        return $this->templating->render("AlmanachBundle:bricks:" . $this->framework . "/_container.html.twig", $options);
     }
 
     public function displayContainerFluid($contentContainerFluid, $options = [])
