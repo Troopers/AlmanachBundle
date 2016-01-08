@@ -54,7 +54,7 @@ class AlmanachListExtension extends \Twig_Extension
             $options = (isset($arguments[1])) ? $arguments[1] : [];
 
             return $this->almanachExtension->displayListItem($content, $options);
-        } else if (preg_match('/^list(.*)/', $name, $match)) {
+        } elseif (preg_match('/^list(.*)/', $name, $match)) {
             $type = strtolower($match[1]);
 
             if (empty($arguments)) {
